@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27');
+ 
+:root
+{
+    --primary:#ffffff;
+    --secondary:#62011D;
+    --light:#F2E8DF;
+    --dark:#080100;
+
+    --main-font:'Raleway',sans-serif;
+    --title-font:'Roboto Slab',serif;
+}
+h1{
+    color: var(--secondary);
+    font-family: var(--title-font)
+}
