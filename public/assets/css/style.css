@@ -10,7 +10,55 @@
     --main-font:'Raleway',sans-serif;
     --title-font:'Roboto Slab',serif;
 }
-h1{
-    color: var(--secondary);
-    font-family: var(--title-font)
+.navbar-brand{
+    font-family: var(--title-font);
+    font-family: var(--title-font);
+    font-weight: bolder;
+    font-size: 24px;
+    margin-left: 40px;
+}
+nav{
+    background-color:var(--secondary);
+}
+header{
+    height: 500px;
+    background-image :url('../images/vin.jpg');
+    background-size: cover;
+}
+.nav-item{
+    font-family: var(--title-font);
+    font-weight: bolder;
+    font-size: 24px;
+    margin-right: 40px;
+}
+#navbarNavAltMarkup{
+    text-align: center;
+}
+
+.logo{
+    height: 300px;
+    float: right;
+    width: 700px;
+    margin-top: 50px;
+}
+@media screen and (max-width: 1088px)
+{
+    .logo{
+        padding-left: 180px;
+    }
+    
+}
+@media screen and (max-width: 853px)
+{
+    .logo{
+        padding-left: 360px;
+    }
+    
+}
+@media screen and (max-width: 768px)
+{
+    .logo{
+        display: none;
+    }
+    
 }
