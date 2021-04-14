@@ -1,0 +1,28 @@
+<div class="container">
+  <form action="index.php" method="post">
+   <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
+    <select class="form-select mb-3" aria-label="Default select example" required>
+      <option selected>Catégorie</option>
+      <option value="Vrouge">Vin rouge</option>
+      <option value="Vblanc">Vin blanc</option>
+      <option value="Vrose">Vin rosé</option>
+      <option value="Alcool">Alcool de fruit</option>
+      <option value="Jus">Jus de fruit</option>
+    </select>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Nom du produit :</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit" value="nom" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Description du produit</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Image</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Lien vers votre image" value="image" required>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Ajouter votre produit</button>
+    </div>
+  </form>
+</div>
