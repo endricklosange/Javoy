@@ -2,9 +2,9 @@
 @import "header.css";
 :root
 {
-    --primary:#ffffff;
-    --secondary:#62011D;
-    --light:#F2E8DF;
+    --primary:#62011D;
+    --secondary:#F2E8DF;
+    --light:#ffffff;
     --dark:#080100;
 
     --main-font:'Raleway',sans-serif;
@@ -18,9 +18,8 @@
     margin-left: 40px;
 }
 nav{
-    background-color:var(--secondary);
+    background-color:var(--primary);
 }
-
 .nav-item{
     font-family: var(--title-font);
     font-weight: bolder;

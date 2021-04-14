@@ -1,32 +1,21 @@
 header{
     height: 500px;
-    background-image :url('../images/vin.jpg');
+    background-image :url('../images/bg_header.jpg');
     background-size: cover;
 }
 .logo{
     height: 300px;
-    float: right;
-    width: 700px;
-    margin-top: 50px;
+    width: 300px;
+    margin-top: 125px;
+    margin-right: 40px;
 }
-@media screen and (max-width: 1088px)
-{
-    .logo{
-        padding-left: 180px;
-    }
-    
-}
-@media screen and (max-width: 853px)
-{
-    .logo{
-        padding-left: 360px;
-    }
-    
+.logoContainer{
+    display: flex;
+    justify-content: flex-end;
 }
 @media screen and (max-width: 768px)
 {
     .logo{
         display: none;
     }
-    
 }
