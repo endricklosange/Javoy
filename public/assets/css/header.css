@@ -1,0 +1,32 @@
+header{
+    height: 500px;
+    background-image :url('../images/vin.jpg');
+    background-size: cover;
+}
+.logo{
+    height: 300px;
+    float: right;
+    width: 700px;
+    margin-top: 50px;
+}
+@media screen and (max-width: 1088px)
+{
+    .logo{
+        padding-left: 180px;
+    }
+    
+}
+@media screen and (max-width: 853px)
+{
+    .logo{
+        padding-left: 360px;
+    }
+    
+}
+@media screen and (max-width: 768px)
+{
+    .logo{
+        display: none;
+    }
+    
+}
