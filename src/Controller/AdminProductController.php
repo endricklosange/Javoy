@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\ProductsManager;
+use App\Model\ProductManager;
 
-class AdminProductsController extends AbstractController
+class AdminProductController extends AbstractController
 {
+    const PRODUCT_MAX_LENGHT = 80;
+    const DESCRIPTION_MAX_LENGHT = 255;
+    const PRODUCT_MIN_INT =0;
     // Verification champ vide
     private function isEmpty($products): array
     {
@@ -40,29 +43,29 @@ class AdminProductsController extends AbstractController
     // Suite des verifications
     private function validate($products)
     {
-        $categoryValue = array("Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"); // category list
+        $categoryValue = ["Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"]; // category list
 
         // validations
         $errors = $this->isEmpty($products);
 
         // Category verification
         if (!in_array($products['category'], $categoryValue)) {
-            $errors[] = 'Veuillez renseigné une catégorie valide';
+            $errors[] = 'Veuillez renseigner une catégorie valide';
         }
 
         //name verification
-        if (strlen($products['name']) > 80) {
-            $errors[] = 'Le nom doit contenir moin de 80 charactères';
+        if (strlen($products['name']) > SELF::PRODUCT_MAX_LENGHT) {
+            $errors[] = 'Le nom doit contenir moins de '. SELF::PRODUCT_MAX_LENGHT .' charactères';
         }
 
         // price verification
-        if ($products['price'] <= 0) {
-            $errors[] = 'Le prix doit etre un nombre supérieur a 0';
+        if ($products['price'] <= SELF::PRODUCT_MIN_INT) {
+            $errors[] = 'Le prix doit etre un nombre supérieur à ' . SELF::PRODUCT_MIN_INT;
         }
 
         // year verification
-        if ($products['year'] <= 0) {
-            $errors[] = 'L\'année doit etre un nombre supérieur a 0';
+        if ($products['year'] <= SELF::PRODUCT_MIN_INT) {
+            $errors[] = 'L\'année doit etre un nombre supérieur à ' . SELF::PRODUCT_MIN_INT;
         }
 
         // image verification
@@ -71,8 +74,8 @@ class AdminProductsController extends AbstractController
         }
 
         // description verification
-        if (strlen($products['description']) > 255) {
-            $errors[] = 'Le nom doit contenir moin de 255 charactères';
+        if (strlen($products['description']) > SELF::DESCRIPTION_MAX_LENGHT) {
+            $errors[] = 'Le nom doit contenir moins de '.SELF::DESCRIPTION_MAX_LENGHT.' charactères';
         }
         return $errors;
     }
@@ -92,9 +95,9 @@ class AdminProductsController extends AbstractController
             $errors = $this->validate($products);
             // no errors, send to db
             if (empty($errors)) {
-                $productsManager = new ProductsManager();
+                $productsManager = new ProductManager();
                 $productsManager->insert($products);
-                header('Location:/adminProducts/add');
+                header('Location:/adminProduct/add');
             }
         }
 
