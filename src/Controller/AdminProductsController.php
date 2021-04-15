@@ -6,17 +6,10 @@ use App\Model\ProductsManager;
 
 class AdminProductsController extends AbstractController
 {
-    /**
-     * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-
+    // Verification champ vide
     private function isEmpty($products): array
     {
+        $errors = [];
         if (empty($products['price'])) {
             $errors[] = 'Le prix est obligatoire';
         }
@@ -42,63 +35,62 @@ class AdminProductsController extends AbstractController
         }
 
         return $errors;
- 
+    }
+
+    // Suite des verifications
+    private function validate($products)
+    {
+        $categoryValue = array("Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"); // category list
+
+        // validations
+        $errors = $this->isEmpty($products);
+
+        // Category verification
+        if (!in_array($products['category'], $categoryValue)) {
+            $errors[] = 'Veuillez renseigné une catégorie valide';
+        }
+
+        //name verification
+        if (strlen($products['name']) > 80) {
+            $errors[] = 'Le nom doit contenir moin de 80 charactères';
+        }
+
+        // price verification
+        if ($products['price'] <= 0) {
+            $errors[] = 'Le prix doit etre un nombre supérieur a 0';
+        }
+
+        // year verification
+        if ($products['year'] <= 0) {
+            $errors[] = 'L\'année doit etre un nombre supérieur a 0';
+        }
+
+        // image verification
+        if (!filter_var($products['image'], FILTER_VALIDATE_URL)) {
+            $errors[] = "Le format d'url n’est pas correct";
+        }
+
+        // description verification
+        if (strlen($products['description']) > 255) {
+            $errors[] = 'Le nom doit contenir moin de 255 charactères';
+        }
+        return $errors;
     }
 
 
- 
 
-    /* Formulaire ajout de produit */
+    /* Ajout de produit */
 
     public function add()
     {
         $errors = [];
-        $categoryValue = array("Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"); // category list
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $products = array_map('trim', $_POST);
-
-            // validations
-            $errors = $this->isEmpty($products);
- 
-            // Category verification
-
-            if (!in_array($products['category'], $categoryValue)) {
-                $errors[] = 'Veuillez renseigné une catégorie valide';
-            }
-
-            //name verification
-
-            if (strlen($products['name']) > 80) {
-                $errors[] = 'Le nom doit contenir moin de 80 charactères';
-            }
-
-            // price verification
-
-            if ($products['price'] <= 0) {
-                $errors[] = 'Le prix doit etre un nombre supérieur a 0';
-            }
-
-            // year verification
-
-            if ($products['year'] <= 0) {
-                $errors[] = 'L\'année doit etre un nombre supérieur a 0';
-            }
-
-            // image verification
-
-            if (!filter_var($products['image'], FILTER_VALIDATE_URL)) {
-                $errors[] = "Le format d'url n’est pas correct";
-            }
-
-            // description verification
-
-            if (strlen($products['description']) > 255) {
-                $errors[] = 'Le nom doit contenir moin de 255 charactères';
-            }
-
-
-                // no errors, send to db
+            // Verification
+            $errors = $this->validate($products);
+            // no errors, send to db
             if (empty($errors)) {
                 $productsManager = new ProductsManager();
                 $productsManager->insert($products);
