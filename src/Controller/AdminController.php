@@ -19,7 +19,7 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig');
     }
 
-    private function verification()
+    private function is_empty(): array
     {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -47,8 +47,10 @@ class AdminController extends AbstractController
             if (empty($products['name'])) {
                 $errors[] = 'Le nom est obligatoire';
             }
-            var_dump($errors);
+
         }
+        return ($errors);
+        var_dump($errors);
     }
 
     /* Formulaire ajout de produit */
@@ -62,7 +64,7 @@ class AdminController extends AbstractController
             $products = array_map('trim', $_POST);
             // TODO validations (length, format...)
 
-            $this->verification();
+            $this->is_empty();
 
             // Category verification
 
