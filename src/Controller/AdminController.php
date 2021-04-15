@@ -19,17 +19,50 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig');
     }
 
+    private function verification()
+    {
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $products = array_map('trim', $_POST);
+            if (empty($products['price'])) {
+                $errors[] = 'Le prix est obligatoire';
+            }
+
+            if (empty($products['description'])) {
+                $errors[] = 'La déscription est obligatoire';
+            }
+
+            if (empty($products['year'])) {
+                $errors[] = 'L\'année est obligatoire';
+            }
+
+            if (empty($products['image'])) {
+                $errors[] = 'L\'image est obligatoire';
+            }
+
+            if (empty($products['created_at'])) {
+                $errors[] = 'La date de création est obligatoire';
+            }
+
+            if (empty($products['name'])) {
+                $errors[] = 'Le nom est obligatoire';
+            }
+            var_dump($errors);
+        }
+    }
+
     /* Formulaire ajout de produit */
 
     public function add()
     {
         $errors = [];
-        $categoryValue = array("Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit");
-
+        $categoryValue = array("Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"); // category list
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data  
+            // clean $_POST data
             $products = array_map('trim', $_POST);
-            // TODO validations (length, format...)            
+            // TODO validations (length, format...)
+
+            $this->verification();
 
             // Category verification
 
@@ -39,19 +72,12 @@ class AdminController extends AbstractController
 
             //name verification
 
-            if (empty($products['name'])) {
-                $errors[] = 'Le nom est obligatoire';
-            }
-
             if (strlen($products['name']) > 255) {
                 $errors[] = 'Le nom doit contenir moin de 255 charactère';
             }
 
             // price verification
 
-            if (empty($products['price'])) {
-                $errors[] = 'Le prix est obligatoire';
-            }
 
             if ($products['price'] <= 0) {
                 $errors[] = 'Le prix doit etre un nombre supérieur a 0';
@@ -59,15 +85,8 @@ class AdminController extends AbstractController
 
             // description verification
 
-            if (empty($products['description'])) {
-                $errors[] = 'La déscription est obligatoire';
-            }
 
             // year verification
-
-            if (empty($products['year'])) {
-                $errors[] = 'L\'année est obligatoire';
-            }
 
             if ($products['year'] <= 0) {
                 $errors[] = 'L\'année doit etre un nombre supérieur a 0';
@@ -75,19 +94,12 @@ class AdminController extends AbstractController
 
             // image verification
 
-            if (empty($products['image'])) {
-                $errors[] = 'L\'image est obligatoire';
-            }
-
             if (!filter_var($products['image'], FILTER_VALIDATE_URL)) {
                 $errors[] = "Le format d'url n’est pas correct";
             }
 
             // created_at verification
 
-            if (empty($products['created_at'])) {
-                $errors[] = 'La date de création est obligatoire';
-            }
 
             // if validation is ok, insert and redirection
 
