@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Model\ProductsManager;
 
-class AdminController extends AbstractController
+class AdminProductsController extends AbstractController
 {
     /**
      * Display home page
@@ -14,44 +14,39 @@ class AdminController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+
+    private function isEmpty($products): array
     {
-        return $this->twig->render('Admin/index.html.twig');
-    }
-
-    private function is_empty(): array
-    {
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $products = array_map('trim', $_POST);
-            if (empty($products['price'])) {
-                $errors[] = 'Le prix est obligatoire';
-            }
-
-            if (empty($products['description'])) {
-                $errors[] = 'La déscription est obligatoire';
-            }
-
-            if (empty($products['year'])) {
-                $errors[] = 'L\'année est obligatoire';
-            }
-
-            if (empty($products['image'])) {
-                $errors[] = 'L\'image est obligatoire';
-            }
-
-            if (empty($products['created_at'])) {
-                $errors[] = 'La date de création est obligatoire';
-            }
-
-            if (empty($products['name'])) {
-                $errors[] = 'Le nom est obligatoire';
-            }
-
+        if (empty($products['price'])) {
+            $errors[] = 'Le prix est obligatoire';
         }
-        return ($errors);
-        var_dump($errors);
+
+        if (empty($products['description'])) {
+            $errors[] = 'La déscription est obligatoire';
+        }
+
+        if (empty($products['year'])) {
+            $errors[] = 'L\'année est obligatoire';
+        }
+
+        if (empty($products['image'])) {
+            $errors[] = 'L\'image est obligatoire';
+        }
+
+        if (empty($products['created_at'])) {
+            $errors[] = 'La date de création est obligatoire';
+        }
+
+        if (empty($products['name'])) {
+            $errors[] = 'Le nom est obligatoire';
+        }
+
+        return $errors;
+ 
     }
+
+
+ 
 
     /* Formulaire ajout de produit */
 
@@ -62,10 +57,10 @@ class AdminController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $products = array_map('trim', $_POST);
-            // TODO validations (length, format...)
 
-            $this->is_empty();
-
+            // validations
+            $errors = $this->isEmpty($products);
+ 
             // Category verification
 
             if (!in_array($products['category'], $categoryValue)) {
@@ -74,19 +69,15 @@ class AdminController extends AbstractController
 
             //name verification
 
-            if (strlen($products['name']) > 255) {
-                $errors[] = 'Le nom doit contenir moin de 255 charactère';
+            if (strlen($products['name']) > 80) {
+                $errors[] = 'Le nom doit contenir moin de 80 charactères';
             }
 
             // price verification
 
-
             if ($products['price'] <= 0) {
                 $errors[] = 'Le prix doit etre un nombre supérieur a 0';
             }
-
-            // description verification
-
 
             // year verification
 
@@ -100,15 +91,18 @@ class AdminController extends AbstractController
                 $errors[] = "Le format d'url n’est pas correct";
             }
 
-            // created_at verification
+            // description verification
+
+            if (strlen($products['description']) > 255) {
+                $errors[] = 'Le nom doit contenir moin de 255 charactères';
+            }
 
 
-            // if validation is ok, insert and redirection
-
+                // no errors, send to db
             if (empty($errors)) {
                 $productsManager = new ProductsManager();
                 $productsManager->insert($products);
-                header('Location:/admin/add');
+                header('Location:/adminProducts/add');
             }
         }
 

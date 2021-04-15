@@ -6,6 +6,7 @@
     --secondary:#62011D;
     --light:#F2E8DF;
     --dark:#080100;
+    --error-color:#af0101;
 
     --main-font:'Raleway',sans-serif;
     --title-font:'Roboto Slab',serif;
@@ -14,4 +15,9 @@ h1{
     color: var(--secondary);
     font-family: var(--title-font);
     font-weight: bold;
+}
+
+.error{
+    font-weight: bold;
+    color: var(--error-color);
 }
