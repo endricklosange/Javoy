@@ -1,0 +1,15 @@
+header{
+    height: 500px;
+    background-image :url('../images/bg_header.jpg');
+    background-size: cover;
+}
+.logo{
+    height: 300px;
+    width: 300px;
+    margin-top: 125px;
+    margin-right: 40px;
+}
+.logoContainer{
+    display: flex;
+    justify-content: flex-end;
+}
