@@ -13,9 +13,3 @@ header{
     display: flex;
     justify-content: flex-end;
 }
-@media screen and (max-width: 768px)
-{
-    .logo{
-        display: none;
-    }
-}
