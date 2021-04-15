@@ -1,8 +1,12 @@
 {% extends 'layout_admin.html.twig' %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/add-products.css">
+{% endblock %}
 
 {% block content %}
-
-<h1>NOUVEAU PRODUIT</h1>
-
-{% endblock %}
+    <h1>NOUVEAU PRODUIT</h1>
+    <div class = 'form'>
+    {% include 'Item/_adminForm.html.twig' %}
+    </div>
+{% endblock %} 
