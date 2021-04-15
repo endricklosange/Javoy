@@ -6,9 +6,9 @@ use App\Model\ProductManager;
 
 class AdminProductController extends AbstractController
 {
-    const PRODUCT_MAX_LENGHT = 80;
-    const DESCRIPTION_MAX_LENGHT = 255;
-    const PRODUCT_MIN_INT =0;
+    private const PRODUCT_MAX_LENGHT = 80;
+    private const DESCRIPTION_MAX_LENGHT = 255;
+    private const PRODUCT_MIN_INT = 0;
     // Verification champ vide
     private function isEmpty($products): array
     {
@@ -54,18 +54,18 @@ class AdminProductController extends AbstractController
         }
 
         //name verification
-        if (strlen($products['name']) > SELF::PRODUCT_MAX_LENGHT) {
-            $errors[] = 'Le nom doit contenir moins de '. SELF::PRODUCT_MAX_LENGHT .' charactères';
+        if (strlen($products['name']) > self::PRODUCT_MAX_LENGHT) {
+            $errors[] = 'Le nom doit contenir moins de ' . self::PRODUCT_MAX_LENGHT . ' charactères';
         }
 
         // price verification
-        if ($products['price'] <= SELF::PRODUCT_MIN_INT) {
-            $errors[] = 'Le prix doit etre un nombre supérieur à ' . SELF::PRODUCT_MIN_INT;
+        if ($products['price'] <= self::PRODUCT_MIN_INT) {
+            $errors[] = 'Le prix doit etre un nombre supérieur à ' . self::PRODUCT_MIN_INT;
         }
 
         // year verification
-        if ($products['year'] <= SELF::PRODUCT_MIN_INT) {
-            $errors[] = 'L\'année doit etre un nombre supérieur à ' . SELF::PRODUCT_MIN_INT;
+        if ($products['year'] <= self::PRODUCT_MIN_INT) {
+            $errors[] = 'L\'année doit etre un nombre supérieur à ' . self::PRODUCT_MIN_INT;
         }
 
         // image verification
@@ -74,8 +74,8 @@ class AdminProductController extends AbstractController
         }
 
         // description verification
-        if (strlen($products['description']) > SELF::DESCRIPTION_MAX_LENGHT) {
-            $errors[] = 'Le nom doit contenir moins de '.SELF::DESCRIPTION_MAX_LENGHT.' charactères';
+        if (strlen($products['description']) > self::DESCRIPTION_MAX_LENGHT) {
+            $errors[] = 'Le nom doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
         }
         return $errors;
     }
