@@ -1,0 +1,42 @@
+h1{
+    color: var(--primary);
+    font-family: var(--title-font);
+    padding: var(--double-space);
+    margin-left: var(--double-space);
+}
+
+body{
+    background-color: var(--secondary);
+}
+
+.container-form{
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    border:var(--primary) 2px solid;
+    border-radius: 8px;
+    padding: var(--double-space);
+    margin: var(--double-space);
+}
+
+button{
+    margin: var(--double-space);
+}
+
+.btn-primary{
+    background-color: var(--primary);
+    border: var(--primary) solid;
+    color: var(--light);
+}
+
+.btn-primary:hover{
+    background-color: var(--primary);
+    border: var(--primary) solid;
+    filter: brightness(150%);
+}
+
+.btn-primary:active{
+    filter: brightness(75%);
+}

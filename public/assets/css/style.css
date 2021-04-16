@@ -10,6 +10,9 @@
 
     --main-font:'Raleway',sans-serif;
     --title-font:'Roboto Slab',serif;
+
+    --simple-space: 8px;
+    --double-space: 16px;
 }
 
 h1{
@@ -40,5 +43,4 @@ nav{
 }
 #navbarNavAltMarkup{
     text-align: center;
-
 }
