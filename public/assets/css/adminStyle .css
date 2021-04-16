@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27');
+@import "header.css";
+:root
+{
+    --primary:#642A2A;
+    --secondary:#F2E8DF;
+    --light:#ffffff;
+    --dark:#080100;
+    --error-color:#af0101;
+
+    --main-font:'Raleway',sans-serif;
+    --title-font:'Roboto Slab',serif;
+}
+body{ 
+    padding-top: 70px; 
+}
+
+h1{
+    color: var(--secondary);
+    font-family: var(--title-font);
+    font-weight: bold;
+}
+
+.error{
+    font-weight: bold;
+    color: var(--error-color);
+}
+.navbar-brand{
+    font-family: var(--title-font);
+    font-family: var(--title-font);
+    font-weight: bolder;
+    font-size: 24px;
+    margin-left: 40px;
+}
+nav{
+    background-color:var(--primary);
+}
+.nav-item{
+    font-family: var(--title-font);
+    font-weight: bolder;
+    font-size: 24px;
+    margin-right: 40px;
+}
+#navbarNavAltMarkup{
+    text-align: center;
+
+}
