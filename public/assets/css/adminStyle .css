@@ -45,5 +45,26 @@ nav{
 }
 #navbarNavAltMarkup{
     text-align: center;
+}
+
+/* Footer */
+
+.footer{
+    background-color: var(--primary);
+    height : var(--footer-height);
+}
+.LogoFooter{
+    height : var(--footer-height);
+}
+.social{
+    display:flex;
+    flex-direction: row-reverse;
+    align-items: center;
 
 }
+.LogoFB, .LogoVI, .LogoBAF{
+    height : 50px;
+    padding-right: 25px;
+}
+
+  /* End Footer */
