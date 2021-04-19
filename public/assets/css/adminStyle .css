@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27');
 @import "header.css";
-:root
-{
+@import "footer.css";
+
+:root{
     --primary:#642A2A;
     --secondary:#F2E8DF;
     --light:#ffffff;
@@ -11,10 +12,9 @@
     --main-font:'Raleway',sans-serif;
     --title-font:'Roboto Slab',serif;
 
-    --footer-height: 75px;
 }
 body{ 
-    padding-top: 70px; 
+    padding-top: 70px;
 }
 
 h1{
@@ -46,25 +46,3 @@ nav{
 #navbarNavAltMarkup{
     text-align: center;
 }
-
-/* Footer */
-
-.footer{
-    background-color: var(--primary);
-    height : var(--footer-height);
-}
-.LogoFooter{
-    height : var(--footer-height);
-}
-.social{
-    display:flex;
-    flex-direction: row-reverse;
-    align-items: center;
-
-}
-.LogoFB, .LogoVI, .LogoBAF{
-    height : 50px;
-    padding-right: 25px;
-}
-
-  /* End Footer */
