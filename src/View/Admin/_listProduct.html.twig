@@ -6,14 +6,15 @@
 
 {% block content %}
 	<section class="listProduct">
-		<div class="container-fluid">
-			<div class="d-flex justify-content-between">
+		<div class="container">
+			<div class="containerAddProduct d-flex justify-content-between">
 				<h1>LISTE PRODUITS</h1>
-				<button class="btn btn-primary border-0">
+				<button class="btn btn-secondary border-0">
 					<p class="mb-2">Ajouter un produit</p>
 				</button>
 			</div>
-			<table class="table table-hover">
+
+			<table class="listTable table table-hover">
 				{% for product in products %}
 					<tr>
 						<td><img class="listWine" src="{{ product.image }}" alt="image de vin"/></td>
@@ -22,14 +23,15 @@
 							<p>{{ product.description }}</p>
 						</td>
 						<td>
-                            <div class="changeButton d-flex flex-column">
-                                <button class="btn btn-primary mb-3 border-0">Modifier</button>
-                                <button class="btn btn-primary border-0">Supprimer</button>
-                            </div>
-                        </td>
+							<div class="changeButton d-flex flex-column">
+								<button class="btn btn-secondary mb-3 border-0">Modifier</button>
+								<button class="btn btn-secondary border-0">Supprimer</button>
+							</div>
+						</td>
 					</tr>
 				{% endfor %}
 			</table>
+
 		</div>
 	</section>
 {% endblock %}

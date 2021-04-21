@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use App\Model\ListProductManager;
 
 class AdminListProductController extends AbstractController
