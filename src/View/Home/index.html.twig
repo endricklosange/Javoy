@@ -1,4 +1,8 @@
 {% extends 'layout.html.twig' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/header.css">
+<link rel="stylesheet" href="/assets/css/history.css">
+{% endblock %}
 
 {% block content %}
     <header>
@@ -6,4 +10,7 @@
             <img src="assets/images/logo.png" alt="logo" class ="logo ">
         </div>
     </header>
+	<section class="history">	
+		{% include "includes/_history.html.twig" %}
+	</section>
 {% endblock %}
