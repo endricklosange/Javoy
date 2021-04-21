@@ -105,4 +105,13 @@ class AdminProductController extends AbstractController
             'errors' => $errors,
         ]);
     }
+
+    public function delete(int $id): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productsManager = new ProductManager();
+            $productsManager->delete($products);
+            header('location: /AdminProduct/index');
+        }
+    }
 }
