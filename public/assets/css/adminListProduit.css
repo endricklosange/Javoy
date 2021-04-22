@@ -1,3 +1,6 @@
+body{
+    background-color: var(--secondary);
+}
 .listProduct{
     margin: var(--simple-space);
     padding:var(--simple-space);
