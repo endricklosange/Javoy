@@ -105,4 +105,37 @@ class AdminProductController extends AbstractController
             'errors' => $errors,
         ]);
     }
+
+    /* Editer un produit */
+
+    public function edit(int $id): string
+    {
+        $errors = [];
+
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneById($id);
+
+        if ($product === false) {
+            $errors[] = 'Le produit séléctionné n\'existe pas';
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $product = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+            $errors = $this->validate($product);
+            // if validation is ok, update and redirection
+            if (empty($errors)) {
+                $product['id'] = $id;
+                $productManager->update($product);
+                header('Location: /AdminProduct/add/');
+            }
+        }
+
+        return $this->twig->render('Admin/edit.html.twig', [
+            'errors' => $errors,
+            'product' => $product,
+        ]);
+    }
 }

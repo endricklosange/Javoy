@@ -1,0 +1,23 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/add-products.css">
+{% endblock %}
+
+{% block content %}
+
+    <h1>Modifier : {{product.name}}</h1>
+
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-lg-2"></div>
+            <div class = "col-lg-8">
+                <div class = 'form'>
+                    {% include 'Admin/_adminProductsForm.html.twig' with {buttonName: 'Modifier'} %}
+                </div>
+                <div class = "col-lg-2"></div>
+            </div>    
+        </div>    
+    </div>
+    
+{% endblock %} 
