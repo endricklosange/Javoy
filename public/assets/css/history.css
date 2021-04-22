@@ -1,9 +1,9 @@
 
 .history{
-    margin-top: 40px;
+    margin-top: 70px;
 }
-.row{
-    margin-top: 30px;
+.history .row{
+    margin-bottom: 70px;
 }
 .history .btn{
     font-family: var(--main-font);
@@ -18,11 +18,10 @@
     filter : brightness(70%);
 }
 .history .card-body {
-    width: 80%;
+    width: 90%;
 }
 .history .carousel{
     width: 100%;
-    border-radius: 10px;
 }
 .history .carousel img{
     border-radius: 10px;
