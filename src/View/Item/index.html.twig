@@ -1,17 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-  </div>
-    <div class="container">
-    {% for item in items %}
-    <div class="row border">
-        <div class="col-xs-6" ><a href="/item/show/{{ item.id }}">{{ item.id }}. {{ item.title }} {{ item.title }}</a>
-        </div>
-        <div class="col-xs-6 p-2 text-end"><a href="/cart/index/{{ item.id }}" class="btn btn-primary">Ajouter</a>
-        </div>
-    </div>
-    {% else %}
-        Panier Vide
-    {% endfor %}
-    </div>
+    <h1>Items</h1>
+    <ul>
+        {% for item in items %}
+            <li><a href="/item/show/{{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/item/add">Ajouter</a>
 {% endblock %}

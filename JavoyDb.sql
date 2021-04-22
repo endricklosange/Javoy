@@ -9,20 +9,17 @@ CREATE TABLE product (
   created_at DATE NOT NULL
 );
 
-/* CREATION tables order et detail_order pour commande */
+/* CREATION table order et detail_order pour commande */
 
-CREATE TABLE `order` (
-  `id` INT PRIMARY KEY AUTO_INCREMENT,
-  `firstname` VARCHAR(255),
-  `lastname` VARCHAR(255),
-  `email` VARCHAR(255),
-  `adress` VARCHAR(255),
-  `zipcode` INT,
-  `city` VARCHAR(255),
-  `country` VARCHAR(255),
-  `status` VARCHAR(255),
-  `created_at` DATE,
-  `customer_id` INT UNIQUE NOT NULL,
-  `detail_id` INT UNIQUE NOT NULL,
-  `status_id` INT UNIQUE NOT NULL
+CREATE TABLE orders (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  title VARCHAR(20) NOT NULL,
+  firstname VARCHAR(255) NOT NULL,
+  lastname VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  zipcode INT NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  country VARCHAR(255) NOT NULL,
+  detail VARCHAR(2000) NOT NULL
 );
