@@ -1,0 +1,43 @@
+.order {
+    display:block;
+    margin-top: 70px;
+    margin: 0 auto;
+    color: var(--primary)
+}
+h1{
+    color: var(--primary);
+    text-align:center;
+}
+.container-form{
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    border:var(--primary) 2px solid;
+    border-radius: 8px;
+    padding: var(--double-space);
+    margin: var(--double-space);
+}
+label {
+    width: 150px;
+}
+button{
+    margin-right: var(--double-space);
+}
+
+.btn-primary{
+    background-color: var(--primary);
+    border: var(--primary) solid;
+    color: var(--light);
+}
+
+.btn-primary:hover{
+    background-color: var(--primary);
+    border: var(--primary) solid;
+    filter: brightness(150%);
+}
+
+.btn-primary:active{
+    filter: brightness(75%);
+}
