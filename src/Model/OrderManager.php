@@ -20,6 +20,7 @@ class OrderManager extends AbstractManager
         $statement->bindValue('lastname', $order['lastname'], \PDO::PARAM_STR);
         $statement->bindValue('firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('email', $order['email'], \PDO::PARAM_STR);
+        $statement->bindValue('adress', $order['adress'], \PDO::PARAM_STR);
         $statement->bindValue('zipcode', $order['zipcode'], \PDO::PARAM_INT);
         $statement->bindValue('city', $order['city'], \PDO::PARAM_STR);
         $statement->bindValue('country', $order['country'], \PDO::PARAM_STR);

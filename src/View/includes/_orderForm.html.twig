@@ -27,6 +27,11 @@
     </div>
 
     <div class="mb-3">
+      <label for="exampleFormControlInput1" class="col-xs-4">Adresse :</label>
+      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="1 bld Jean Jaures" value="{{ order.adress }}" name="city" required>
+    </div>
+
+    <div class="mb-3">
       <label for="exampleFormControlInput1" class="col-xs-4">Code Postal :</label>
       <input type="text" class="w-25" id="exampleFormControlInput1" placeholder="45000" value="{{ order.zipcode }}" name="zipcode" required>
     </div>
