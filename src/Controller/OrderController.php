@@ -36,7 +36,6 @@ class OrderController extends AbstractController
         }
         return $errors;
     }
-    
     private function validate($orders)
     {
         $titleValue = ["Mr", "Mme", "Mlle"];
