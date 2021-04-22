@@ -1,0 +1,37 @@
+
+.history{
+    margin-top: 70px;
+}
+.history .row{
+    margin-bottom: 70px;
+}
+.history .btn{
+    font-family: var(--main-font);
+    font-weight: bolder;
+}
+.history .btn-secondary{
+    background-color:var(--primary);
+    border-color: var(--primary);
+}
+.history .btn-secondary:hover{
+    background-color:var(--primary);
+    filter : brightness(70%);
+}
+.history .card-body {
+    width: 90%;
+}
+.history .carousel{
+    width: 100%;
+}
+.history .carousel img{
+    border-radius: 10px;
+}
+.history .card-body h3{
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-weight: bolder;
+}
+.history .card-body p{
+    font-family: var(--main-font);
+    font-weight: bolder;
+}
