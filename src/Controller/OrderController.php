@@ -12,70 +12,70 @@ class OrderController extends AbstractController
 
     private function isEmpty($order): array
     {
-        $error = [];
+        $errors = [];
         if (empty($order['firstname'])) {
-            $error[] = 'Le prénom est obligatoire';
+            $errors[] = 'Le prénom est obligatoire';
         }
         if (empty($order['lastname'])) {
-            $error[] = 'La nom est obligatoire';
+            $errors[] = 'La nom est obligatoire';
         }
         if (empty($order['email'])) {
-            $error[] = 'L\'email est obligatoire';
+            $errors[] = 'L\'email est obligatoire';
         }
         if (empty($order['address'])) {
-            $error[] = 'L\'adresse est obligatoire';
+            $errors[] = 'L\'adresse est obligatoire';
         }
         if (empty($order['zipcode'])) {
-            $error[] = 'Le code postal est obligatoire';
+            $errors[] = 'Le code postal est obligatoire';
         }
         if (empty($order['city'])) {
-            $error[] = 'La ville est obligatoire';
+            $errors[] = 'La ville est obligatoire';
         }
         if (empty($order['detail'])) {
-            $error[] = 'Votre commande ne peut être vide';
+            $errors[] = 'Votre commande ne peut être vide';
         }
-        return $error;
+        return $errors;
     }
     private function validate($order)
     {
         $titleValue = ["Mr", "Mme", "Mlle"];
-        $error = $this->isEmpty($order);
+        $errors = $this->isEmpty($order);
 
         if (!in_array($order['title'], $titleValue)) {
-            $error[] = 'Veuillez choisir un titre valide';
+            $errors[] = 'Veuillez choisir un titre valide';
         }
         if (strlen($order['firstname']) > self::DATA_MAX_LENGTH) {
-            $error[] = 'Le prénom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
+            $errors[] = 'Le prénom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
         if (strlen($order['lastname']) > self::DATA_MAX_LENGTH) {
-            $error[] = 'Le nom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
+            $errors[] = 'Le nom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
         if (!filter_var($order['email'], FILTER_VALIDATE_EMAIL)) {
-            $error[] = 'L\'email est incorrect';
+            $errors[] = 'L\'email est incorrect';
         }
         if (strlen($order['address']) > self::DATA_MAX_LENGTH) {
-            $error[] = 'L\adresse doit faire moins de ' . self::DATA_MAX_LENGTH . ' caractères';
+            $errors[] = 'L\adresse doit faire moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
         if (strlen($order['zipcode'])  <= self::ZIPCODE_MIN_INT) {
-            $error[] = 'Le code postal doit être supérieur à ' . self::ZIPCODE_MIN_INT;
+            $errors[] = 'Le code postal doit être supérieur à ' . self::ZIPCODE_MIN_INT;
         }
         if (strlen($order['detail']) > self::ORDER_MAX_LENGTH) {
-            $error[] = 'Le détail de la commande doit contenir moins de ' . self::ORDER_MAX_LENGTH . ' caractères';
+            $errors[] = 'Le détail de la commande doit contenir moins de ' . self::ORDER_MAX_LENGTH . ' caractères';
         }
-        return $error;
+        return $errors;
     }
 
     public function add()
     {
-        $error = [];
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $order = array_map('trim', $_POST);
             // Verification
-            $error = $this->validate($order);
+            $errors = $this->validate($order);
             // no error, send to db
-            if (empty($error)) {
+            if (empty($errors)) {
                 $orderManager = new OrderManager();
                 $orderManager->insert($order);
                 header('Location:/Order/add');
@@ -83,7 +83,7 @@ class OrderController extends AbstractController
         }
 
         return $this->twig->render('Order/add.html.twig', [
-            'error' => $error,
+            'errors' => $errors,
         ]);
     }
 }

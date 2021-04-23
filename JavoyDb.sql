@@ -11,7 +11,7 @@ CREATE TABLE product (
 
 /* CREATION table order et detail_order pour commande */
 
-CREATE TABLE orders (
+CREATE TABLE `order` (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   title VARCHAR(20) NOT NULL,
   firstname VARCHAR(255) NOT NULL,

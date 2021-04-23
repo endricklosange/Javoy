@@ -4,7 +4,7 @@ namespace App\Model;
 
 class OrderManager extends AbstractManager
 {
-    public const TABLE = 'orders';
+    public const TABLE = "`order`";
 
     /**
      * Insert order in database
