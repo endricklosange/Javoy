@@ -22,8 +22,10 @@
 						</td>
 						<td>
 							<div class="changeButton d-flex flex-column">
-								<a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit">Modifier</a>
-								<button class="btn btn-secondary border-0">Supprimer</button>
+								<a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
+								<form action="/AdminProduct/delete/{{ product.id }}" method="POST">
+									<button class="deleteBnt btn btn-secondary border-0">Supprimer</button>
+								</form>
 							</div>
 						</td>
 					</tr>
