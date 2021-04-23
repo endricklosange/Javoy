@@ -3,7 +3,7 @@
 --margin-card: 50px;
 }
 
- h1{
+.category_page h1{
 text-align: center;
  }
  
@@ -18,7 +18,11 @@ text-align: center;
      
 }
 
-.card-body a{ 
+.category_page{
+    margin-top: 70px;
+}
+
+.category_page .card-body a{ 
  text-decoration:none;
  color: var(--light);
  width: var(--width-card);
@@ -26,7 +30,7 @@ text-align: center;
 
 
 .background_wine{
-    background-image: url("../images/vignes.jpg");
+    background-image: url('../images/vignes.jpg');
     background-size: cover;
     height: 500px;
     width: 100%;
