@@ -6,84 +6,84 @@ use App\Model\OrderManager;
 
 class OrderController extends AbstractController
 {
-    private const DATA_MAX_LENGHT = 255;
-    private const ORDER_MAX_LENGHT = 2000;
+    private const DATA_MAX_LENGTH = 255;
+    private const ORDER_MAX_LENGTH = 2000;
     private const ZIPCODE_MIN_INT = 0;
 
-    private function isEmpty($orders): array
+    private function isEmpty($order): array
     {
-        $errors = [];
-        if (empty($orders['firstname'])) {
-            $errors[] = 'Le prénom est obligatoire';
+        $error = [];
+        if (empty($order['firstname'])) {
+            $error[] = 'Le prénom est obligatoire';
         }
-        if (empty($orders['lastname'])) {
-            $errors[] = 'La nom est obligatoire';
+        if (empty($order['lastname'])) {
+            $error[] = 'La nom est obligatoire';
         }
-        if (empty($orders['email'])) {
-            $errors[] = 'L\'email est obligatoire';
+        if (empty($order['email'])) {
+            $error[] = 'L\'email est obligatoire';
         }
-        if (empty($orders['address'])) {
-            $errors[] = 'L\'adresse est obligatoire';
+        if (empty($order['address'])) {
+            $error[] = 'L\'adresse est obligatoire';
         }
-        if (empty($orders['zipcode'])) {
-            $errors[] = 'Le code postal est obligatoire';
+        if (empty($order['zipcode'])) {
+            $error[] = 'Le code postal est obligatoire';
         }
-        if (empty($orders['city'])) {
-            $errors[] = 'La ville est obligatoire';
+        if (empty($order['city'])) {
+            $error[] = 'La ville est obligatoire';
         }
-        if (empty($orders['detail'])) {
-            $errors[] = 'Votre commande ne peut être vide';
+        if (empty($order['detail'])) {
+            $error[] = 'Votre commande ne peut être vide';
         }
-        return $errors;
+        return $error;
     }
-    private function validate($orders)
+    private function validate($order)
     {
         $titleValue = ["Mr", "Mme", "Mlle"];
-        $errors = $this->isEmpty($orders);
+        $error = $this->isEmpty($order);
 
-        if (!in_array($orders['title'], $titleValue)) {
-            $errors[] = 'Veuillez choisir un titre valide';
+        if (!in_array($order['title'], $titleValue)) {
+            $error[] = 'Veuillez choisir un titre valide';
         }
-        if (strlen($orders['firstname']) > self::DATA_MAX_LENGHT) {
-            $errors[] = 'Le prénom doit contenir moins de ' . self::DATA_MAX_LENGHT . ' caractères';
+        if (strlen($order['firstname']) > self::DATA_MAX_LENGTH) {
+            $error[] = 'Le prénom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
-        if (strlen($orders['lastname']) > self::DATA_MAX_LENGHT) {
-            $errors[] = 'Le nom doit contenir moins de ' . self::DATA_MAX_LENGHT . ' caractères';
+        if (strlen($order['lastname']) > self::DATA_MAX_LENGTH) {
+            $error[] = 'Le nom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
-        if (!filter_var($orders['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'L\'email est incorrect';
+        if (!filter_var($order['email'], FILTER_VALIDATE_EMAIL)) {
+            $error[] = 'L\'email est incorrect';
         }
-        if (strlen($orders['address']) > self::DATA_MAX_LENGHT) {
-            $errors[] = 'L\adresse doit faire moins de ' . self::DATA_MAX_LENGHT . ' caractères';
+        if (strlen($order['address']) > self::DATA_MAX_LENGTH) {
+            $error[] = 'L\adresse doit faire moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
-        if (strlen($orders['zipcode'])  <= self::ZIPCODE_MIN_INT) {
-            $errors[] = 'Le code postal doit être supérieur à ' . self::ZIPCODE_MIN_INT;
+        if (strlen($order['zipcode'])  <= self::ZIPCODE_MIN_INT) {
+            $error[] = 'Le code postal doit être supérieur à ' . self::ZIPCODE_MIN_INT;
         }
-        if (strlen($orders['detail']) > self::ORDER_MAX_LENGHT) {
-            $errors[] = 'Le détail de la commande doit contenir moins de ' . self::ORDER_MAX_LENGHT . ' caractères';
+        if (strlen($order['detail']) > self::ORDER_MAX_LENGTH) {
+            $error[] = 'Le détail de la commande doit contenir moins de ' . self::ORDER_MAX_LENGTH . ' caractères';
         }
-        return $errors;
+        return $error;
     }
 
     public function add()
     {
-        $errors = [];
+        $error = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $orders = array_map('trim', $_POST);
+            $order = array_map('trim', $_POST);
             // Verification
-            $errors = $this->validate($orders);
-            // no errors, send to db
-            if (empty($errors)) {
+            $error = $this->validate($order);
+            // no error, send to db
+            if (empty($error)) {
                 $orderManager = new OrderManager();
-                $orderManager->insert($orders);
+                $orderManager->insert($order);
                 header('Location:/Order/add');
             }
         }
 
         return $this->twig->render('Order/add.html.twig', [
-            'errors' => $errors,
+            'error' => $error,
         ]);
     }
 }

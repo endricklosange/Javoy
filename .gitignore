@@ -4,4 +4,4 @@
 *.cache
 db.php
 .idea
-/config/
+config/db.php
