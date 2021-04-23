@@ -30,7 +30,7 @@ class ProductManager extends AbstractManager
     /**
      * Update item in database
      */
-    public function update(array $products): void
+    public function update(array $product): void
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
@@ -45,14 +45,14 @@ class ProductManager extends AbstractManager
                 WHERE id=:id "
         );
 
-        $statement->bindValue('name', $products['name'], \PDO::PARAM_STR);
-        $statement->bindValue('price', $products['price'], \PDO::PARAM_INT);
-        $statement->bindValue('description', $products['description'], \PDO::PARAM_STR);
-        $statement->bindValue('year', $products['year'], \PDO::PARAM_INT);
-        $statement->bindValue('image', $products['image'], \PDO::PARAM_STR);
-        $statement->bindValue('created_at', $products['created_at'], \PDO::PARAM_STR);
-        $statement->bindValue('category', $products['category'], \PDO::PARAM_STR);
-        $statement->bindValue('id', $products['id'], \PDO::PARAM_INT);
+        $statement->bindValue('name', $product['name'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $product['price'], \PDO::PARAM_INT);
+        $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
+        $statement->bindValue('year', $product['year'], \PDO::PARAM_INT);
+        $statement->bindValue('image', $product['image'], \PDO::PARAM_STR);
+        $statement->bindValue('created_at', $product['created_at'], \PDO::PARAM_STR);
+        $statement->bindValue('category', $product['category'], \PDO::PARAM_STR);
+        $statement->bindValue('id', $product['id'], \PDO::PARAM_INT);
 
         $statement->execute();
     }
