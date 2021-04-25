@@ -9,48 +9,74 @@
 <!-- End display errors -->
 
 <!-- Form -->
-<div class="container">
-  <form action="" method="POST">
-   <label for="exampleFormControlInput1" class="form-label">Civilit&eacute; :</label>
-    <select class="col-xs-2" aria-label="title" value= "{{ order.title }}" name="title" required>
-      <option value="Mr">Mr</option>
-      <option value="Mme">Mme</option>
-      <option value="Mlle">Mlle</option>
-    </select>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Nom:</label>
-      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="Nom" value="{{ order.lastname }}" name="lastname" required>
-    </div>
-     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Prénom :</label>
-      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="Pr&eacute;nom" value="{{ order.firstname }}" name="firstname" required>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Email :</label>
-      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="exemple@exemple.com" value="{{ order.email }}" name="email" required>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Adresse :</label>
-      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="1 bld Jean Jaures" value="{{ order.address }}" name="address" required>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Code Postal :</label>
-      <input type="text" class="w-25" id="exampleFormControlInput1" placeholder="45000" value="{{ order.zipcode }}" name="zipcode" required>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Ville :</label>
-      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="Orl&eacute;ans" value="{{ order.city }}" name="city" required>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="col-xs-4">Pays :</label>
-      <input type="text" class="w-50" id="exampleFormControlInput1" placeholder="France" value="{{ order.country }}" name="country" required>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="col-xs-4">D&eacute;tail commande :</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="D&eacute;tail de votre commande" rows="3" value="{{ order.detail }}" name="detail" required></textarea>
-    </div>
-    <div class="col-12 text-end">
-      <button class="btn btn-primary" type="submit">Commander</button>
-    </div>
-  </form>
-</div>
+<div class="row justify-content-center">
+  <div class="col-md-9 m-5">
+    <form class="order-form" action="" method="POST">
+      <div class="row m-2">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="title">Civilit&eacute; :</label>
+            <select class="form-control custom-select" value= "{{ order.title }}" name="title" required>
+              <option value="Mr">Mr</option>
+              <option value="Mme">Mme</option>
+              <option value="Mlle">Mlle</option>
+            </select>
+          </div>
+        </div>  
+        <div class="col-md-5">        
+          <div class="form-group">
+            <label for="lastname">Nom:</label>
+            <input type="text" class="form-control" id="lastname" value="{{ order.lastname }}" name="lastname" required>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="firstname">Prénom :</label>
+            <input type="text" class="form-control" id="firstname" value="{{ order.firstname }}" name="firstname" required>
+          </div>
+        </div>
+      </div> 
+      <div class="row m-2">
+        <div class="col">
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="text" class="form-control" id="email" value="{{ order.email }}" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Adresse :</label>
+            <input type="text" class="form-control" id="address" value="{{ order.address }}" name="address" required>
+          </div>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-md-3">
+            <div class="form-group">
+              <label for="zipcode">Code Postal :</label>
+              <input type="text" class="form-control" id="zipcode" value="{{ order.zipcode }}" name="zipcode" required>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+              <label for="city">Ville :</label>
+              <input type="text" class="form-control" id="city" value="{{ order.city }}" name="city" required>
+          </div>
+        </div>
+      </div> 
+      <div class="row m-2">
+        <div class="col">
+          <div class="form-group">
+            <label for="country">Pays :</label>
+            <input type="text" class="form-control" id="country" value="{{ order.country }}" name="country" required>
+          </div>
+          <div class="form-group">
+            <label for="detail">D&eacute;tail commande :</label>
+            <textarea class="form-control" id="detail" rows="3" value="{{ order.detail }}" name="detail" required></textarea>
+          </div>
+          <div class="form-group text-end pt-2">
+            <button class="btn btn-danger" type="submit">Commander</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>    

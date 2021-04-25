@@ -65,6 +65,22 @@ class OrderController extends AbstractController
         return $errors;
     }
 
+    public function index(): string
+    {
+        $orderManager = new OrderManager();
+        $orders = $orderManager->selectAll('lastname');
+
+        return $this->twig->render('Order/index.html.twig', ['orders' => $orders]);
+    }
+
+    public function show(int $id): string
+    {
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectOneById($id);
+
+        return $this->twig->render('Order/show.html.twig', ['order' => $order]);
+    }
+
     public function add()
     {
         $errors = [];
@@ -78,12 +94,17 @@ class OrderController extends AbstractController
             if (empty($errors)) {
                 $orderManager = new OrderManager();
                 $orderManager->insert($order);
-                header('Location:/Order/add');
+                header('Location:/Order/thanks');
             }
         }
 
         return $this->twig->render('Order/add.html.twig', [
             'errors' => $errors,
         ]);
+    }
+
+    public function thanks(): string
+    {
+        return $this->twig->render('Order/thanks.html.twig');
     }
 }
