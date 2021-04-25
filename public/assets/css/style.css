@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27');
 @import "header.css";
 @import "footer.css";
+@import "actuality.css";
 
 :root
 {
@@ -18,7 +19,9 @@
 
 }
 
-
+body {
+    margin-top: 70px;
+}
 
 h1{
     color: var(--secondary);

@@ -1,0 +1,9 @@
+.actuality {
+    width : 100%;
+    margin-top : 100px;
+    border : var(--primary) 2px solid;
+}
+
+.actuality .img {
+    height : 50px;
+}
