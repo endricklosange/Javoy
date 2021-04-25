@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/actuality.css">
+{% endblock %}
+
+{% block content %}
+
+	{% for actuality in actuality %}
+		<div class="container">
+			<div class="card actuality">
+				<div class="row ">
+					<div class="col-sm-5">
+						<img class="card-img" src="{{ actuality.image }}" alt="Suresh Dasari Card">
+					</div>
+					<div class="col-sm-7">
+						<div class="card-body">
+							<h5 class="card-title">{{ actuality.name }}</h5>
+							<p class="card-text">
+								{{ actuality.article }}
+							</p>
+							<a href="#" class="btn btn-primary">View Profile</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<li>Nothing to display</li>
+	{% endfor %}
+
+{% endblock %}
