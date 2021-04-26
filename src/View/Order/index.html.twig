@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/add-products.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="order-form">
+        <div class="row justify-content-center">
+            <div class="col-8 p-5 m-10">
+                <h1>Liste Commandes</h1>
+                    {% for order in orders %}
+                        <div class="card-header">
+                           Commande N°{{ order.id }}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ order.title }} {{ order.firstname }} {{ order.lastname }}</h5>
+                        </div>
+                        <div class="card-body text-end">
+                                <a href="/order/show/{{ order.id }}" class="btn btn-primary">Plus de d&eacute;tails</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
