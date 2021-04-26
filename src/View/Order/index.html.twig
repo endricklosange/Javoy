@@ -8,20 +8,40 @@
 <div class="container">
     <div class="order-form">
         <div class="row justify-content-center">
-            <div class="col-8 p-5 m-10">
+            <div class="col-10 p-5 m-10">
                 <h1>Liste Commandes</h1>
                     {% for order in orders %}
                         <div class="card-header">
                            Commande N°{{ order.id }}
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ order.title }} {{ order.firstname }} {{ order.lastname }}</h5>
-                        </div>
-                        <div class="card-body text-end">
-                                <a href="/order/show/{{ order.id }}" class="btn btn-primary">Plus de d&eacute;tails</a>
+                        <div class="row m-3">
+                                <div class="col-3 order-form">
+                                    <div class="row align-items-center justify-content-center h-100">
+                                        <div class="col">
+                                        <h5> {{ order.title }} {{ order.firstname }} {{ order.lastname }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    {{ order.detail }}
+                                </div>
+                                <div class="col-3">
+                                        <div class="row">
+                                            <form action="" method="POST">
+                                                <select class="form-control custom-select" value= "{{ order.title }}" name="title" required>
+                                                    <option value="Mr">En cours</option>
+                                                    <option value="Mme">Livr&eacute;</option>
+                                                    <option value="Mlle">Annul&eacute;</option>
+                                                </select>
+                                                <div class="col-12 p-2 btn-group">
+                                                <a class="btn btn-primary">Mettre &agrave; jour</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                </div>
+                            
                         </div>
                     {% endfor %}
-                </div>
             </div>
         </div>
     </div>
