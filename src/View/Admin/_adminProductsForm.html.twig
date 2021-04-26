@@ -5,7 +5,7 @@
   <form action="" method="POST">
 
    <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
-    <select class="form-select mb-3" aria-label="Default select example" value= "{{ products.category }}" name="category" required>
+    <select class="form-select mb-3" aria-label="Default select example" value= "{{ product.category }}" name="category" required>
       <option value="Rouge">Vin rouge</option>
       <option value="Blanc">Vin blanc</option>
       <option value="Rosé">Vin rosé</option>
@@ -15,32 +15,32 @@
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Nom du produit :</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Orléans rouge" value="{{ products.name }}" name="name" required>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Orléans rouge" value="{{ product.name }}" name="name" required>
     </div>
 
      <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Prix du produit :</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="18" value="{{ products.price }}" name="price" required>
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="18" value="{{ product.price }}" name="price" required>
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Description du produit</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="{{ products.description }}" name="description" required></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="{{ product.description }}" name="description" required></textarea>
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Année du produit :</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2008" value="{{ products.year }}" name="year" required>
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2008" value="{{ product.year }}" name="year" required>
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Image</label>
-      <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://LienVersVotreimage.com" value="{{ products.image }}" name="image" required>
+      <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://LienVersVotreimage.com" value="{{ product.image }}" name="image" required>
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Date d'ajout :</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="15/04/2021" value="{{ products.created_at }}" name="created_at" required>
+      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="15/04/2021" value="{{ product.created_at }}" name="created_at" required>
     </div>
 
 <!-- Display errors -->
