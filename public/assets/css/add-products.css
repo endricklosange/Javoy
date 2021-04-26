@@ -24,6 +24,9 @@ body{
 button{
     margin: var(--double-space);
 }
+label {
+    width: 140px;
+}
 
 .btn-primary{
     background-color: var(--primary);
