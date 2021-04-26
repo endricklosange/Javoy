@@ -5,26 +5,31 @@
 {% endblock %}
 
 {% block content %}
-
+	<h1>
+		Actualité
+	</h1>
 	{% for actuality in actuality %}
 		<div class="container">
 			<div class="card actuality">
 				<div class="row ">
+
 					<div class="col-sm-5">
 						<img class="card-img" src="{{ actuality.image }}" alt="{{ actuality.name }}">
 					</div>
+
 					<div class="col-sm-7">
 						<div class="card-body">
 							<h5 class="card-title">{{ actuality.name }}</h5>
 							<p class="card-text">
-								{{ actuality.article }}
+								{{ actuality.description }}
 							</p>
 						</div>
+
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary">Right Aligned Button</button>
 		</div>
+
 	{% else %}
 		<li>Il n'y a aucune actualité pour le moment.</li>
 	{% endfor %}
