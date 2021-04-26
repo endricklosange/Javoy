@@ -1,4 +1,18 @@
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/formContact.css"> {% endblock %}
+
 <div class="container">
+  <div class="borderBackground">
+    <div class="borderUnderText">
+      <div class="col-sm-12 d-flex justify-content-center pt-2">
+        <h2>Dégustation sur rendez-vous au domaine</h2>
+      </div>
+    </div>
+    <div class="col-sm-12 d-flex justify-content-center pt-2">
+      <h2>Contactez-nous</h2>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
   <form action="" method="POST">
       <div class="mb-3">
           <label for="form-contact" class="form-label">Nom :</label>
@@ -16,8 +30,8 @@
           <label for="form-contact" class="form-label">Votre message:</label>
           <textarea class="form-control" id="form-contact" rows="3" placeholder="Message"></textarea>
         </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Envoyer</button>
+        <div class="col-auto mt-4 d-flex justify-content-end">
+          <button type="submit">Envoyer</button>
         </div>
   </form>
 </div>
