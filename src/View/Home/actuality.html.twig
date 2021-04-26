@@ -11,7 +11,7 @@
 			<div class="card actuality">
 				<div class="row ">
 					<div class="col-sm-5">
-						<img class="card-img" src="{{ actuality.image }}" alt="Suresh Dasari Card">
+						<img class="card-img" src="{{ actuality.image }}" alt="{{ actuality.name }}">
 					</div>
 					<div class="col-sm-7">
 						<div class="card-body">
@@ -19,14 +19,14 @@
 							<p class="card-text">
 								{{ actuality.article }}
 							</p>
-							<a href="#" class="btn btn-primary">View Profile</a>
 						</div>
 					</div>
 				</div>
 			</div>
+			<button type="button" class="btn btn-primary">Right Aligned Button</button>
 		</div>
 	{% else %}
-		<li>Nothing to display</li>
+		<li>Il n'y a aucune actualité pour le moment.</li>
 	{% endfor %}
 
 {% endblock %}

@@ -37,5 +37,4 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/actuality.html.twig', ['actuality' => $actuality]);
     }
-
 }
