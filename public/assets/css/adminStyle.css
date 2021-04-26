@@ -46,3 +46,8 @@ nav{
 #navbarNavAltMarkup{
     text-align: center;
 }
+.order-form {
+    color: var(--primary);
+    border:var(--primary) 2px solid;
+    border-radius: 8px;
+}
