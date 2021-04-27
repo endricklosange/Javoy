@@ -34,7 +34,6 @@ class AdminNewsController extends AbstractController
             if (!filter_var($news['image'], FILTER_VALIDATE_URL)) {
                 $errors[] = 'L\'image doit etre un url';
             }
-            var_dump($news);
 
             if (empty($errors)) {
                 $newsManager = new NewsManager();
