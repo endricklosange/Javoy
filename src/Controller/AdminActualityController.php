@@ -41,10 +41,7 @@ class AdminActualityController extends AbstractController
                 $actualityManager->insert($actuality);
                 header('Location:/AdminActuality/index');
             }
-            var_dump($actuality);
-            
         }
-
         return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
     }
 }

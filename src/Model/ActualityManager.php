@@ -15,7 +15,6 @@ class ActualityManager extends AbstractManager
         $statement->bindValue('name', $actuality['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $actuality['description'], \PDO::PARAM_STR);
         $statement->bindValue('image', $actuality['image'], \PDO::PARAM_STR);
-    
         $statement->execute();
     }
 }
