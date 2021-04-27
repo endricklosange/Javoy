@@ -9,8 +9,6 @@
 
 namespace App\Controller;
 
-use App\Model\ActualityManager;
-
 class HomeController extends AbstractController
 {
     /**
@@ -24,17 +22,5 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->twig->render('Home/index.html.twig');
-    }
-
-
-    /**
-     * Show informations for a specific item
-     */
-    public function actuality(): string
-    {
-        $actualityManager = new ActualityManager();
-        $actuality = $actualityManager->selectAll('name');
-
-        return $this->twig->render('Home/actuality.html.twig', ['actuality' => $actuality]);
     }
 }
