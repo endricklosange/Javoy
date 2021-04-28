@@ -9,3 +9,8 @@ CREATE TABLE product (
   created_at DATE NOT NULL
 );
 
+CREATE TABLE category (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NOT NULL,
+);

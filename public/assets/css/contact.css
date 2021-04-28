@@ -1,0 +1,23 @@
+.opening h1{
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-weight: bold;
+    padding-bottom: 200px;
+}
+
+.opening{
+  justify-content: space-between;
+}
+
+
+.card-header{
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.card-text{
+  padding-top: 30px;
+
+}
+
