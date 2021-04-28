@@ -18,6 +18,9 @@
     --double-space: 16px;
 }
 
+body {
+    margin-top: 70px;
+}
 
 h1{
     color: var(--secondary);
