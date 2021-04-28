@@ -1,0 +1,28 @@
+:root {
+  --max-height-actuality: 300px;
+}
+
+.actuality {
+  width: 100%;
+  margin-top: 100px;
+  border: var(--primary) 5px solid;
+  border-radius: 10px;
+  max-height: var(--max-height-actuality);
+  overflow: hidden;
+}
+
+h1 {
+  color: var(--primary);
+  font-family: var(--title-font);
+  padding: var(--double-space);
+  margin-left: var(--double-space);
+}
+
+.btn {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.btn :hover {
+  color: var(--dark);
+}
