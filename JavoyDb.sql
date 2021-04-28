@@ -28,7 +28,9 @@ CREATE TABLE actuality (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(80) NOT NULL,
   description varchar(500) NOT NULL,
+  article text NOT NULL,
   image varchar(255) NOT NULL,
-  created_at date,
+  created_at date NOT NULL,
   PRIMARY KEY (id)
-  );
+)
+
