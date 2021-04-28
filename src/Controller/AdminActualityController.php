@@ -6,7 +6,6 @@ use App\Model\ActualityManager;
 
 class AdminActualityController extends AbstractController
 {
-
     private const NEWS_MAX_LENGTH = 80;
     private const DESCRIPTION_MAX_LENGTH = 500;
 
@@ -44,5 +43,5 @@ class AdminActualityController extends AbstractController
             }
         }
         return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
-    }   
+    }
 }
