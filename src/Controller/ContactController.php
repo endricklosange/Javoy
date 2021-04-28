@@ -4,6 +4,8 @@ namespace App\Controller;
 
 class ContactController extends AbstractController
 {
+    private const NAME_MAX_LENGTH = 80;
+    private const MESSAGE_MAX_LENGTH = 2000;
 
     public function index()
     {
@@ -11,23 +13,20 @@ class ContactController extends AbstractController
         return $this->twig->render('Contact/index.html.twig', ["errors" => $errors]);
     }
 
-    private const NAME_MAX_LENGHT = 80;
-    private const MESSAGE_MAX_LENGHT = 2000;
-
     public function validate($data)
     {
         $errors = [];
 
         if (empty($data['lastname'])) {
             $errors[] = 'Le nom est obligatoire';
-        } elseif ($data['lastname'] > self::NAME_MAX_LENGHT) {
-            $errors = 'Le nom doit faire moins de' . self::NAME_MAX_LENGHT . ' caractères';
+        } elseif ($data['lastname'] > self::NAME_MAX_LENGTH) {
+            $errors = 'Le nom doit faire moins de' . self::NAME_MAX_LENGTH . ' caractères';
         }
 
         if (empty($data['firstname'])) {
             $errors[] = 'Le prénom est obligatoire';
-        } elseif ($data['firstname'] > self::NAME_MAX_LENGHT) {
-            $errors = 'Le prénom doit faire moins de' . self::NAME_MAX_LENGHT . ' caractères';
+        } elseif ($data['firstname'] > self::NAME_MAX_LENGTH) {
+            $errors = 'Le prénom doit faire moins de' . self::NAME_MAX_LENGTH . ' caractères';
         }
 
         if (empty($data['email'])) {
@@ -40,8 +39,8 @@ class ContactController extends AbstractController
 
         if (empty($data['message'])) {
             $errors[] = 'Un message est obligatoire';
-        } elseif ($data['message'] > self::MESSAGE_MAX_LENGHT) {
-            $errors = 'Le message doit faire moin de ' . self::MESSAGE_MAX_LENGHT . ' caractères';
+        } elseif ($data['message'] > self::MESSAGE_MAX_LENGTH) {
+            $errors = 'Le message doit faire moins de ' . self::MESSAGE_MAX_LENGTH . ' caractères';
         }
         return $errors;
     }

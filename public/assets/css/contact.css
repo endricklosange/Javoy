@@ -1,5 +1,5 @@
 .borderBackground{
-    background-color: #493131;
+    background-color:var(--primary);
 }
 
 .borderUnderText {
