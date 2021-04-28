@@ -75,7 +75,7 @@ class AdminProductController extends AbstractController
 
         // description verification
         if (strlen($product['description']) > self::DESCRIPTION_MAX_LENGHT) {
-            $errors[] = 'Le nom doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
+            $errors[] = 'La description doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
         }
         return $errors;
     }
@@ -97,7 +97,7 @@ class AdminProductController extends AbstractController
             if (empty($errors)) {
                 $productsManager = new ProductManager();
                 $productsManager->insert($product);
-                header('Location:/adminProduct/add');
+                header('Location:/AdminListProduct/index');
             }
         }
 
@@ -129,7 +129,7 @@ class AdminProductController extends AbstractController
             if (empty($errors)) {
                 $product['id'] = $id;
                 $productManager->update($product);
-                header('Location: /AdminProduct/add/');
+                header('Location:/AdminListProduct/index');
             }
         }
 
@@ -137,5 +137,14 @@ class AdminProductController extends AbstractController
             'errors' => $errors,
             'product' => $product,
         ]);
+    }
+
+    public function delete(int $id): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productsManager = new ProductManager();
+            $productsManager->delete($id);
+            header('location: /AdminListProduct/index');
+        }
     }
 }
