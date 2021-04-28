@@ -24,7 +24,6 @@ CREATE TABLE `order` (
   detail VARCHAR(2000) NOT NULL
 );
 
-
 CREATE TABLE actuality (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(80) NOT NULL,
@@ -34,3 +33,4 @@ CREATE TABLE actuality (
   created_at date NOT NULL,
   PRIMARY KEY (id)
 )
+
