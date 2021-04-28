@@ -22,10 +22,7 @@ body{
 }
 
 button{
-    margin: var(--double-space);
-}
-label {
-    width: 140px;
+    margin-bottom: 2%;
 }
 
 .btn-primary{
