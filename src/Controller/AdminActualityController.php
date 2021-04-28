@@ -44,4 +44,5 @@ class AdminActualityController extends AbstractController
             }
         }
         return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+    }   
 }
