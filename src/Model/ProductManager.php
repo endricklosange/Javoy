@@ -6,8 +6,6 @@ class ProductManager extends AbstractManager
 {
     public const TABLE = 'product';
 
- 
-
     /**
      * Insert new item in database
      */
