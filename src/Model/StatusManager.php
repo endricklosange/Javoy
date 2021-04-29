@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class OrderManager extends AbstractManager
+class StatusManager extends AbstractManager
 {
     public const TABLE = "status";
 }

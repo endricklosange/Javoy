@@ -31,15 +31,15 @@
                                     </div>
                                     <div class="col-3">
                                             <div class="row">
+                                                <select class="form-control custom-select" value= "{{ order.status_id }}" name="status" id="status" required>
+                                                    {% for statusList in statusLists %}
+                                                        <option>{{ statusList.name }}</option>
+                                                    {% endfor %}
+                                                  </select>
+
                                                 <form action="" method="POST">
-                                                    <select class="form-control custom-select" value= "{{ order.title }}" name="title" required>
-                                                        <option value="status">Changer statut</option>
-                                                        <option value="process">En cours</option>
-                                                        <option value="delivered">Livr&eacute;</option>
-                                                        <option value="canceled">Annul&eacute;</option>
-                                                    </select>
                                                     <div class="col-12 p-2 btn-group">
-                                                    <a class="btn order">Mettre &agrave; jour</a>
+                                                    <a class="btn order-form">Mettre &agrave; jour</a>
                                                     </div>
                                                 </form>
                                             </div>
