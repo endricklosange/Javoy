@@ -11,29 +11,35 @@
         <div class="col-8">
             <h1>Liste Commande</h1>
                 <div class="row justify-content-center">
-                    <div class="col p-5 m-10 order-form">            
-                        {% for order in orders %}
+                    <div class="col p-5 m-10 order-form">  
+                        {% for orderStatus in orderStatus %}
                             <div class="card-header">
-                                Commande N°{{ order.id }}
+                                <div class="row">
+                                    <div class="col-3 border"> Commande N°{{ orderStatus.id }} - </div>
+                                    <div class=" col-3 fw-bold bg-dark text-white">{{ orderStatus.name }}</div>
+                                    <div class=" col-6"></div>
+                                </div>
                             </div>
                             <div class="row m-3">
                                     <div class="col-3 order-form">
                                         <div class="row align-items-center justify-content-center h-100 pt-2 m-1">
                                             <div class="col">
-                                                <p class="text-center fw-bolder lh-1">{{ order.title }} </p>
-                                                <p class="text-center fw-bolder lh-1"> {{ order.firstname }} </p>
-                                                <p class="text-center fw-bolder lh-1"> {{ order.lastname }} </p>
+                                                <p class="text-center fw-bolder lh-1">{{ orderStatus.title }} </p>
+                                                <p class="text-center fw-bolder lh-1"> {{ orderStatus.firstname }} </p>
+                                                <p class="text-center fw-bolder lh-1"> {{ orderStatus.lastname }} </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        {{ order.detail }}
+                                        {{ orderStatus.detail }}
                                     </div>
+                                  
                                     <div class="col-3">
                                             <div class="row">
-                                                <select class="form-control custom-select" value= "{{ order.status_id }}" name="status" id="status" required>
+                                                <select class="form-control custom-select" value= "{{ orderStatus.id }}" name="status" id="status" required>
+                                                    <option> Changer statut </option>
                                                     {% for statusList in statusLists %}
-                                                        <option>{{ statusList.name }}</option>
+                                                        <option value="{{ statusList.name}}">{{ statusList.name }}</option>
                                                     {% endfor %}
                                                   </select>
 

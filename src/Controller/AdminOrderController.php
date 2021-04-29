@@ -9,14 +9,15 @@ class AdminOrderController extends AbstractController
 {
     public function index(): string
     {
-        $listOrder = new AdminOrderManager();
-        $orders = $listOrder->selectAll();
         $statusManager = new StatusManager();
         $statusLists = $statusManager->selectAll();
 
+        $status = new AdminOrderManager();
+        $orderStatus = $status->selectAllstatus();
+
         return $this->twig->render('Admin/listOrder.html.twig', [
-            'orders' => $orders,
             'statusLists' => $statusLists,
+            'orderStatus' => $orderStatus,
         ]);
     }
 }
