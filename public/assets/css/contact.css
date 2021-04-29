@@ -1,3 +1,43 @@
+
+.contact h1{
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-weight: bold;
+    margin-left: var(--double-space);
+    margin-top: 80px;
+}
+
+.card-opening{
+  width: 450px; 
+  height: 500px;
+}
+
+.container{
+  margin-top: 20px;
+}
+
+.card-header{
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.card-text{
+  padding-top: 30px;
+}
+
+.contact{
+  margin-top: 70px;
+}
+
+.OSM{
+  margin-top: 30px;
+  border:var(--primary) 2px solid; 
+  border-radius: 8px;
+  width:500px;
+  height:400px;
+}
+
 .borderBackground{
     background-color:var(--primary);
 }
@@ -30,3 +70,4 @@ button:hover{
 button:active{
     filter: brightness(50%);
 }
+

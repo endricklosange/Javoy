@@ -4,6 +4,7 @@ namespace App\Controller;
 
 class ContactController extends AbstractController
 {
+
     private const NAME_MAX_LENGTH = 80;
     private const MESSAGE_MAX_LENGTH = 2000;
 
