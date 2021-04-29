@@ -13,7 +13,7 @@ class AdminOrderController extends AbstractController
         $statusLists = $statusManager->selectAll();
 
         $status = new AdminOrderManager();
-        $orderStatus = $status->selectAllstatus();
+        $orderStatus = $status->selectAllOrderStatus();
 
         return $this->twig->render('Admin/listOrder.html.twig', [
             'statusLists' => $statusLists,
