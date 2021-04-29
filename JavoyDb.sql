@@ -7,6 +7,7 @@ CREATE TABLE product (
   year INT NOT NULL,
   image VARCHAR(255) NOT NULL,
   created_at DATE NOT NULL
+  
 );
 
 /* CREATION table order et detail_order pour commande */
