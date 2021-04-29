@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-top: 50px;
-  border: var(--primary) 2px solid;
+
   border-radius: 8px;
 }
 
@@ -27,9 +27,6 @@ body {
   text-align: center;
   padding: var(--skill-padding);
   font-family: var(--title-font);
-  color: var(--light);
-  border-bottom: var(--primary) 2px solid;
-  background-color: var(--primary) ;
 }
 
 .skill_text {
@@ -38,6 +35,7 @@ body {
   font-family: var(--main-font);
 }
 
-.skill_text img {
+
+.skill_text .carousel-item {
   padding: var(--skill-padding);
 }
