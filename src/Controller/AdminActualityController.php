@@ -61,4 +61,25 @@ class AdminActualityController extends AbstractController
         }
         return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
     }
+    public function edit(int $id): string
+    {
+        $errors = [];
+
+        $actualityManager = new ActualityManager();
+        $actuality = $actualityManager->selectOneById($id);
+        if ($actuality === false) {
+            $errors[] = 'L\actualité séléctionné n\'existe pas';
+        }
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $actuality = array_map('trim', $_POST);
+
+            $errors = $this->validate($actuality);
+            if (empty($errors)) {
+                $actuality['id'] = $id;
+                $actualityManager->update($actuality);
+                header('Location:/AdminActuality/index');
+            }
+        }
+        return $this->twig->render('Admin/editActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+    }
 }
