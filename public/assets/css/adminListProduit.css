@@ -1,0 +1,52 @@
+body{
+    background-color: var(--secondary);
+}
+.listProduct{
+    margin: var(--simple-space);
+    padding:var(--simple-space);
+}
+.containerAddProduct{
+    margin: 50px 20px 50px 20px;
+}
+
+.containerAddProduct p{
+    font-size: 2.2em;
+}
+.listProduct h1{
+    color: var(--primary);
+    font-family: var(--title-font);
+    margin-left: var(--double-space);
+    font-size: 2.5em;
+}
+.listProduct h2{
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-weight: bold;
+}
+.listProduct p{
+    font-family: var(--main-font);
+    font-weight: bold;
+    max-height: 400px;
+    max-width: 600px;
+    min-width: 200px;
+}
+
+.listWine{
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+}
+.listTable{
+    border:var(--primary) 2px solid;
+    border-radius: 10px;
+}
+.listProduct .btn-secondary{
+    background-color: var(--primary);
+}
+.changeButton{
+    width: 200px;
+    margin-top: 60px;
+}
+.deleteBtn{
+    width: 100%;
+}

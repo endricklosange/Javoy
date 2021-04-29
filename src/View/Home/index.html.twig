@@ -7,10 +7,13 @@
 {% block content %}
     <header>
         <div class ="logoContainer">
-            <img src="assets/images/logo.png" alt="logo" class ="logo ">
+            <img src="assets/images/logo.svg" alt="logo" class ="logo ">
         </div>
     </header>
-	<section class="history">	
+	<section class="history">
 		{% include "includes/_history.html.twig" %}
 	</section>
+    <section class="recompense">
+    {% include "includes/_recompense.html.twig" %}
+    </section>
 {% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminListProduit.css">
+{% endblock %}
+
+{% block content %}
+	<section class="listProduct">
+		<div class="container">
+			<div class="containerAddProduct d-flex justify-content-between">
+				<h1>LISTE ACTUALITÉ</h1>
+				<a class="btn btn-secondary border-0 mb-2" href="/AdminActuality/add">Ajouter une actualité</a>
+			</div>
+
+			<table class="listTable table table-hover">
+				{% for actuality in actualities %}
+					<tr>
+						<td><img class="listWine" src="{{ actuality.image }}" alt="image de vin"/></td>
+						<td>
+							<h2>{{ actuality.name }}</h2>
+							<p>{{ actuality.description }}</p>
+						</td>
+						<td>
+							<div class="changeButton d-flex flex-column">
+								<a class="btn btn-secondary mb-3 border-0" href="/AdminActuality/edit/{{ actuality.id }}">Modifier</a>
+								<form action="/AdminActuality/delete/{{ actuality.id }}" method="POST">
+									<button class="deleteBnt btn btn-secondary border-0">Supprimer</button>
+								</form>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+
+		</div>
+	</section>
+{% endblock %}

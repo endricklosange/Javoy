@@ -1,0 +1,71 @@
+:root {
+  --max-height-actuality: 300px;
+  --actuality-margin-top: 100px;
+  --actuality-padding: 5%;
+  --actuality-border-radius: 10px;
+}
+
+.actuality {
+  width: 100%;
+  margin-top: var(--actuality-margin-top);
+  border: var(--primary) 2px solid;
+  border-radius: var(--actuality-border-radius);
+  max-height: var(--max-height-actuality);
+  overflow: hidden;
+}
+
+.actuality_title{
+  color: var(--primary);
+  font-family: var(--title-font);
+  padding: var(--double-space);
+  margin-left: var(--double-space);
+  font-weight:bold;
+}
+
+h2 {
+  color: var(--primary);
+  font-family: var(--title-font);
+  padding: var(--double-space);
+  margin-left: var(--double-space);
+  font-weight:bold;
+  font-style: oblique;
+}
+
+.button-actuality {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.btn :hover {
+  color: var(--dark);
+}
+
+.actuality_container {
+  margin-top: var(--actuality-margin-top);
+  max-width: 60%;
+  border: var(--primary) 2px solid;
+  border-radius: var(--actuality-border-radius);
+  background-color: #eeeeee;
+}
+
+.actuality_title {
+  text-align: center;
+}
+
+.actuality_image {
+  height: 100%;
+  padding: var(--actuality-padding);
+}
+
+.actuality_article p {
+  padding: var(--actuality-padding);
+  font-family: var(--main-font);
+  font-weight: bolder;
+}
+
+.return-button {
+  background-color: var(--primary);
+  color: var(--light);
+  width: 25%;
+  margin-bottom: var(--actuality-padding);
+}

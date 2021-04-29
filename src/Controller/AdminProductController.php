@@ -12,30 +12,30 @@ class AdminProductController extends AbstractController
 
 
     // Verification champ vide
-    private function isEmpty($products): array
+    private function isEmpty($product): array
     {
         $errors = [];
-        if (empty($products['price'])) {
+        if (empty($product['price'])) {
             $errors[] = 'Le prix est obligatoire';
         }
 
-        if (empty($products['description'])) {
+        if (empty($product['description'])) {
             $errors[] = 'La déscription est obligatoire';
         }
 
-        if (empty($products['year'])) {
+        if (empty($product['year'])) {
             $errors[] = 'L\'année est obligatoire';
         }
 
-        if (empty($products['image'])) {
+        if (empty($product['image'])) {
             $errors[] = 'L\'image est obligatoire';
         }
 
-        if (empty($products['created_at'])) {
+        if (empty($product['created_at'])) {
             $errors[] = 'La date de création est obligatoire';
         }
 
-        if (empty($products['name'])) {
+        if (empty($product['name'])) {
             $errors[] = 'Le nom est obligatoire';
         }
 
@@ -43,41 +43,41 @@ class AdminProductController extends AbstractController
     }
 
     // Suite des verifications
-    private function validate($products)
+    private function validate($product)
     {
         $categoryValue = ["Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"]; // category list
 
         // validations
-        $errors = $this->isEmpty($products);
+        $errors = $this->isEmpty($product);
 
         // Category verification
-        if (!in_array($products['category'], $categoryValue)) {
+        if (!in_array($product['category'], $categoryValue)) {
             $errors[] = 'Veuillez renseigner une catégorie valide';
         }
 
         //name verification
-        if (strlen($products['name']) > self::PRODUCT_MAX_LENGHT) {
+        if (strlen($product['name']) > self::PRODUCT_MAX_LENGHT) {
             $errors[] = 'Le nom doit contenir moins de ' . self::PRODUCT_MAX_LENGHT . ' charactères';
         }
 
         // price verification
-        if ($products['price'] <= self::PRODUCT_MIN_INT) {
+        if ($product['price'] <= self::PRODUCT_MIN_INT) {
             $errors[] = 'Le prix doit etre un nombre supérieur à ' . self::PRODUCT_MIN_INT;
         }
 
         // year verification
-        if ($products['year'] <= self::PRODUCT_MIN_INT) {
+        if ($product['year'] <= self::PRODUCT_MIN_INT) {
             $errors[] = 'L\'année doit etre un nombre supérieur à ' . self::PRODUCT_MIN_INT;
         }
 
         // image verification
-        if (!filter_var($products['image'], FILTER_VALIDATE_URL)) {
+        if (!filter_var($product['image'], FILTER_VALIDATE_URL)) {
             $errors[] = "Le format d'url n’est pas correct";
         }
 
         // description verification
-        if (strlen($products['description']) > self::DESCRIPTION_MAX_LENGHT) {
-            $errors[] = 'Le nom doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
+        if (strlen($product['description']) > self::DESCRIPTION_MAX_LENGHT) {
+            $errors[] = 'La description doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
         }
         return $errors;
     }
@@ -92,14 +92,14 @@ class AdminProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $products = array_map('trim', $_POST);
+            $product = array_map('trim', $_POST);
             // Verification
-            $errors = $this->validate($products);
+            $errors = $this->validate($product);
             // no errors, send to db
             if (empty($errors)) {
                 $productsManager = new ProductManager();
-                $productsManager->insert($products);
-                header('Location:/adminProduct/add');
+                $productsManager->insert($product);
+                header('Location:/AdminListProduct/index');
             }
         }
 
@@ -131,7 +131,7 @@ class AdminProductController extends AbstractController
             if (empty($errors)) {
                 $product['id'] = $id;
                 $productManager->update($product);
-                header('Location: /AdminProduct/add/');
+                header('Location:/AdminListProduct/index');
             }
         }
 
@@ -139,5 +139,14 @@ class AdminProductController extends AbstractController
             'errors' => $errors,
             'product' => $product,
         ]);
+    }
+
+    public function delete(int $id): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productsManager = new ProductManager();
+            $productsManager->delete($id);
+            header('location: /AdminListProduct/index');
+        }
     }
 }
