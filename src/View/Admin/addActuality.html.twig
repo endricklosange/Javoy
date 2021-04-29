@@ -17,7 +17,7 @@
 							<input type="text" class="form-control" id="name" name="name" placeholder="Nom de l'article" value="{{actuality.name}}" required>
 						</div>
 						<div class="mb-3">
-							<label for="Image" class="form-label">image</label>
+							<label for="image" class="form-label">Image</label>
 							<input type="url" class="form-control" id="image" name="image" placeholder="http://image.png" value="{{actuality.image}}" required>
 						</div>
 						<div class="mb-3">
@@ -32,7 +32,7 @@
 							<label for="created_at" class="form-label">Date d'ajout :</label>
 							<input type="date" class="form-control" id="created_at" placeholder="15/04/2021" value="{{ actuality.created_at }}" name="created_at" required>
 						</div<divclass="mb-3">
-						<button class="btn btn-primary">Ajouter votre produit</button>
+						<button class="btn btn-primary">Ajouter votre actualité</button>
 					</div>
 					<ul class="error">
 						{% for error in errors %}
