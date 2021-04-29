@@ -13,8 +13,8 @@ class OrderManager extends AbstractManager
     public function insert(array $order)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        " (title, lastname, firstname, email, address, zipcode, city, country, detail) 
-        VALUES (:title, :lastname, :firstname, :email, :address, :zipcode, :city, :country, :detail)");
+        " (title, lastname, firstname, email, address, zipcode, city, country, detail, status_id) 
+        VALUES (:title, :lastname, :firstname, :email, :address, :zipcode, :city, :country, :detail, :status_id)");
 
         $statement->bindValue('title', $order['title'], \PDO::PARAM_STR);
         $statement->bindValue('lastname', $order['lastname'], \PDO::PARAM_STR);
@@ -25,6 +25,7 @@ class OrderManager extends AbstractManager
         $statement->bindValue('city', $order['city'], \PDO::PARAM_STR);
         $statement->bindValue('country', $order['country'], \PDO::PARAM_STR);
         $statement->bindValue('detail', $order['detail'], \PDO::PARAM_STR);
+        $statement->bindValue('status_id', '1' , \PDO::PARAM_STR);
 
         return $statement->execute();
     }

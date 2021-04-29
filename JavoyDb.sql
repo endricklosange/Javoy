@@ -9,6 +9,17 @@ CREATE TABLE product (
   created_at DATE NOT NULL
 );
 
+CREATE TABLE actuality (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(80) NOT NULL,
+  description varchar(500) NOT NULL,
+  article text NOT NULL,
+  image varchar(255) NOT NULL,
+  created_at date NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
 /* CREATION table order et detail_order pour commande */
 
 CREATE TABLE `order` (
@@ -21,16 +32,15 @@ CREATE TABLE `order` (
   zipcode INT NOT NULL,
   city VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
-  detail VARCHAR(2000) NOT NULL
+  detail VARCHAR(2000) NOT NULL,
+  status_id INT NOT NULL
 );
 
-CREATE TABLE actuality (
-  id int NOT NULL AUTO_INCREMENT,
-  name varchar(80) NOT NULL,
-  description varchar(500) NOT NULL,
-  article text NOT NULL,
-  image varchar(255) NOT NULL,
-  created_at date NOT NULL,
-  PRIMARY KEY (id)
-)
+CREATE TABLE status (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(80) NOT NULL
+);
 
+INSERT INTO status (name) VALUES ('En cours');
+INSERT INTO status (name) VALUES ('Annulée');
+INSERT INTO status (name) VALUES ('Livrée');
