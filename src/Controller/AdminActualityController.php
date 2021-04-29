@@ -32,15 +32,15 @@ class AdminActualityController extends AbstractController
     private function validate($actuality)
     {
         $errors = $this->isEmpty($actuality);
-        
+
         if (strlen($actuality['name']) > self::NEWS_MAX_LENGTH) {
             $errors[] = 'Le nom doit contenir moins de ' . self::NEWS_MAX_LENGTH . 'caractères';
         }
-        
+
         if (strlen($actuality['description']) > self::DESCRIPTION_MAX_LENGTH) {
             $errors[] = 'Le nom doit contenir moins de ' . self::DESCRIPTION_MAX_LENGTH . 'caractères';
         }
-        
+
         if (!filter_var($actuality['image'], FILTER_VALIDATE_URL)) {
             $errors[] = 'L\'image doit etre un url';
         }
