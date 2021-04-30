@@ -8,7 +8,7 @@
 		<div class="container">
 			<div class="containerAddProduct d-flex justify-content-between">
 				<h1>LISTE PRODUITS</h1>
-				<a class="btn btn-secondary border-0 mb-2" href="/AdminProduct/add">Ajouter un produit</a>
+				<a class="btn btn-secondary border-0 mb-3" href="/AdminProduct/add">Ajouter un produit</a>
 			</div>
 
 			<table class="listTable table table-hover">
@@ -23,7 +23,7 @@
 							<div class="changeButton d-flex flex-column">
 								<a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
 								<form method="POST" onsubmit="return confirm('Voulez vous vraimment supprimer ?');" action="/AdminProduct/delete/{{product.id}}">
-									<button class="deleteBtn btn btn-secondary border-0 mb-2">Supprimez</button>
+									<button class="deleteBtn btn btn-secondary border-0 mb-5">Supprimez</button>
 								</form>
 							</div>
 						</td>
