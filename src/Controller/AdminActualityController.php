@@ -54,6 +54,7 @@ class AdminActualityController extends AbstractController
         }
         return $errors;
     }
+
     public function add(): string
     {
         $errors = [];
@@ -69,6 +70,7 @@ class AdminActualityController extends AbstractController
         }
         return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
     }
+
     public function edit(int $id): string
     {
         $errors = [];
@@ -89,5 +91,14 @@ class AdminActualityController extends AbstractController
             }
         }
         return $this->twig->render('Admin/editActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+    }
+
+    public function delete(int $id): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productsManager = new ActualityManager();
+            $productsManager->delete($id);
+            header('location: /AdminActuality/index');
+        }
     }
 }
