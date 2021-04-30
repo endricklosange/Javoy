@@ -15,7 +15,8 @@ class AdminOrderManager extends AbstractManager
         .  static::TABLE  .  '.detail,' . StatusManager::TABLE  .  '.name FROM '
         .  static::TABLE  .  ' JOIN ' . StatusManager::TABLE  . ' ON '
         .  StatusManager::TABLE  .  '.id = '  . static::TABLE  .  '.status_id WHERE '
-        .  StatusManager::TABLE .  '.id='  .  static::TABLE  .  '.status_id';
+        .  StatusManager::TABLE .  '.id='  .  static::TABLE  . '.status_id ORDER BY '
+        .  static::TABLE . '.id '  .  ' DESC';
 
         return $this->pdo->query($query)->fetchAll();
     }
