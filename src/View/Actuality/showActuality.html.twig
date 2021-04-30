@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/actuality.css">
+{% endblock %}
+
+{% block content %}
+
+	<div class="container actuality_container">
+
+		<div class="row">
+
+			<div class="text-center">
+				<h2 class="actuality_title">
+					{{ actuality.name }}</h2>
+			</div>
+
+			<div class="text-center">
+				<img src=" {{ actuality.image }} " class="center-block actuality_image" alt=" {{ actuality.name }} ">
+			</div>
+
+			<div class="actuality_article">
+				<p>{{ actuality.article }}</p>
+			</div>
+
+			<div class="text-center">
+				<a class="btn return-button" href="/Actuality/index">
+					Retour actualité
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+
+
+{% endblock %}
