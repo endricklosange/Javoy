@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="containerAddProduct d-flex justify-content-between">
 				<h1>LISTE ACTUALITÉ</h1>
-				<a class="btn btn-secondary border-0 mb-2" href="/AdminActuality/add">Ajouter une actualité</a>
+				<a class="btn btn-secondary border-0 mb-3" href="/AdminActuality/add">Ajouter une actualité</a>
 			</div>
 
 			<table class="listTable table table-hover">
@@ -24,7 +24,7 @@
 							<div class="changeButton d-flex flex-column">
 								<a class="btn btn-secondary mb-3 border-0" href="/AdminActuality/edit/{{ actuality.id }}">Modifier</a>
 								<form action="/AdminActuality/delete/{{ actuality.id }}" method="POST">
-									<button class="deleteBnt btn btn-secondary border-0">Supprimer</button>
+									<button class="deleteBtn btn btn-secondary border-0 mb-5">Supprimer</button>
 								</form>
 							</div>
 						</td>

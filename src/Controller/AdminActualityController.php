@@ -9,6 +9,14 @@ class AdminActualityController extends AbstractController
     private const NEWS_MAX_LENGTH = 80;
     private const DESCRIPTION_MAX_LENGTH = 500;
 
+    public function index(): string
+    {
+        $actualityManager = new ActualityManager();
+        $actualities = $actualityManager->selectAll();
+
+        return $this->twig->render('Admin/listActuality.html.twig', ['actualities' => $actualities]);
+    }
+
     private function isEmpty($actuality): array
     {
         $errors = [];
