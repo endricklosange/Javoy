@@ -23,12 +23,12 @@ class AdminOrderManager extends AbstractManager
     public function selectByIdOrder(int $id)
     {
         // prepared request
-        
+
         $statement = $this->pdo->prepare('SELECT'  .  static::TABLE . '.id, '  .  static::TABLE . '.title,'
         .  static::TABLE  .  '.firstname,'  .  static::TABLE  .  '.lastname,'
         .  static::TABLE  .  '.email,'  .  static::TABLE  .  '.address,'
-        .  static::TABLE  .  '.zipcode,'  .  static::TABLE  .  '.city,'.  static::TABLE  .  '.status_id,'
-        .  static::TABLE  .  '.country,' 
+        .  static::TABLE  .  '.zipcode,'  .  static::TABLE  .  '.city,'  .  static::TABLE  .  '.status_id,'
+        .  static::TABLE  .  '.country,'
         .  static::TABLE  .  '.detail,' . StatusManager::TABLE  .  '.name FROM '
         .  static::TABLE  .  ' JOIN ' . StatusManager::TABLE  . ' ON '
         .  StatusManager::TABLE  .  '.id = '  . static::TABLE  .  '.status_id WHERE '  . static::TABLE  .  '.id=:id');

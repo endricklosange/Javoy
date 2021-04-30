@@ -9,13 +9,10 @@ class AdminOrderController extends AbstractController
 {
     public function index(): string
     {
-        $statusManager = new StatusManager();
-        $statusLists = $statusManager->selectAll();
         $status = new AdminOrderManager();
         $orderStatus = $status->selectAllOrderStatus();
 
         return $this->twig->render('Admin/listOrder.html.twig', [
-            'statusLists' => $statusLists,
             'orderStatus' => $orderStatus,
         ]);
     }
@@ -38,9 +35,8 @@ class AdminOrderController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $statusList = array_map('trim', $_POST);
-            
+
             // TODO validations (length, format...)
-            
             // if validation is ok, update and redirection
             $orderStatus['status_id'] = $statusList['status'];
             $statusOrder->update($orderStatus);

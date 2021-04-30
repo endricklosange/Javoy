@@ -42,5 +42,5 @@ CREATE TABLE status (
 );
 
 INSERT INTO status (name) VALUES ('En cours');
-INSERT INTO status (name) VALUES ('Annulée');
 INSERT INTO status (name) VALUES ('Livrée');
+INSERT INTO status (name) VALUES ('Annulée');
