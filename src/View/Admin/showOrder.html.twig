@@ -1,0 +1,36 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/add-products.css">
+{% endblock %}
+
+{% block content %}
+<div class="container pt-5">
+    <div class="row justify-content-center">
+        <div class="col-8 order-form">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="card-header p-2 mt-2">
+                        <div class="row">
+                            <div class="col-3 w-50 border"> Commande N°{{ orderStatus.id }} </div>
+                            <div class="col-3 fw-bold bg-danger text-white">{{ orderStatus.name }}</div>
+                        </div>
+                    </div>
+                        <p><h3>{{ orderStatus.firstname }}  {{ orderStatus.firstname }} </h3></p>
+                        <p>{{ orderStatus.address }}</p>
+                        <p>{{ orderStatus.zipcode }} {{ orderStatus.city }} </p>
+                        <br>
+                        <p><h3>{{ orderStatus.email }}</h3></p>
+                        <br>
+                        <p>{{ orderStatus.detail }}</p>
+                        <br>
+                        <p><a class="btnJavoy order-form" href="/AdminOrder/index">Retour</a></p>
+                </div>
+                <div class="col-4 p-2 mt-2 text-end">
+                    <p><a class="btnJavoy order-form" href="/AdminOrder/edit/{{ orderStatus.id }}">Modifier Statut Commande</a></p>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
