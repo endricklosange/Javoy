@@ -10,12 +10,12 @@
         <div class="col-8">
             <h1>Liste Commande</h1>
                 <div class="row justify-content-center">
-                    <div class="col p-1 m-1 order-form">  
+                    <div class="col p-4 m-1 order-form">  
                         {% for orderStatus in orderStatus %}
                             <div class="card-header">
-                                <div class="row">
+                                <div class="row p-2 align-items-center">
                                     <div class="col-3"> Commande N°{{ orderStatus.id }} </div>
-                                    <div class="col-2 fw-bold bg-danger text-white">{{ orderStatus.name }}</div>
+                                    <div class="col-2 p-1 fw-bold bg-danger text-white text-center">{{ orderStatus.name }}</div>
                                     <div class="col-4">{{ orderStatus.title }} {{ orderStatus.lastname }} {{ orderStatus.firstname }} </div>
                                     <div class="col-3 text-end"><a href="/AdminOrder/show/{{ orderStatus.id }}" class="btnJavoy order-form">Afficher commande</a></div>
                                 </div>
