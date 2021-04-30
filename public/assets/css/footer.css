@@ -69,5 +69,10 @@ a:hover {
 }
 
 .social img {
-  height: 75px;
+  height: 70px;
+}
+
+
+.social img:hover{
+width: 85px;
 }
