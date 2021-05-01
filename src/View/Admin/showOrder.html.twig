@@ -7,8 +7,7 @@
 {% block content %}
 <div class="container pt-5">
     <div class="row justify-content-center">
-        <div class="col-8 order-form">
-        
+        <div class="col-8 order-form">        
             <div class="row">
                 <div class="col-12 border-success">
                     <div class="card-header mt-2">
@@ -19,54 +18,46 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                
-                <div class="col-6">
-                
+            <div class="row">                
+                <div class="col-6">                
                     <div class="card-header mt-2">Client</div>
-                        <div><h3>{{ orderStatus.firstname }}  {{ orderStatus.firstname }} </h3></div>                   
+                    <div><h3>{{ orderStatus.firstname }}  {{ orderStatus.firstname }} </h3></div>                   
                         <p>{{ orderStatus.address }}</p>
                         <p>{{ orderStatus.zipcode }} {{ orderStatus.city }} </p>
                     </div>
-
-                    <div class="col-6">
-                        <div class="card-header mt-2">Contact</div>
-                            <p><h3>{{ orderStatus.email }}</h3></p>
-                    </div>
-                
-                    <div class="col-12">
-                        <div class="card-header p-2 mt-2">D&eacute;tail commande</div>
-                        <p>{{ orderStatus.detail }}</p>
-                    </div>
+                <div class="col-6">
+                    <div class="card-header mt-2">Contact</div>
+                        <p><h3>{{ orderStatus.email }}</h3></p>
+                </div>                
+                <div class="col-12">
+                    <div class="card-header p-2 mt-2">D&eacute;tail commande</div>
+                    <p>{{ orderStatus.detail }}</p>
+                </div>
             </div>
-            <div class="row">
-                
+            <div class="row">                
                 <div class="col-12 border-success">
-                    <div class="card-header p-2 mt-2">Modifier Statut commande</div>
-
+                    <div class="card-header p-2 mt-2 text-end">Modifier statut commande</div>
                         <div class="row align-items-center p-3">  
-
                             <div class="col-8">
                                 <a class="btnJavoy order-form" href="/AdminOrder/index">Retour</a>
                             </div>
-
                             <div class="col-2 text-end">
                                 <form action="" method="POST">
-                                                <select class="" value= "" name="status" id="status" required>
-                                                    {% for statusList in statusLists %}
-                                                    <option name="{{ statusList.id }}" value="{{ statusList.id }}" id="{{ statuslist.id }}">{{ statusList.name }}</option>
-                                                    {% endfor %}
-                                                </select> 
-                            </div>
-                            <div class="col-2 text-center">
-                                            <button class="btn btn-success" type="submit"> Modifier </button>                                         
-                            </div>
+                                    <select class="" value= "" name="status" id="status" required>
+                                        {% for statusList in statusLists %}
+                                        <option name="{{ statusList.id }}" value="{{ statusList.id }}" id="{{ statuslist.id }}">{{ statusList.name }}</option>
+                                        {% endfor %}
+                                    </select> 
+                                    </div>
+                                    <div class="col-2 text-end">
+                                        <button class="btn btn-success" type="submit"> Modifier </button>                                         
+                                    </div>
                                 </form>
                             </div>   
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
