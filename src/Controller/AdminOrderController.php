@@ -19,7 +19,6 @@ class AdminOrderController extends AbstractController
 
     public function show(int $orderStatus): string
     {
-        $errors = [];
         $statusManager = new StatusManager();
         $statusLists = $statusManager->selectAll();
         $statusOrder = new AdminOrderManager();

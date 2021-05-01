@@ -69,3 +69,18 @@ nav{
     padding:10px;
     text-decoration: none;
 }
+
+.link {
+    font-family: var(--main-font);
+    color: var(--primary);
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+}
+.link:hover {
+    font-family: var(--main-font);
+    color: var(--error-color);
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+}
