@@ -19,14 +19,7 @@ class AdminOrderController extends AbstractController
 
     public function show(int $orderStatus): string
     {
-        $statusManager = new AdminOrderManager();
-        $orderStatus = $statusManager->selectByIdOrder($orderStatus);
-
-        return $this->twig->render('Admin/showOrder.html.twig', ['orderStatus' => $orderStatus]);
-    }
-
-    public function edit(int $orderStatus): string
-    {
+        $errors = [];
         $statusManager = new StatusManager();
         $statusLists = $statusManager->selectAll();
         $statusOrder = new AdminOrderManager();
@@ -43,7 +36,7 @@ class AdminOrderController extends AbstractController
             header('Location: /AdminOrder/index');
         }
 
-        return $this->twig->render('Admin/editOrder.html.twig', [
+        return $this->twig->render('Admin/showOrder.html.twig', [
             'orderStatus' => $orderStatus,
             'statusLists' => $statusLists,
         ]);
