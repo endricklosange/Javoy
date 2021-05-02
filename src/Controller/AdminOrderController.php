@@ -7,6 +7,7 @@ use App\Model\StatusManager;
 
 class AdminOrderController extends AbstractController
 {
+
     public function index(): string
     {
         $status = new AdminOrderManager();
@@ -27,9 +28,6 @@ class AdminOrderController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $statusList = array_map('trim', $_POST);
-
-            // TODO validations (length, format...)
-            // if validation is ok, update and redirection
             $orderStatus['status_id'] = $statusList['status'];
             $statusOrder->update($orderStatus);
             header('Location: /AdminOrder/index');
