@@ -25,6 +25,7 @@ class OrderManager extends AbstractManager
         $statement->bindValue('city', $order['city'], \PDO::PARAM_STR);
         $statement->bindValue('country', $order['country'], \PDO::PARAM_STR);
         $statement->bindValue('detail', $order['detail'], \PDO::PARAM_STR);
+        $statement->bindValue('status_id', '1', \PDO::PARAM_STR);
         return $statement->execute();
     }
 }
