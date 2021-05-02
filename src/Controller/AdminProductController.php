@@ -9,6 +9,8 @@ class AdminProductController extends AbstractController
     private const PRODUCT_MAX_LENGHT = 80;
     private const DESCRIPTION_MAX_LENGHT = 255;
     private const PRODUCT_MIN_INT = 0;
+
+
     // Verification champ vide
     private function isEmpty($product): array
     {

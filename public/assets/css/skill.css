@@ -1,0 +1,41 @@
+:root {
+  --skill-padding: 25px;
+}
+
+body {
+  margin-top: 90px;
+}
+
+.skill_title {
+  text-align: center;
+  color: var(--primary);
+  font-family: var(--title-font);
+  font-weight: bold;
+}
+
+.skill_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+
+  border-radius: 8px;
+}
+
+.skill_name {
+  font-weight: bold;
+  text-align: center;
+  padding: var(--skill-padding);
+  font-family: var(--title-font);
+}
+
+.skill_text {
+  font-weight: bold;
+  text-align:justify;
+  font-family: var(--main-font);
+}
+
+
+.skill_text .carousel-item {
+  padding: var(--skill-padding);
+}

@@ -1,0 +1,73 @@
+
+.contact h1{
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-weight: bold;
+    margin-left: var(--double-space);
+    margin-top: 80px;
+}
+
+.card-opening{
+  width: 450px; 
+  height: 500px;
+}
+
+.container{
+  margin-top: 20px;
+}
+
+.card-header{
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.card-text{
+  padding-top: 30px;
+}
+
+.contact{
+  margin-top: 70px;
+}
+
+.OSM{
+  margin-top: 30px;
+  border:var(--primary) 2px solid; 
+  border-radius: 8px;
+  width:500px;
+  height:400px;
+}
+
+.borderBackground{
+    background-color:var(--primary);
+}
+
+.borderUnderText {
+    border-bottom: 2px var(--light) solid;
+}
+
+h2 {
+    color: var(--light);
+}
+
+label {
+    color: var(--primary);
+}
+
+button {
+    background-color: var(--light);
+    color: var(--primary);
+    border-color: var(--primary);
+    border-radius: 3px;
+    width: 8rem;
+}
+
+button:hover{
+    filter: brightness(150%);
+    transition: 0,5s;
+}
+
+button:active{
+    filter: brightness(50%);
+}
+

@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="borderBackground">
+		<div class="borderUnderText">
+			<div class="col-sm-12 d-flex justify-content-center pt-2">
+				<h2>Dégustation sur rendez-vous au domaine</h2>
+			</div>
+		</div>
+		<div class="col-sm-12 d-flex justify-content-center pt-2">
+			<h2>Contactez-nous</h2>
+		</div>
+	</div>
+</div>
+<div class="container mt-5">
+	<ul class="error">
+		{% for error in errors %}
+			<li>{{ error }}</li>
+		{% endfor %}
+	</ul>
+	<form action="" method="POST">
+		<div class="mb-3">
+			<label for="lastname" class="form-label">Nom :</label>
+			<input name="lastname" type="text" class="form-control" id="lastname" placeholder="De-la-croix">
+		</div>
+		<div class="mb-3">
+			<label for="firstname" class="form-label">Prénom :</label>
+			<input name="firstname" type="text" class="form-control" id="firstname" placeholder="Jean">
+		</div>
+		<div class="mb-3">
+			<label for="email" class="form-label">Email :</label>
+			<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+		</div>
+		<div class="mb-3">
+			<label for="message" class="form-label">Votre message:</label>
+			<textarea name="message" class="form-control" id="message" rows="3" placeholder="Message"></textarea>
+		</div>
+		<div class="col-auto mt-4 d-flex justify-content-end">
+			<button type="submit">Envoyer</button>
+		</div>
+	</form>
+</div>
