@@ -42,7 +42,7 @@ CREATE TABLE status (
   icon VARCHAR(500)
 );
 
-ALTER TABLE `order` ADD FOREIGN KEY (`statut_id`) REFERENCES `statut` (`id`);
+ALTER TABLE `order` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);
 
 INSERT INTO status (name) VALUES ('En cours');
 INSERT INTO status (name) VALUES ('Livrée');
