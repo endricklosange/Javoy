@@ -37,8 +37,12 @@ CREATE TABLE `order` (
 
 CREATE TABLE status (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name VARCHAR(80) NOT NULL
+  name VARCHAR(80) NOT NULL,
+  color VARCHAR(80) NOT NULL,
+  icon VARCHAR(500)
 );
+
+ALTER TABLE `order` ADD FOREIGN KEY (`statut_id`) REFERENCES `statut` (`id`);
 
 INSERT INTO status (name) VALUES ('En cours');
 INSERT INTO status (name) VALUES ('Livrée');
