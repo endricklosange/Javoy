@@ -31,7 +31,8 @@ class AdminOrderManager extends AbstractManager
         .  static::TABLE  .  '.email,'  .  static::TABLE  .  '.address,'
         .  static::TABLE  .  '.zipcode,'  .  static::TABLE  .  '.city,'  .  static::TABLE  .  '.status_id,'
         .  static::TABLE  .  '.country,'
-        .  static::TABLE  .  '.detail,' . StatusManager::TABLE  .  '.name JOIN ' . StatusManager::TABLE  . ' ON '
+        .  static::TABLE  .  '.detail,' . StatusManager::TABLE  .  '.name  FROM '
+        .  static::TABLE  .  ' JOIN ' . StatusManager::TABLE  . ' ON '
         .  StatusManager::TABLE  .  '.id = '  . static::TABLE  .  '.status_id WHERE '  . static::TABLE  .  '.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
