@@ -1,0 +1,11 @@
+.wine_bottles h1, h5{
+    color: var(--primary);
+    margin-top: 70px;
+    text-align: center;
+}
+
+
+.card-text{
+   text-align: justify;
+}
+

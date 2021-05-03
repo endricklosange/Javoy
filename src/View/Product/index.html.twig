@@ -1,0 +1,103 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/product.css">
+{% endblock %}
+{% block content %}
+	{# <section class="listProduct">
+		<div class="container">
+			<div class="containerAddProduct d-flex justify-content-between">
+				<h1>LISTE PRODUITS</h1>
+				<a class="btn btn-secondary border-0 mb-3" href="/AdminProduct/add">Ajouter un produit</a>
+			</div>
+
+			<table class="listTable table table-hover">
+				{% for product in products %}
+					<tr>
+						<td><img class="listWine" src="{{ product.image }}" alt="image de vin"/></td>
+						<td>
+							<h2>{{ product.name }}</h2>
+							<p>{{ product.description }}</p>
+						</td>
+						<td>
+							<div class="changeButton d-flex flex-column">
+								<a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
+								<form method="POST" onsubmit="return confirm('Voulez vous vraimment supprimer ?');" action="/AdminProduct/delete/{{product.id}}">
+									<button class="deleteBtn btn btn-secondary border-0 mb-5">Supprimez</button>
+								</form>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+
+		</div>
+	</section> #}
+    <section class="wine_bottles">
+    <h1>CARTE DES VINS</h1>
+    <div class="container">
+    <div class="row">
+        <div class="card-wine col md-6">
+            <div class="card">
+            <img class="card-img-top" src="/assets/images/vin_rouge.jpg" alt="image vin rouge" width="10px" height="450px">
+                <div class="card-body">
+                <h5 class="card-title">Orléans ROUGE - 2019 <br>PINOT NOIR & PINOT MEUNIER</h5>
+                 <p class="card-text">Ce vin aux arômes de fruits rouges, issus du mariage enchanteur du pinot Meunier et du Pinot Noir,exprime toute l'originalité prestigieuse des terroirs d'orléans. Il fera merveille sur les poissons en sauce et sur toutes les viandes grillées, charcuterie,viande blanche.
+                Servir de 12 à 14 ° C.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-wine col md-6">
+            <div class="card">
+            <img class="card-img-top" src="/assets/images/vin_rouge.jpg" alt="image vin rouge" width="10px" height="450px">
+                <div class="card-body">
+                <h5 class="card-title">Orléans ROUGE -  2019<br>CABERNET FRANC</h5>
+                <p class="card-text">Le Cabernet donne un vin d'une couleur intense et profonde, au nez puissant, épicé et floral ample en bouche et tanique. C'est un vin de garde par excellence. Il accompagne à merveille les viandes rouges et le gibier de sologne, ainsi que les fromages.
+                Servir chambré, de 16 à 17 °C.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-wine col md-6">
+            <div class="card">
+            <img class="card-img-top" src="/assets/images/vin_rouge.jpg" alt="image vin rouge" width="10px" height="450px">
+                <div class="card-body">
+                <h5 class="card-title">Orléans ROUGE - 2019<br>GAMAY</h5>
+                <p class="card-text">Cépage cultivé depuis de nombreuses années dans notre région, il donne un vin gouleyant, fruité et légèrement poivré. Il stimule nos papilles par sa fraicheur. Il se boit frais lors de buffets campagnards composés de charcuterie,de viandes blanches et rouges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-wine col md-6">
+            <div class="card">
+            <img class="card-img-top" src="/assets/images/vin_rouge.jpg" alt="image vin rouge" width="10px" height="450px">
+                <div class="card-body">
+                <h5 class="card-title">Orléans ROUGE - 2019 <br>PINOT NOIR & PINOT MEUNIER</h5>
+                <p class="card-text">Ce vin aux arômes de fruits rouges, issus du mariage enchanteur du pinot Meunier et du Pinot Noir,exprime toute l'originalité prestigieuse des terroirs d'orléans. il fera merveille sur les poissons en sauce et sur toutes les viandes grillées, charcuterie,viande blanche.
+                 Servir de 12 à 14 ° C.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-wine col md-6">
+            <div class="card">
+            <img class="card-img-top" src="/assets/images/vin_rouge.jpg" alt="image vin rouge" width="10px" height="450px">
+                <div class="card-body">
+                <h5 class="card-title">Orléans ROUGE -  2019 <br>CABERNET FRANC</h5>
+                <p class="card-text"> Le Cabernet donne un vin d'une couleur intense et profonde, au nez puissant, épicé et floral ample en bouche et tanique. C'est un vin de garde par excellence. Il accompagne à merveille les viandes rouges et le gibier de sologne, ainsi que les fromages.
+                Servir chambré, de 16 à 17 °C.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-wine col md-6">
+            <div class="card">
+            <img class="card-img-top" src="/assets/images/vin_rouge.jpg" alt="image vin rouge" width="10px" height="450px">
+                <div class="card-body">
+                <h5 class="card-title">Orléans ROUGE - 2019<br>GAMAY</h5>
+                <p class="card-text">Cépage cultivé depuis de nombreuses années dans notre région, il donne un vin gouleyant, fruité et légèrement poivré. Il stimule nos papilles par sa fraicheur. Il se boit frais lors de buffets campagnards composés de charcuterie,de viandes blanches et rouges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}
