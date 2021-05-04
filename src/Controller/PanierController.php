@@ -14,6 +14,11 @@ class PanierController extends AbstractController
         if ($product) {
             $_SESSION['panier'][$id] = $product;
         }
-        header('Location: Panier/index');
+        header('Location: /Panier/index');
+    }
+    public function index()
+    {
+        $products = $_SESSION['panier'] ?? [];
+        return $this->twig->render('Panier/index.html.twig',['products' => $products]);
     }
 }
