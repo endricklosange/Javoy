@@ -110,7 +110,6 @@ class AdminProductController extends AbstractController
 
             // no errors, send to db
             if (empty($errors)) {
-
                 $fileName = uniqid() . '_' . $_FILES['image']['name'];
                 $product['image'] = $fileName;
                 move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../public/uploads/' .  $fileName);
@@ -176,7 +175,7 @@ class AdminProductController extends AbstractController
                 unlink($path);
             }
 
-            
+
             $productsManager->delete($id);
             header('location: /AdminListProduct/index');
         }
