@@ -28,16 +28,12 @@ class OrderManager extends AbstractManager
         $statement->bindValue('status_id', '1', \PDO::PARAM_STR);
         return $statement->execute();
     }
-    
+
     public function selectAllOrderStatus()
     {
-        $query = 'SELECT'  .  static::TABLE . '.id, '  .  static::TABLE . '.title,'
-        .  static::TABLE  .  '.firstname,'  .  static::TABLE  .  '.lastname,'
-        .  static::TABLE  .  '.email,'  .  static::TABLE  .  '.address,'
-        .  static::TABLE  .  '.zipcode,'  .  static::TABLE  .  '.city,'
-        .  static::TABLE  .  '.detail,' . StatusManager::TABLE  .  '.name,' . StatusManager::TABLE  .  '.color,'
-        . StatusManager::TABLE . '.icone FROM '
-        .  static::TABLE  .  ' JOIN ' . StatusManager::TABLE  . ' ON '
+        $query = 'SELECT '  .  static::TABLE . '.id, title, firstname, lastname, email, address, zipcode, city,
+          detail,' . StatusManager::TABLE  .  '.name FROM '  .  static::TABLE  .  
+          ' JOIN ' . StatusManager::TABLE  . ' ON '
         .  StatusManager::TABLE  .  '.id = '  . static::TABLE  .  '.status_id WHERE '
         .  StatusManager::TABLE .  '.id='  .  static::TABLE  . '.status_id ORDER BY '
         .  static::TABLE . '.id '  .  ' DESC';
@@ -49,12 +45,8 @@ class OrderManager extends AbstractManager
     {
         // prepared request
 
-        $statement = $this->pdo->prepare('SELECT'  .  static::TABLE . '.id, '  .  static::TABLE . '.title,'
-        .  static::TABLE  .  '.firstname,'  .  static::TABLE  .  '.lastname,'
-        .  static::TABLE  .  '.email,'  .  static::TABLE  .  '.address,'
-        .  static::TABLE  .  '.zipcode,'  .  static::TABLE  .  '.city,'  .  static::TABLE  .  '.status_id,'
-        .  static::TABLE  .  '.country,'
-        .  static::TABLE  .  '.detail,' . StatusManager::TABLE  .  '.name  FROM '
+        $statement = $this->pdo->prepare('SELECT'  .  static::TABLE . '.id, title, firstname, lastname, email, address, 
+        zipcode, city, status_id, country, detail,' . StatusManager::TABLE  .  '.name  FROM '
         .  static::TABLE  .  ' JOIN ' . StatusManager::TABLE  . ' ON '
         .  StatusManager::TABLE  .  '.id = '  . static::TABLE  .  '.status_id WHERE '  . static::TABLE  .  '.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
