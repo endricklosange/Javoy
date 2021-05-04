@@ -31,7 +31,8 @@ class OrderManager extends AbstractManager
 
     public function selectAllOrderStatus()
     {
-        $query = 'SELECT o.*, s.name FROM' . static::TABLE . ' o JOIN ' . StatusManager::TABLE  . ' s ON s.id = o.status_id';
+        $query = 'SELECT o.*, s.name FROM' . static::TABLE . ' o JOIN '
+        . StatusManager::TABLE  . ' s ON s.id = o.status_id';
 
         return $this->pdo->query($query)->fetchAll();
     }
@@ -40,7 +41,8 @@ class OrderManager extends AbstractManager
     {
         // prepared request
 
-        $statement = $this->pdo->prepare('SELECT o.*, s.name FROM' . static::TABLE . ' o JOIN ' . StatusManager::TABLE  . ' s ON s.id = o.status_id WHERE o.id=:id');
+        $statement = $this->pdo->prepare('SELECT o.*, s.name FROM' . static::TABLE . ' o JOIN '
+        . StatusManager::TABLE  . ' s ON s.id = o.status_id WHERE o.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
