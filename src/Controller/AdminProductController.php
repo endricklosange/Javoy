@@ -9,7 +9,7 @@ class AdminProductController extends AbstractController
     private const PRODUCT_MAX_LENGHT = 80;
     private const DESCRIPTION_MAX_LENGHT = 255;
     private const PRODUCT_MIN_INT = 0;
-    public const MAX_UPLOAD_FILESIZE = 100000000;
+    public const MAX_UPLOAD_FILESIZE = 1000000;
     public const ALLOWED_MIMES = ['image/jpeg', 'image/png'];
 
     // Verification champ vide

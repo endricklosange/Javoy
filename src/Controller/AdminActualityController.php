@@ -8,7 +8,7 @@ class AdminActualityController extends AbstractController
 {
     private const NEWS_MAX_LENGTH = 80;
     private const DESCRIPTION_MAX_LENGTH = 500;
-    public const MAX_UPLOAD_FILESIZE = 100000000;
+    public const MAX_UPLOAD_FILESIZE = 1000000;
     public const ALLOWED_MIMES = ['image/jpeg', 'image/png'];
 
     public function index(): string
