@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\AdminOrderManager;
+use App\Model\OrderManager;
 use App\Model\StatusManager;
 
 class AdminOrderController extends AbstractController
@@ -10,7 +10,7 @@ class AdminOrderController extends AbstractController
 
     public function index(): string
     {
-        $status = new AdminOrderManager();
+        $status = new OrderManager();
         $orderStatus = $status->selectAllOrderStatus();
 
         return $this->twig->render('Admin/listOrder.html.twig', [
@@ -22,7 +22,7 @@ class AdminOrderController extends AbstractController
     {
         $statusManager = new StatusManager();
         $statusLists = $statusManager->selectAll();
-        $statusOrder = new AdminOrderManager();
+        $statusOrder = new OrderManager();
         $orderStatus = $statusOrder->selectByIdOrder($orderStatus);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
