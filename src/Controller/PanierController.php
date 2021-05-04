@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controller;
-use App\Model\ProductManager; 
+
+use App\Model\ProductManager;
 
 class PanierController extends AbstractController
 {
@@ -10,10 +11,9 @@ class PanierController extends AbstractController
     {
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
-        if($product){
+        if ($product) {
             $_SESSION['panier'][$id] = $product;
         }
         header('Location: Panier/index');
     }
 }
-
