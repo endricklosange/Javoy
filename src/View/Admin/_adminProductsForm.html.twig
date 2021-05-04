@@ -2,7 +2,7 @@
 
 <div class="container">
 
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
 
    <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
     <select class="form-select mb-3" aria-label="Default select example" value= "{{ product.category }}" name="category" required>
@@ -35,7 +35,7 @@
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Image</label>
-      <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://LienVersVotreimage.com" value="{{ product.image }}" name="image" required>
+      <input type="file" class="form-control" id="exampleFormControlInput1" name="image" required>
     </div>
 
     <div class="mb-3">
