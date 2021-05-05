@@ -6,23 +6,14 @@ use App\Model\ProductManager;
 
 class CartController extends AbstractController
 {
-
-    public function add(int $id)
-    {
-        $this->increment($id);
-    }
     public function index()
     {
         $products = $_SESSION['cart'] ?? [];
         return $this->twig->render('Cart/index.html.twig', ['products' => $products]);
     }
-    public function empty()
+    public function add(int $id)
     {
-        unset($_SESSION['cart']);
-    }
-    public function substract(int $id)
-    {
-        $this->increment($id, -1);
+        $this->increment($id);
     }
     public function increment(int $id, int $increment = 1)
     {
@@ -31,9 +22,6 @@ class CartController extends AbstractController
         if ($product) {
             $product['quantity'] = ($_SESSION['cart'][$id]['quantity'] ?? 0) + $increment;
             $_SESSION['cart'][$id] = $product;
-            //if($_SESSION['cart'][$id]['quantity' < 0]){
-            //unset($_SESSION['cart']);
-            //}
         }
         header('Location: /Cart/index');
     }

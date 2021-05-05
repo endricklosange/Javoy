@@ -47,43 +47,16 @@
 								</tr>
 								<!-- Fin de boucle -->
 							{% endfor %}
-							<a class ="btn btn-primary btn" href="/Cart/empty">Vider le panier</a>
-							
-							<!-- EXEMPLE A SUPPRIMER -->
+							<a class="btn btn-primary btn" href="/Cart/empty">Vider le panier</a>
 
-							<tr>
-								<td><img src="/assets/images/place.png" class="img-cart"></td>
-								<td>
-									<strong>Bon avec du poisson</strong>
-								</td>
-								<td>
-									<form class="form-inline" method="GET">
-										<input class="form-control" type="text" value="1" size="2">
-										<button rel="tooltip" class="btn btn-default">
-											<i class="fa fa-pencil"></i>
-										</button>
-										<a href="/order/add" class="btn btn-danger">
-											<i class="fa fa-trash-o"></i>
-										</a>
-									</form>
-								</td>
-								<td>10 €</td>
-								<td>20 €</td>
-							</tr>
-							<tr>
-								<td colspan="4" class="text-right">
-									<strong>Total</strong>
-								</td>
-								<td>$88.00</td>
-							</tr>
-
-							<!-- FIN D'EXEMPLE -->
 
 						</tbody>
 					</table>
 				</div>
 			{% else %}
-				<div class ="alert alert-warning"> <p> Panier vide <p></div>
+				<div class="alert alert-warning">
+					<p>Panier vide</p>
+				</div>
 			{% endif %}
 		</div>
 	</div>
