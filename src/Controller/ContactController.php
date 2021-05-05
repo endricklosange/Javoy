@@ -8,21 +8,20 @@ class ContactController extends AbstractController
     private const NAME_MAX_LENGTH = 80;
     private const MESSAGE_MAX_LENGTH = 2000;
 
-    public function validate()
+    public function validate($data)
     {
         $errors = [];
-        $data = [];
 
         if (empty($data['lastname'])) {
             $errors[] = 'Le nom est obligatoire';
         } elseif ($data['lastname'] > self::NAME_MAX_LENGTH) {
-            $errors[] = 'Le nom doit faire moins de' . self::NAME_MAX_LENGTH . ' caractères';
+            $errors = 'Le nom doit faire moins de' . self::NAME_MAX_LENGTH . ' caractères';
         }
 
         if (empty($data['firstname'])) {
             $errors[] = 'Le prénom est obligatoire';
         } elseif ($data['firstname'] > self::NAME_MAX_LENGTH) {
-            $errors[] = 'Le prénom doit faire moins de' . self::NAME_MAX_LENGTH . ' caractères';
+            $errors = 'Le prénom doit faire moins de' . self::NAME_MAX_LENGTH . ' caractères';
         }
 
         if (empty($data['email'])) {
@@ -34,9 +33,8 @@ class ContactController extends AbstractController
         if (empty($data['message'])) {
             $errors[] = 'Un message est obligatoire';
         } elseif ($data['message'] > self::MESSAGE_MAX_LENGTH) {
-            $errors[] = 'Le message doit faire moins de ' . self::MESSAGE_MAX_LENGTH . ' caractères';
+            $errors = 'Le message doit faire moins de ' . self::MESSAGE_MAX_LENGTH . ' caractères';
         }
-        var_dump($data);
         return $errors;
     }
 
@@ -44,7 +42,8 @@ class ContactController extends AbstractController
     {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $errors = $this->validate();
+            $data = array_map('trim', $_POST);
+            $errors = $this->validate($data);
 
             if (empty($errors)) {
                 //send in mail
@@ -57,9 +56,7 @@ class ContactController extends AbstractController
     public function index()
     {
         $errors = $this->send();
-        var_dump($errors);
         return $this->twig->render('Contact/index.html.twig', [
-            "errors" => $errors
-        ]);
+            "errors" => $errors]);
     }
 }
