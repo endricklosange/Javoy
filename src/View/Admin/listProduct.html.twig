@@ -14,7 +14,7 @@
 			<table class="listTable table table-hover">
 				{% for product in products %}
 					<tr>
-						<td><img class="listWine" src="{{ product.image }}" alt="image de vin"/></td>
+						<td><img class="listWine" src="/uploads/{{ product.image }}" alt="image de vin"/></td>
 						<td>
 							<h2>{{ product.name }}</h2>
 							<p>{{ product.description }}</p>
