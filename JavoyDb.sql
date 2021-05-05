@@ -6,7 +6,7 @@ CREATE TABLE product (
   year INT NOT NULL,
   image VARCHAR(255) NOT NULL,
   created_at DATE NOT NULL,
-  category_id INT FOREIGN KEY NOT NULL,
+  category_id INT NOT NULL
 );
 
 CREATE TABLE category (
@@ -16,11 +16,13 @@ CREATE TABLE category (
   PRIMARY KEY (id)
 );
 
-INSERT INTO category(id,name,image) VALUES(1,'Vin rouge','https://cdn.pixabay.com/photo/2020/04/13/17/54/a-bottle-of-wine-5039546_960_720.png%27'),(2,'Vin Blanc','https://cdn.pixabay.com/photo/2018/02/27/14/07/white-wine-3185546_960_720.jpg%27'),(3,'Vin Rosé','https://cdn.pixabay.com/photo/2019/08/18/16/38/champagne-4414476_960_720.jpg%27'),(4,'Spiritueux%27,%27https://cdn.pixabay.com/photo/2016/02/13/21/59/alcohol-1198643_960_720.jpg'),(5,'Jus de Fruits','https://cdn.pixabay.com/photo/2015/03/10/18/53/fruit-juices-667570_960_720.jpg');
+
+
+INSERT INTO category(id,name,image) VALUES(1,'Vin rouge','https://cdn.pixabay.com/photo/2020/04/13/17/54/a-bottle-of-wine-5039546_960_720.png%27'),(2,'Vin Blanc','https://cdn.pixabay.com/photo/2018/02/27/14/07/white-wine-3185546_960_720.jpg%27'),(3,'Vin Rosé','https://cdn.pixabay.com/photo/2019/08/18/16/38/champagne-4414476_960_720.jpg%27'),(4,'Spiritueux','https://cdn.pixabay.com/photo/2016/02/13/21/59/alcohol-1198643_960_720.jpg'),(5,'Jus de Fruits','https://cdn.pixabay.com/photo/2015/03/10/18/53/fruit-juices-667570_960_720.jpg');
+
 
 
 ALTER TABLE product ADD FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
-
 
 CREATE TABLE actuality (
   id int NOT NULL AUTO_INCREMENT,
@@ -58,5 +60,4 @@ INSERT INTO status (name) VALUES ('Livrée');
 INSERT INTO status (name) VALUES ('Annulée');
 
 ALTER TABLE `order` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);
-
 
