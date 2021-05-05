@@ -3,7 +3,7 @@
 @import "footer.css";
 
 :root{
-    --primary:#642A2A;
+    --primary:#62011D;
     --secondary:#F2E8DF;
     --light:#ffffff;
     --dark:#080100;
@@ -12,6 +12,8 @@
     --main-font:'Raleway',sans-serif;
     --title-font:'Roboto Slab',serif;
 
+    --simple-space: 8px;
+    --double-space: 16px;
 }
 body{ 
     padding-top: 70px;
@@ -45,4 +47,42 @@ nav{
 }
 #navbarNavAltMarkup{
     text-align: center;
+}
+.order-form {
+    color: var(--primary);
+    border:var(--primary) 2px solid;
+    border-radius: 8px;
+}
+
+.btnJavoy {
+    background-color:  var(--primary);;
+    color: var(--secondary);
+    font-weight: bolder;
+    font-size: 14px;
+    padding:10px;
+    text-decoration: none;
+}
+
+.btnJavoy:hover {
+    background-color:  var(--secondary);;
+    color: var(--primary);
+    font-weight: bolder;
+    font-size: 14px;
+    padding:10px;
+    text-decoration: none;
+}
+
+.link {
+    font-family: var(--main-font);
+    color: var(--primary);
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+}
+.link:hover {
+    font-family: var(--main-font);
+    color: var(--error-color);
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
 }

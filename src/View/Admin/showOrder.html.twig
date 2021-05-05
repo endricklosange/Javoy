@@ -1,0 +1,70 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/add-products.css">
+{% endblock %}
+
+{% block content %}
+<div class="container pt-5">
+    <div class="row justify-content-center">
+        <div class="col-8 order-form">        
+            <div class="row">
+                <div class="col-12 border-success">
+                    <div class="card-header mt-2">
+                        <div class="row align-items-center p-2">
+                            <div class="col-10"> Commande N°{{ orderStatus.id }} </div>
+                            <div class="col-2 fw-bold bg-success text-white text-center">{{ orderStatus.name }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="row justify-content-end">                
+                <div class="col-4 text-end">
+                    <div class="card-header p-2 mt-2 text-center">Modifier statut commande</div>
+                        <div class="row bg-white m-2">  
+                            <div class="col-6 p-2">
+                                <form action="" method="POST">
+                                    <select class="" value= "" name="status" id="status" required>
+                                        {% for statusList in statusLists %}
+                                        <option name="{{ statusList.id }}" value="{{ statusList.id }}" id="{{ statuslist.id }}">{{ statusList.name }}</option>
+                                        {% endfor %}
+                                    </select> 
+                                    </div>
+                                    <div class="col-2 p-2 text-center">
+                                        <button class="btn btn-success" type="submit"> Modifier </button>                                         
+                                    </div>
+                                </form>
+                            </div>   
+                        </div>
+                    </div>
+
+                    <div class="row">                
+                        <div class="col-6">                
+                            <div class="card-header mt-2">Client</div>
+                            <div class="bg-white p-2"><h3>{{ orderStatus.firstname }}  {{ orderStatus.firstname }} </h3>                  
+                                <p>{{ orderStatus.address }}</p>
+                                <p>{{ orderStatus.zipcode }} {{ orderStatus.city }} </p></div> 
+                            </div>
+                        <div class="col-6">
+                            <div class="card-header mt-2">Contact</div>
+                                <div class="bg-white p-2"><h3>{{ orderStatus.email }}</h3></div>
+                        </div>                
+                        <div class="col-12">
+                            <div class="card-header p-2 mt-2">D&eacute;tail commande</div>
+                            <div class="bg-white p-2">{{ orderStatus.detail }}</div>
+                        </div>
+                    </div>
+                    <div class="row">                
+                        <div class="row align-items-center p-3">  
+                            <div class="col-12 text-end">
+                                <a class="btnJavoy order-form" href="/AdminOrder/index">Retour</a>
+                            </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
