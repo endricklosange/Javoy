@@ -9,6 +9,9 @@ class AdminProductController extends AbstractController
     private const PRODUCT_MAX_LENGHT = 80;
     private const DESCRIPTION_MAX_LENGHT = 255;
     private const PRODUCT_MIN_INT = 0;
+    public const MAX_UPLOAD_FILESIZE = 1000000;
+    public const ALLOWED_MIMES = ['image/jpeg', 'image/png'];
+
     // Verification champ vide
     private function isEmpty($product): array
     {
@@ -23,10 +26,6 @@ class AdminProductController extends AbstractController
 
         if (empty($product['year'])) {
             $errors[] = 'L\'année est obligatoire';
-        }
-
-        if (empty($product['image'])) {
-            $errors[] = 'L\'image est obligatoire';
         }
 
         if (empty($product['created_at'])) {
@@ -68,18 +67,31 @@ class AdminProductController extends AbstractController
             $errors[] = 'L\'année doit etre un nombre supérieur à ' . self::PRODUCT_MIN_INT;
         }
 
-        // image verification
-        if (!filter_var($product['image'], FILTER_VALIDATE_URL)) {
-            $errors[] = "Le format d'url n’est pas correct";
-        }
-
         // description verification
         if (strlen($product['description']) > self::DESCRIPTION_MAX_LENGHT) {
-            $errors[] = 'Le nom doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
+            $errors[] = 'La description doit contenir moins de ' . self::DESCRIPTION_MAX_LENGHT . ' charactères';
         }
         return $errors;
     }
 
+    private function validateFile(array $file): array
+    {
+        $errors = [];
+
+        if ($file['error'] != 0) {
+            $errors[] = 'Problème lors de l\'upload';
+        } else {
+            if ($file['size'] > self::MAX_UPLOAD_FILESIZE) {
+                $errors[] = 'Le fichier doit faire moins de ' . self::MAX_UPLOAD_FILESIZE / 1000000 . 'Mo';
+            }
+
+            if (!in_array(mime_content_type($file['tmp_name']), self::ALLOWED_MIMES)) {
+                $errors[] = 'Le fichier doit être de type ' . implode(', ', self::ALLOWED_MIMES);
+            }
+        }
+
+        return $errors;
+    }
 
 
     /* Ajout de produit */
@@ -92,12 +104,19 @@ class AdminProductController extends AbstractController
             // clean $_POST data
             $product = array_map('trim', $_POST);
             // Verification
-            $errors = $this->validate($product);
+            $dataErrors = $this->validate($product);
+            $fileErrors = $this->validateFile($_FILES['image']);
+            $errors = array_merge($dataErrors, $fileErrors);
+
             // no errors, send to db
             if (empty($errors)) {
+                $fileName = uniqid() . '_' . $_FILES['image']['name'];
+                $product['image'] = $fileName;
+                move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../public/uploads/' .  $fileName);
+
                 $productsManager = new ProductManager();
                 $productsManager->insert($product);
-                header('Location:/adminProduct/add');
+                header('Location:/AdminListProduct/index');
             }
         }
 
@@ -121,15 +140,22 @@ class AdminProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
+
             $product = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
-            $errors = $this->validate($product);
+            $dataErrors = $this->validate($product);
+            $fileErrors = $this->validateFile($_FILES['image']);
+            $errors = array_merge($dataErrors, $fileErrors);
             // if validation is ok, update and redirection
             if (empty($errors)) {
+                $fileName = uniqid() . '_' . $_FILES['image']['name'];
+                $product['image'] = $fileName;
+                move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../public/uploads/' .  $fileName);
+
                 $product['id'] = $id;
                 $productManager->update($product);
-                header('Location: /AdminProduct/add/');
+                header('Location:/AdminListProduct/index');
             }
         }
 
@@ -137,5 +163,21 @@ class AdminProductController extends AbstractController
             'errors' => $errors,
             'product' => $product,
         ]);
+    }
+
+    public function delete(int $id): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productsManager = new ProductManager();
+            $product = $productsManager->selectOneById($id);
+            $path =  __DIR__ . '/../../public/uploads/' . $product['image'];
+            if (file_exists($path)) {
+                unlink($path);
+            }
+
+
+            $productsManager->delete($id);
+            header('location: /AdminListProduct/index');
+        }
     }
 }

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27');
 @import "header.css";
 @import "footer.css";
+@import "category.css";
 
 :root
 {
@@ -15,10 +16,7 @@
 
     --simple-space: 8px;
     --double-space: 16px;
-
 }
-
-
 
 h1{
     color: var(--secondary);
@@ -48,4 +46,9 @@ nav{
 }
 #navbarNavAltMarkup{
     text-align: center;
+}
+.order-form {
+    color: var(--primary);
+    border:var(--primary) 2px solid;
+    border-radius: 8px;
 }
