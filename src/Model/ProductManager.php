@@ -6,6 +6,27 @@ class ProductManager extends AbstractManager
 {
     public const TABLE = 'product';
 
+    public function selectAllWithCategory()
+    {
+        $query = 'SELECT p.*, c.name AS category_name  FROM ' . self::TABLE . ' p
+                  JOIN ' . CategoryManager::TABLE . ' c ON c.id = p.category_id';
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+
+    public function selectByIdCategory(int $id)
+    {
+        
+        $statement = $this->pdo->prepare('SELECT p.*, c.name AS category_name FROM ' . self::TABLE . ' p JOIN '
+        . CategoryManager::TABLE  . ' c ON c.id = p.category_id WHERE category_id = :id');
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+
+
     /**
      * Insert new item in database
      */
