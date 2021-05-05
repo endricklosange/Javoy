@@ -1,0 +1,64 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/skill.css">
+{% endblock %}
+
+{% block content %}
+
+	<section class="cart">
+		<div class="container">
+			<h1>Panier</h1>
+			{% if products is not empty %}
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Produits</th>
+								<th>Description</th>
+								<th>Qty</th>
+								<th>Prix</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Debut de la boucle -->
+							{% for product in products %}
+								{% set total = [0] %}
+								<tr>
+									<!-- Image du produit -->
+									<td><img src="{{ product.image }}" class="img-cart" alt="{{product.name}}"></td>
+
+									<!-- Description du produit -->
+									<td>
+										<strong>{{ product.description }}</strong>
+									</td>
+
+									<!-- Bouton -->
+									<td>
+										<a class="btn btn-primary" href="/Cart/substract{{dish.id}}">-</a>
+										{{ product.quantity }}
+										<a class="btn btn-primary" href="/Cart/add{{dish.id}}">+</a>
+									</td>
+									<!-- Prix du produit -->
+									<td>{{ product.quantity * product.price }}
+										€</td>
+
+									<!-- prix total par article (prix d'un objet * la quantité) -->
+									<td>{{ total += product.price * product.quantity }}</td>
+								</tr>
+								<!-- Fin de boucle -->
+							{% endfor %}
+							<a class="btn btn-primary btn" href="/Cart/empty">Vider le panier</a>
+
+
+						</tbody>
+					</table>
+				</div>
+			{% else %}
+				<div class="alert alert-warning">
+					<p>Panier vide</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</section>{% endblock %}
