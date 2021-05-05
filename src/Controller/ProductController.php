@@ -8,8 +8,8 @@ use App\Model\CategoryManager;
 class ProductController extends AbstractController
 {
 
-     // Display list of products
-     
+    // Display list of products
+
     public function index()
     {
         $productManager = new ProductManager();
@@ -28,9 +28,8 @@ class ProductController extends AbstractController
     public function show(int $id)
     {
         $productManager = new ProductManager();
-        $products =  $productManager->selectByIdCategory($id); 
+        $products =  $productManager->selectByIdCategory($id);
 
         return $this->twig->render('Product/show.html.twig', ['products' => $products]);
     }
-    
 }
