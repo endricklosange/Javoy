@@ -10,6 +10,16 @@ CREATE TABLE product (
   
 );
 
+CREATE TABLE actuality (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(80) NOT NULL,
+  description varchar(500) NOT NULL,
+  article text NOT NULL,
+  image varchar(255) NOT NULL,
+  created_at date NOT NULL,
+  PRIMARY KEY (id)
+)
+
 /* CREATION table order et detail_order pour commande */
 
 CREATE TABLE `order` (
@@ -25,13 +35,15 @@ CREATE TABLE `order` (
   detail VARCHAR(2000) NOT NULL
 );
 
-CREATE TABLE actuality (
-  id int NOT NULL AUTO_INCREMENT,
-  name varchar(80) NOT NULL,
-  description varchar(500) NOT NULL,
-  article text NOT NULL,
-  image varchar(255) NOT NULL,
-  created_at date NOT NULL,
-  PRIMARY KEY (id)
-)
+CREATE TABLE status (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  color VARCHAR(80) NOT NULL,
+  icon VARCHAR(500)
+);
 
+ALTER TABLE `order` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);
+
+INSERT INTO status (name) VALUES ('En cours');
+INSERT INTO status (name) VALUES ('Livrée');
+INSERT INTO status (name) VALUES ('Annulée');
