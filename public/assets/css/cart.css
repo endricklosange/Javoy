@@ -1,0 +1,15 @@
+.cart .alert{
+    background-color: var(--primary);
+}
+.cart .alert p{
+    color: var(--light);
+    text-align: center;
+    font-family: var(--main-font);
+    font-weight: bolder;
+}
+
+.cart h1 {
+    color: var(--primary);
+    font-weight: bold;
+    font-family: var(--title-font);
+}
