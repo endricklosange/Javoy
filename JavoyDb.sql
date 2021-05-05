@@ -3,11 +3,18 @@ CREATE TABLE product (
   category VARCHAR(80) NOT NULL,
   name VARCHAR(255) NOT NULL,
   price INT NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  description TEXT NULL,
   year INT NOT NULL,
   image VARCHAR(255) NOT NULL,
-  created_at DATE NOT NULL
-  
+  created_at DATE NOT NULL,
+  category_id INT FOREIGN KEY NOT NULL,
+);
+
+CREATE TABLE category (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+name VARCHAR(255) NOT NULL,
+image VARCHAR(255) NOT NULL,
+created_at DATE NOT NULL,
 );
 
 CREATE TABLE actuality (
@@ -18,7 +25,7 @@ CREATE TABLE actuality (
   image varchar(255) NOT NULL,
   created_at date NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 /* CREATION table order et detail_order pour commande */
 
@@ -47,3 +54,4 @@ ALTER TABLE `order` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);
 INSERT INTO status (name) VALUES ('En cours');
 INSERT INTO status (name) VALUES ('Livrée');
 INSERT INTO status (name) VALUES ('Annulée');
+
