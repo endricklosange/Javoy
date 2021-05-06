@@ -18,7 +18,7 @@ CREATE TABLE category (
 
 
 
-INSERT INTO category(id,name,image) VALUES(1,'Vin rouge','https://cdn.pixabay.com/photo/2020/04/13/17/54/a-bottle-of-wine-5039546_960_720.png%27'),(2,'Vin Blanc','https://cdn.pixabay.com/photo/2018/02/27/14/07/white-wine-3185546_960_720.jpg%27'),(3,'Vin Rosé','https://cdn.pixabay.com/photo/2019/08/18/16/38/champagne-4414476_960_720.jpg%27'),(4,'Spiritueux','https://cdn.pixabay.com/photo/2016/02/13/21/59/alcohol-1198643_960_720.jpg'),(5,'Jus de Fruits','https://cdn.pixabay.com/photo/2015/03/10/18/53/fruit-juices-667570_960_720.jpg');
+INSERT INTO category(id,name,image) VALUES(1,'Vin rouge','vin_rouge.jpg'),(2,'Vin Blanc','vin_blanc.jpg'),(3,'Vin Rosé','rose.jpg'),(4,'Spiritueux','prune_alcool.jpg'),(5,'Jus de Fruits','jus-de-fruit.jpg');
 
 
 
