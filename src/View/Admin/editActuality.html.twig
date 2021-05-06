@@ -17,9 +17,10 @@
 							<label for="name" class="form-label">Nom</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Nom de l'article" value="{{actuality.name}}" required>
 						</div>
+						<img class="h-25 w-25" src="/uploads/{{ actuality.image }}" alt="Image actu">
 						<div class="mb-3">
 							<label for="image" class="form-label">Image</label>
-							<input type="file" class="form-control" id="image" name="image" required>
+							<input type="file" class="form-control" id="image" name="image">
 						</div>
 						<div class="mb-3">
 							<label for="description" class="form-label">Description</label>
