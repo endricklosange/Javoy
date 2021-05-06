@@ -4,14 +4,15 @@
 
 	<form action="" method="POST" enctype="multipart/form-data">
 
-		<label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
-		<select class="form-select mb-3" aria-label="Default select example" value="{{ product.category }}" name="category" required>
-			<option value="Rouge">Vin rouge</option>
-			<option value="Blanc">Vin blanc</option>
-			<option value="Rosé">Vin rosé</option>
-			<option value="Alcool de fruit">Alcool de fruit</option>
-			<option value="Jus de fruit">Jus de fruit</option>
-		</select>
+
+   <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
+    <select class="form-select mb-3" aria-label="Default select example" value= "{{ product.category }}" name="category" required>
+      <option value="1">Vin rouge</option>
+      <option value="2">Vin blanc</option>
+      <option value="3">Vin rosé</option>
+      <option value="4">Alcool de fruit</option>
+      <option value="5">Jus de fruit</option>
+    </select>
 
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label">Nom du produit :</label>
