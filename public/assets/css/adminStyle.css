@@ -20,7 +20,7 @@ body{
 }
 
 h1{
-    color: var(--secondary);
+    color: var(--primary);
     font-family: var(--title-font);
     font-weight: bold;
 }
