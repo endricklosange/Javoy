@@ -1,14 +1,29 @@
-.wine_bottles h1, h2{
-    color: var(--primary);
+.wine_bottles h1 {
     margin-top: 70px;
+}
+
+.wine_bottles .btn-primary {
+    background-color: var(--primary);
+}
+
+.wine_bottles h3, h1, h2 {
+    color: var(--primary);
     text-align: center;
+    font-family: var(--title-font);
+    font-weight: bolder;
 }
 
-.card-body{
-    width: 460px;
+.wine_bottles p {
+    font-family: var(--main-font);
+    letter-spacing: 1px;
 }
 
-.card-text{
-   text-align: justify;
+.wine_bottles .card {
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-right: 20px;
 }
 
+.card-text {
+    text-align: justify;
+}
