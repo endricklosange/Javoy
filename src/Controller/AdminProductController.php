@@ -99,6 +99,7 @@ class AdminProductController extends AbstractController
     public function add()
     {
         $errors = [];
+        $product = array_map('trim', $_POST);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -122,6 +123,7 @@ class AdminProductController extends AbstractController
 
         return $this->twig->render('Admin/add.html.twig', [
             'errors' => $errors,
+            'product' => $product
         ]);
     }
 
