@@ -21,13 +21,12 @@
 								<th>Description</th>
 								<th>Quantités</th>
 								<th>Prix</th>
-								
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							{% set total = 0 %} 
-							<!-- Debut de la boucle -->
+              <!-- Debut de la boucle -->
 							{% for product in products %}
 								{% set total = total + product.price * product.quantity %}
 								<tr>
@@ -49,14 +48,9 @@
 									</td>
 									<!-- Prix du produit -->
 									<td>{{ product.quantity * product.price }}€</td>
-									
-									
-
-
 									<td>
 										<a class="btn btn-primary" href="/Cart/delete/{{product.id}}">X</a>
-									</td>
-									
+									</td>			
 								</tr>
 								{% endfor %}
 								
@@ -67,13 +61,8 @@
 									<td></td>
 									<td>{{total}}€</td>
 								</tr>
-								
-
-								<!-- Fin de boucle -->
-							
-
-
-						</tbody>
+						
+            </tbody>
 						<a class="btn btn-primary " href="/Cart/empty">Vider le panier</a>
 					</table>
 					<a class="btn btn-primary text-center" href="/order/add">Commander</a>

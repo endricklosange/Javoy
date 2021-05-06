@@ -2,63 +2,67 @@
 
 <div class="container">
 
-  <form action="" method="POST" enctype="multipart/form-data">
+	<form action="" method="POST" enctype="multipart/form-data">
 
-   <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
-    <select class="form-select mb-3" aria-label="Default select example" value= "{{ product.category }}" name="category" required>
-      <option value="Rouge">Vin rouge</option>
-      <option value="Blanc">Vin blanc</option>
-      <option value="Rosé">Vin rosé</option>
-      <option value="Alcool de fruit">Alcool de fruit</option>
-      <option value="Jus de fruit">Jus de fruit</option>
-    </select>
+		<label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
+		<select class="form-select mb-3" aria-label="Default select example" value="{{ product.category }}" name="category" required>
+			<option value="Rouge">Vin rouge</option>
+			<option value="Blanc">Vin blanc</option>
+			<option value="Rosé">Vin rosé</option>
+			<option value="Alcool de fruit">Alcool de fruit</option>
+			<option value="Jus de fruit">Jus de fruit</option>
+		</select>
 
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Nom du produit :</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Orléans rouge" value="{{ product.name }}" name="name" required>
-    </div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Nom du produit :</label>
+			<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Orléans rouge" value="{{ product.name }}" name="name" required>
+		</div>
 
-     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Prix du produit :</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="18" value="{{ product.price }}" name="price" required>
-    </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Description du produit</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="" name="description" required> {{ product.description }} </textarea>
-    </div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Prix du produit :</label>
+			<input type="number" class="form-control" id="exampleFormControlInput1" placeholder="18" value="{{ product.price }}" name="price" required>
+		</div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Année du produit :</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2008" value="{{ product.year }}" name="year" required>
-    </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Image</label>
-      <input type="file" class="form-control" id="exampleFormControlInput1" name="image" required>
-    </div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">Description du produit</label>
+			<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="" name="description" required>
+				{{ product.description }}
+			</textarea>
+		</div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Date d'ajout :</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="15/04/2021" value="{{ product.created_at }}" name="created_at" required>
-    </div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Année du produit :</label>
+			<input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2008" value="{{ product.year }}" name="year" required>
+		</div>
+		<img class="h-25 w-25" src="/uploads/{{ product.image }}" alt="Image produit">
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Image</label>
+			<input type="file" class="form-control" id="exampleFormControlInput1" name="image">
+		</div>
 
-<!-- Display errors -->
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Date d'ajout :</label>
+			<input type="date" class="form-control" id="exampleFormControlInput1" placeholder="15/04/2021" value="{{ product.created_at }}" name="created_at" required>
+		</div>
 
-{% if errors is empty  %}
-  {% else %}
-    <ul class="error">
-      {% for error in errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-    </ul>
-{% endif %}
-<!-- End display errors -->
+		<!-- Display errors -->
 
-    <div class="col-12 d-flex justify-content-end mb-2">
-      <button class="btn btn-primary" type="submit">{{ buttonName|default('Envoyé') }}</button>
-    </div>
+		{% if errors is empty  %}
+			{% else %}
+				<ul class="error">
+					{% for error in errors %}
+						<li>{{ error }}</li>
+					{% endfor %}
+				</ul>
+		{% endif %}
+		<!-- End display errors -->
 
-  </form>
-  
+		<div class="col-12 d-flex justify-content-end mb-2">
+			<button class="btn btn-primary" type="submit">{{ buttonName|default('Envoyé') }}</button>
+		</div>
+
+	</form>
+
 </div>
