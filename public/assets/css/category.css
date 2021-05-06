@@ -30,7 +30,7 @@ text-align: center;
 
 
 .background_wine{
-    background-image: url('../images/vignes.jpg');
+    background-image: url('/images/vignes.jpg');
     background-size: cover;
     height: 500px;
     width: 100%;

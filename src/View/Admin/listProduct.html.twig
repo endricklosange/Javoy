@@ -14,7 +14,7 @@
 			<table class="listTable table table-hover">
 				{% for product in products %}
 					<tr>
-						<td><img class="listWine" src="{{ product.image }}" alt="image de vin"/></td>
+						<td><img class="listWine" src="/uploads/{{ product.image }}" alt="image de vin"/></td>
 						<td>
 							<h2>{{ product.name }}</h2>
 							<p>{{ product.description }}</p>
@@ -23,7 +23,7 @@
 						<td>
 							<div class="changeButton d-flex flex-column">
 								<a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
-								<form method="POST" onsubmit="return confirm('Voulez vous vraimment supprimer ?');" action="/AdminProduct/delete/{{product.id}}">
+								<form method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer ?');" action="/AdminProduct/delete/{{product.id}}">
 									<button class="deleteBtn btn btn-secondary border-0 mb-5">Supprimer</button>
 								</form>
 							</div>

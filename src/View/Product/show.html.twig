@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/product.css">
+{% endblock %}
+{% block content %}
+
+	<section class="wine_bottles">
+		<h1>CARTE DES VINS</h1>
+			<div class="container mt-5">
+				<div class="row">
+				{% for product in products %}
+					<div class="card-wine col-sm-6 mb-5 d-flex justify-content-around">
+						<div class="card">
+							<img class="card-img-top" src="{{ product.image }}" alt="image" width="10px" height="450px">
+							<div class="card-body">
+								<h2 class="card-title">{{ product.name }}
+									{{ product.year }}</h2>
+								<p class="card-text">{{ product.description }} Prix = {{ product.price }}€</p>
+							</div>
+						</div>
+					</div>
+			     {% endfor %}
+				</div>
+			</div>
+	</section>
+{% endblock %}
