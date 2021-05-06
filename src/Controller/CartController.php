@@ -15,6 +15,15 @@ class CartController extends AbstractController
     {
         $this->increment($id);
     }
+    public function empty()
+    {
+        unset($_SESSION['cart']);
+        header("Location: /Cart/index");
+    }
+    public function substract(int $id)
+    {
+        $this->increment($id, -1);
+    }
     public function increment(int $id, int $increment = 1)
     {
         $productManager = new ProductManager();
@@ -22,7 +31,15 @@ class CartController extends AbstractController
         if ($product) {
             $product['quantity'] = ($_SESSION['cart'][$id]['quantity'] ?? 0) + $increment;
             $_SESSION['cart'][$id] = $product;
+            if ($_SESSION['cart'][$id]['quantity'] <= 0) {
+                unset($_SESSION['cart'][$id]);
+            }
         }
         header('Location: /Cart/index');
+    }
+    public function delete($id)
+    {
+        unset($_SESSION['cart'][$id]);
+        header("Location: /Cart/index");
     }
 }
