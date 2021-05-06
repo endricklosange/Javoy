@@ -3,31 +3,39 @@
 	<link rel="stylesheet" href="/assets/css/skill.css">
 {% endblock %}
 
-{% block content %}
+{% block content%}
+
 
 	<section class="cart">
 		<div class="container">
 			<h1>Panier</h1>
+
+
 			{% if products is not empty %}
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
 							<tr>
 								<th>Produits</th>
+								<th>Nom</th>
 								<th>Description</th>
-								<th>Qty</th>
+								<th>Quantités</th>
 								<th>Prix</th>
-								<th>Total</th>
+								<th>Prix total</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
+
 							<!-- Debut de la boucle -->
 							{% for product in products %}
-								{% set total = [0] %}
+								{% set total = total + product.price * product.quantity %}
 								<tr>
 									<!-- Image du produit -->
 									<td><img src="{{ product.image }}" class="img-cart" alt="{{product.name}}"></td>
-
+									<td>
+										<p>{{ product.name }}</p>
+									</td>
 									<!-- Description du produit -->
 									<td>
 										<strong>{{ product.description }}</strong>
@@ -35,24 +43,29 @@
 
 									<!-- Bouton -->
 									<td>
-										<a class="btn btn-primary" href="/Cart/substract{{dish.id}}">-</a>
+										<a class="btn btn-primary" href="/Cart/substract/{{product.id}}">-</a>
 										{{ product.quantity }}
-										<a class="btn btn-primary" href="/Cart/add{{dish.id}}">+</a>
+										<a class="btn btn-primary" href="/Cart/add/{{product.id}}">+</a>
 									</td>
 									<!-- Prix du produit -->
-									<td>{{ product.quantity * product.price }}
-										€</td>
+									<td>{{ product.quantity * product.price }}€</td>
+									<td>{{ total}}€</td>
 
-									<!-- prix total par article (prix d'un objet * la quantité) -->
-									<td>{{ total += product.price * product.quantity }}</td>
+
+									<td>
+										<a class="btn btn-primary" href="/Cart/delete/{{product.id}}">X</a>
+									</td>
 								</tr>
+
 								<!-- Fin de boucle -->
 							{% endfor %}
-							<a class="btn btn-primary btn" href="/Cart/empty">Vider le panier</a>
 
 
 						</tbody>
+						<a class="btn btn-primary " href="/Cart/empty">Vider le panier</a>
 					</table>
+					<a class="btn btn-primary text-center" href="/order/add">Commander</a>
+					
 				</div>
 			{% else %}
 				<div class="alert alert-warning">
@@ -61,4 +74,5 @@
 			{% endif %}
 		</div>
 	</div>
-</section>{% endblock %}
+</section>
+{% endblock %}
