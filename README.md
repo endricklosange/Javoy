@@ -4,14 +4,14 @@
 
 Projet Team Javoy. 
 
-Parti visiteur => Voir les produits dispo afin de passer commande.
+Partie visiteur => Voir les produits dispo afin de passer commande.
 Suivre les actualités.
 Connaitre le savoir-faire
 
-Parti admin => Ajouté/ modifier/ supprimer produit
- Ajouté/ modifier/ supprimer actualité
- gérer les commande
-
+Partie admin => Ajouter/ modifier/ supprimer produit
+ Ajouter/ modifier/ supprimer actualité
+ gérer les commandes
+ 
 ## Steps
 
 1. Clone the repo from Github.
