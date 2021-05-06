@@ -32,3 +32,10 @@
         width: 100%;
         margin-bottom: var(--margin-card);
     }
+.card-wine .btn-dark {
+    background-color: var(--primary);
+}
+
+h1 {
+    background-color: var(--primary);
+}

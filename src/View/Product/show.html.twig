@@ -7,22 +7,26 @@
 
 	<section class="wine_bottles">
 		<h1>CARTE DES VINS</h1>
-			<div class="container mt-5">
-				<div class="row">
-				{% for product in products %}
-					<div class="card-wine col-sm-6 mb-5 d-flex justify-content-around">
-						<div class="card">
-							<img class="card-img-top" src="/uploads/{{ product.image }}" alt="image" width="10px" height="450px">
-							<div class="card-body">
-								<h2 class="card-title">{{ product.name }}
-									{{ product.year }}</h2>
-								<p class="card-text">{{ product.description }} Prix = {{ product.price }}€</p>
-								<a class="btn btn-primary" href="/Cart/add/{{product.id}}">Ajouter au Panier</a>
-							</div>
+		<div class="container d-flex justify-content-between d-flex flex-wrap">
+
+			{% for product in products %}
+				<div class="card" style="width: 18rem;">
+
+					<img class="card-img-top" src="/uploads/{{ product.image }}" alt="image">
+					<div class="card-body">
+
+						<h2 class="card-title">{{ product.name }} : {{ product.year }}</h2>
+
+
+						<p class="card-text">{{ product.description }}</p>
+						<h3>{{ product.price }}€</h3>
+						<div class="text-center">
+							<a class="btn btn-primary border-0" href="/Cart/add/{{product.id}}">Ajouter au Panier</a>
 						</div>
 					</div>
-			     {% endfor %}
 				</div>
-			</div>
+			{% endfor %}
+
+		</div>
 	</section>
 {% endblock %}

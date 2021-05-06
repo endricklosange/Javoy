@@ -43,9 +43,15 @@ body{
 .listProduct .btn-secondary{
     background-color: var(--primary);
 }
+
+.btn-secondary:hover {
+    color: var(--btn-hover-color);
+  }
+
 .changeButton{
     width: 200px;
     margin-top: 60px;
+
 }
 .deleteBtn{
     width: 100%;

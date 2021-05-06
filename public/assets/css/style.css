@@ -53,6 +53,8 @@ nav{
     text-align: center;
 }
 .order-form {
+    margin-top: 15%;
+    margin-bottom : 15%;
     color: var(--primary);
     border:var(--primary) 2px solid;
     border-radius: 8px;
