@@ -24,8 +24,9 @@ define('APP_DB_USER', 'your_db_user_wich_is_not_root');
 define('APP_DB_PWD', 'your_db_password');
 ```
 4. Import `JavoyDb.sql` in your SQL server,
-5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. 
-6. Go to `localhost:8000` with your favorite browser.
+5. Create folder " uploads " at "orleans-php-202103-project-javoy/public/uploads"
+6. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. 
+7. Go to `localhost:8000` with your favorite browser.
 
 
 ## Example 
