@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/skill.css">
+	<link rel="stylesheet" href="/assets/css/cart.css">
 {% endblock %}
 
 {% block content%}
@@ -12,61 +12,65 @@
 
 
 			{% if products is not empty %}
-				<div class="table-responsive">
+				<div class="table">
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Produits</th>
+								<th>Produit</th>
 								<th>Nom</th>
 								<th>Description</th>
-								<th>Quantités</th>
+								<th>Quantité</th>
 								<th>Prix</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							{% set total = 0 %} 
-              <!-- Debut de la boucle -->
+							{% set total = 0 %}
+
 							{% for product in products %}
 								{% set total = total + product.price * product.quantity %}
 								<tr>
 									<!-- Image du produit -->
-									<td><img src="{{ product.image }}" class="img-cart" alt="{{product.name}}"></td>
+									<td><img src="/uploads/{{ product.image }}" width="100" class="img-cart" alt="{{product.name}}"></td>
 									<td>
-										<p>{{ product.name }}</p>
+										<h2>{{ product.name }}</h2>
 									</td>
 									<!-- Description du produit -->
 									<td>
-										<strong>{{ product.description }}</strong>
+										<p>{{ product.description }}</p>
 									</td>
 
 									<!-- Bouton -->
 									<td>
-										<a class="btn btn-primary" href="/Cart/substract/{{product.id}}">-</a>
-										{{ product.quantity }}
-										<a class="btn btn-primary" href="/Cart/add/{{product.id}}">+</a>
+										<div class="d-flex justify-content-between">
+											<a class="quantity btn btn-primary border-0" href="/Cart/substract/{{product.id}}">-</a>
+											<p>{{ product.quantity }}</p>
+											<a class="quantity btn btn-primary border-0" href="/Cart/add/{{product.id}}">+</a>
+										</div>
 									</td>
 									<!-- Prix du produit -->
 									<td>{{ product.quantity * product.price }}€</td>
 									<td>
-										<a class="btn btn-primary" href="/Cart/delete/{{product.id}}">X</a>
-									</td>			
+										<a class="btn btn-primary border-0" href="/Cart/delete/{{product.id}}">X</a>
+									</td>
 								</tr>
-								{% endfor %}
-								
-								<tr>
-									<td>Prix total</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td>{{total}}€</td>
-								</tr>
-						
-            </tbody>
-						<a class="btn btn-primary " href="/Cart/empty">Vider le panier</a>
+							{% endfor %}
+
+							<tr>
+								<th>Prix total</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>{{total}}€</td>
+								<td></td>
+							</tr>
+
+						</tbody>
+						<a class="btn btn-primary border-0" href="/Cart/empty">Vider le panier</a>
 					</table>
-					<a class="btn btn-primary text-center" href="/order/add">Commander</a>
-					
+					<div class="text-center">
+						<a class="btn btn-primary text-center border-0" href="/order/add">Commander</a>
+					</div>
 				</div>
 			{% else %}
 				<div class="alert alert-warning">
@@ -75,5 +79,4 @@
 			{% endif %}
 		</div>
 	</div>
-</section>
-{% endblock %}
+</section>{% endblock %}
