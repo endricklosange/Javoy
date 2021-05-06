@@ -15,10 +15,9 @@ body {
 
 .skill_box {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-top: 50px;
-
   border-radius: 8px;
 }
 
@@ -27,6 +26,10 @@ body {
   text-align: center;
   padding: var(--skill-padding);
   font-family: var(--title-font);
+}
+
+.skill_name img{
+  width: 50px;
 }
 
 .skill_text {
