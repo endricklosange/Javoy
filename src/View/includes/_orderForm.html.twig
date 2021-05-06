@@ -73,10 +73,10 @@
 					<div class="form-group">
 						<label for="detail">D&eacute;tail commande :</label>
 						<textarea class="form-control" id="detail" rows="3" name="detail" required>
-							{{ order.detail }}
-							{% for product in products %}
-								{{ product.name }} x {{ product.quantity }}
-							{% endfor %}
+							{{- order.detail -}}
+							{%- for product in products -%}
+								{{- product.name -}} x {{- product.quantity -}}
+							{%- endfor -%}
 						</textarea>
 					</div>
 					<div class="form-group text-end pt-2">
