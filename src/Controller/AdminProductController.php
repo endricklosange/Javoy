@@ -66,7 +66,6 @@ class AdminProductController extends AbstractController
             $errors[] = 'L\'année doit etre un nombre supérieur à ' . self::PRODUCT_MIN_INT;
         }
 
-     
         return $errors;
     }
 
