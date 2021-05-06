@@ -84,6 +84,7 @@ class OrderController extends AbstractController
     public function add()
     {
         $errors = [];
+        $order = array_map('trim', $_POST);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -100,6 +101,7 @@ class OrderController extends AbstractController
 
         return $this->twig->render('Order/add.html.twig', [
             'errors' => $errors,
+            'order' => $order
         ]);
     }
 
