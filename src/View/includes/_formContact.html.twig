@@ -18,19 +18,19 @@
 	<form action="" method="POST">
 		<div class="mb-3">
 			<label for="lastname" class="form-label">Nom :</label>
-			<input name="lastname" type="text" class="form-control" id="lastname" placeholder="Doe" required>
+			<input name="lastname" type="text" class="form-control" id="lastname" value="{{ data.lastname }}" placeholder="De-la-croix">
 		</div>
 		<div class="mb-3">
 			<label for="firstname" class="form-label">Prénom :</label>
-			<input name="firstname" type="text" class="form-control" id="firstname" placeholder="John" required>
+			<input name="firstname" type="text" class="form-control" id="firstname" value="{{ data.firstname }}" placeholder="Jean">
 		</div>
 		<div class="mb-3">
 			<label for="email" class="form-label">Email :</label>
-			<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com" required>
+			<input name="email" type="email" class="form-control" id="email" value="{{ data.email }}" placeholder="name@example.com">
 		</div>
 		<div class="mb-3">
 			<label for="message" class="form-label">Votre message:</label>
-			<textarea name="message" class="form-control" id="message" rows="3" placeholder="Message" required></textarea>
+			<textarea name="message" class="form-control" id="message" rows="3" placeholder="Message">{{- data.message -}}</textarea>
 		</div>
 		<div class="col-auto mt-4 d-flex justify-content-end">
 			<button type="submit">Envoyer</button>

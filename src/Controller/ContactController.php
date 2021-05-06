@@ -55,8 +55,11 @@ class ContactController extends AbstractController
 
     public function index()
     {
+        $data = array_map('trim', $_POST);
         $errors = $this->send();
         return $this->twig->render('Contact/index.html.twig', [
-            "errors" => $errors]);
+            "errors" => $errors,
+            "data" => $data
+            ]);
     }
 }
