@@ -42,15 +42,9 @@ class AdminProductController extends AbstractController
     // Suite des verifications
     private function validate($product)
     {
-        $categoryValue = ["Rouge", "Blanc", "Rosé", "Alcool de fruit", "Jus de fruit"]; // category list
 
         // validations
         $errors = $this->isEmpty($product);
-
-        // Category verification
-        if (!in_array($product['category'], $categoryValue)) {
-            $errors[] = 'Veuillez renseigner une catégorie valide';
-        }
 
         //name verification
         if (strlen($product['name']) > self::PRODUCT_MAX_LENGHT) {
