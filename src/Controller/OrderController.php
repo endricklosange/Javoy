@@ -101,7 +101,7 @@ class OrderController extends AbstractController
         $products = $_SESSION['cart'] ?? [];
         return $this->twig->render('Order/add.html.twig', [
             'errors' => $errors,
-            'order' => $order
+            'order' => $order,
             'products' => $products,
 
         ]);
