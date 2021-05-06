@@ -8,12 +8,6 @@ class ContactController extends AbstractController
     private const NAME_MAX_LENGTH = 80;
     private const MESSAGE_MAX_LENGTH = 2000;
 
-    public function index()
-    {
-        $errors = $this->send();
-        return $this->twig->render('Contact/index.html.twig', ["errors" => $errors]);
-    }
-
     public function validate($data)
     {
         $errors = [];
@@ -32,9 +26,7 @@ class ContactController extends AbstractController
 
         if (empty($data['email'])) {
             $errors[] = 'L\'email est obligatoire';
-        }
-
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Mauvais format d\'email';
         }
 
@@ -55,9 +47,16 @@ class ContactController extends AbstractController
 
             if (empty($errors)) {
                 //send in mail
-                header('location: index.html.twig');
+                header('location: /Contact/index');
             }
         }
         return $errors;
+    }
+
+    public function index()
+    {
+        $errors = $this->send();
+        return $this->twig->render('Contact/index.html.twig', [
+            "errors" => $errors]);
     }
 }
