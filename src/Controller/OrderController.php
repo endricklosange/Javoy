@@ -97,9 +97,10 @@ class OrderController extends AbstractController
                 header('Location:/Order/thanks');
             }
         }
-
+        $products = $_SESSION['cart'] ?? [];
         return $this->twig->render('Order/add.html.twig', [
             'errors' => $errors,
+            'products' => $products,
         ]);
     }
 
