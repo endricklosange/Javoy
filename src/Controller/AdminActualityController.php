@@ -11,14 +11,6 @@ class AdminActualityController extends AbstractController
     public const MAX_UPLOAD_FILESIZE = 1000000;
     public const ALLOWED_MIMES = ['image/jpeg', 'image/png'];
 
-    public function index(): string
-    {
-        $actualityManager = new ActualityManager();
-        $actualities = $actualityManager->selectAll();
-
-        return $this->twig->render('Admin/listActuality.html.twig', ['actualities' => $actualities]);
-    }
-
     private function isEmpty($actuality): array
     {
         $errors = [];
@@ -30,9 +22,6 @@ class AdminActualityController extends AbstractController
         }
         if (empty($actuality['article'])) {
             $errors[] = 'L\'article est obligatoire';
-        }
-        if (empty($actuality['created_at'])) {
-            $errors[] = 'La date de création est obligatoire';
         }
         return $errors;
     }
@@ -69,7 +58,12 @@ class AdminActualityController extends AbstractController
 
         return $errors;
     }
-
+    public function index(): string
+    {
+        $actualityManager = new ActualityManager();
+        $actualities = $actualityManager->selectAll();
+        return $this->twig->render('Admin/listActuality.html.twig', ['actualities' => $actualities]);
+    }
     public function add(): string
     {
         $errors = [];
@@ -81,7 +75,6 @@ class AdminActualityController extends AbstractController
             $dataErrors = $this->validate($actuality);
             $fileErrors = $this->validateFile($_FILES['image']);
             $errors = array_merge($dataErrors, $fileErrors);
-
             if (empty($errors)) {
                 $actualityManager = new ActualityManager();
 
