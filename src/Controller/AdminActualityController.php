@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ActualityManager;
+use PHPMD\Utility\Strings;
 
 class AdminActualityController extends AbstractController
 {
@@ -50,13 +51,18 @@ class AdminActualityController extends AbstractController
 
         return $errors;
     }
-    public function index(): string
+
+    public function index()
     {
         $actualityManager = new ActualityManager();
         $actualities = $actualityManager->selectAll();
-        return $this->twig->render('Admin/listActuality.html.twig', ['actualities' => $actualities]);
+        if (isset($_SESSION['role'])) {
+            return $this->twig->render('Admin/listActuality.html.twig', ['actualities' => $actualities]);
+        } else {
+            header('Location:/');
+        }
     }
-    public function add(): string
+    public function add()
     {
         $errors = [];
         $actuality = [];
@@ -78,10 +84,17 @@ class AdminActualityController extends AbstractController
                 header('Location:/AdminActuality/index');
             }
         }
-        return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+        if (isset($_SESSION['role'])) {
+            return $this->twig->render(
+                'Admin/addActuality.html.twig',
+                ['errors' => $errors, 'actuality' =>  $actuality,]
+            );
+        } else {
+            header('Location:/');
+        }
     }
 
-    public function edit(int $id): string
+    public function edit(int $id)
     {
         $errors = [];
 
@@ -106,7 +119,14 @@ class AdminActualityController extends AbstractController
                 header('Location:/AdminActuality/index');
             }
         }
-        return $this->twig->render('Admin/editActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+        if (isset($_SESSION['role'])) {
+            return $this->twig->render(
+                'Admin/editActuality.html.twig',
+                ['errors' => $errors, 'actuality' =>  $actuality,]
+            );
+        } else {
+            header('Location:/');
+        }
     }
 
     public function delete(int $id): void

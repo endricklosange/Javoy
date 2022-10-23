@@ -7,17 +7,20 @@ use App\Model\StatusManager;
 
 class AdminOrderController extends AbstractController
 {
-    public function index(): string
+    public function index()
     {
         $status = new OrderManager();
         $orderStatus = $status->selectAllOrderStatus();
-
-        return $this->twig->render('Admin/listOrder.html.twig', [
-            'orderStatus' => $orderStatus,
-        ]);
+        if (isset($_SESSION['role'])) {
+            return $this->twig->render('Admin/listOrder.html.twig', [
+                'orderStatus' => $orderStatus,
+            ]);
+        } else {
+            header('Location:/');
+        }
     }
 
-    public function show(int $orderStatus): string
+    public function show(int $orderStatus)
     {
         $statusManager = new StatusManager();
         $statusLists = $statusManager->selectAll();
@@ -31,10 +34,13 @@ class AdminOrderController extends AbstractController
             $statusOrder->update($orderStatus);
             header('Location: /AdminOrder/index');
         }
-
-        return $this->twig->render('Admin/showOrder.html.twig', [
-            'orderStatus' => $orderStatus,
-            'statusLists' => $statusLists,
-        ]);
+        if (isset($_SESSION['role'])) {
+            return $this->twig->render('Admin/showOrder.html.twig', [
+                'orderStatus' => $orderStatus,
+                'statusLists' => $statusLists,
+            ]);
+        } else {
+            header('Location:/');
+        }
     }
 }
