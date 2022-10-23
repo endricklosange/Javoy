@@ -6,7 +6,6 @@ use App\Model\ActualityManager;
 
 class ActualityController extends AbstractController
 {
-
     /**
      * Show informations for a specific item
      */
