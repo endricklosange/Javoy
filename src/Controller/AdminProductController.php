@@ -109,17 +109,20 @@ class AdminProductController extends AbstractController
                 header('Location:/AdminListProduct/index');
             }
         }
+        if (isset($_SESSION['role'])) {
 
-        return $this->twig->render('Admin/add.html.twig', [
-            'errors' => $errors,
-            'product' => $product
-        ]);
+            return $this->twig->render('Admin/add.html.twig', [
+                'errors' => $errors,
+                'product' => $product
+            ]);
+        } else {
+            header('Location:/');
+        }
     }
 
     /* Editer un produit */
 
-    public function edit(int $id): string
-    {
+    public function edit(int $id){
         $errors = [];
 
         $productManager = new ProductManager();
@@ -149,11 +152,15 @@ class AdminProductController extends AbstractController
                 header('Location:/AdminListProduct/index');
             }
         }
+        if (isset($_SESSION['role'])) {
 
-        return $this->twig->render('Admin/edit.html.twig', [
-            'errors' => $errors,
-            'product' => $product,
-        ]);
+            return $this->twig->render('Admin/edit.html.twig', [
+                'errors' => $errors,
+                'product' => $product,
+            ]);
+        } else {
+            header('Location:/');
+        }
     }
 
     public function delete(int $id): void
