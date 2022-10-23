@@ -2,12 +2,14 @@
 
 namespace App\Model;
 
+use DateTime;
+
 class ActualityManager extends AbstractManager
 {
     public const TABLE = 'actuality';
     public function insert(array $actuality): void
     {
-        $date = new \DateTime();
+        $date = new DateTime();
         $currentDate = $date->format('Y-m-d H:i:s');
         $query = "INSERT INTO " . self::TABLE . " (`name`, `description`, `article`,`image`,`created_at`)
         VALUES (:name, :description, :article, :image,'" . $currentDate . "')";
