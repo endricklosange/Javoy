@@ -110,7 +110,6 @@ class AdminProductController extends AbstractController
             }
         }
         if (isset($_SESSION['role'])) {
-
             return $this->twig->render('Admin/add.html.twig', [
                 'errors' => $errors,
                 'product' => $product
@@ -122,7 +121,8 @@ class AdminProductController extends AbstractController
 
     /* Editer un produit */
 
-    public function edit(int $id){
+    public function edit(int $id)
+    {
         $errors = [];
 
         $productManager = new ProductManager();
@@ -153,7 +153,6 @@ class AdminProductController extends AbstractController
             }
         }
         if (isset($_SESSION['role'])) {
-
             return $this->twig->render('Admin/edit.html.twig', [
                 'errors' => $errors,
                 'product' => $product,

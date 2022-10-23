@@ -85,7 +85,10 @@ class AdminActualityController extends AbstractController
             }
         }
         if (isset($_SESSION['role'])) {
-            return $this->twig->render('Admin/addActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+            return $this->twig->render(
+                'Admin/addActuality.html.twig',
+                ['errors' => $errors, 'actuality' =>  $actuality,]
+            );
         } else {
             header('Location:/');
         }
@@ -117,7 +120,10 @@ class AdminActualityController extends AbstractController
             }
         }
         if (isset($_SESSION['role'])) {
-            return $this->twig->render('Admin/editActuality.html.twig', ['errors' => $errors, 'actuality' =>  $actuality,]);
+            return $this->twig->render(
+                'Admin/editActuality.html.twig',
+                ['errors' => $errors, 'actuality' =>  $actuality,]
+            );
         } else {
             header('Location:/');
         }

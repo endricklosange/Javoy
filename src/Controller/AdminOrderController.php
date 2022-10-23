@@ -12,7 +12,6 @@ class AdminOrderController extends AbstractController
         $status = new OrderManager();
         $orderStatus = $status->selectAllOrderStatus();
         if (isset($_SESSION['role'])) {
-
             return $this->twig->render('Admin/listOrder.html.twig', [
                 'orderStatus' => $orderStatus,
             ]);
@@ -36,7 +35,6 @@ class AdminOrderController extends AbstractController
             header('Location: /AdminOrder/index');
         }
         if (isset($_SESSION['role'])) {
-
             return $this->twig->render('Admin/showOrder.html.twig', [
                 'orderStatus' => $orderStatus,
                 'statusLists' => $statusLists,

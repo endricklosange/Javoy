@@ -25,7 +25,6 @@ class LoginController extends AbstractController
     public function index()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $data = array_map('trim', $_POST);
             $email = $data['email'];
             $password = $data['password'];
