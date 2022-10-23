@@ -7,7 +7,6 @@ use App\Model\StatusManager;
 
 class AdminOrderController extends AbstractController
 {
-
     public function index(): string
     {
         $status = new OrderManager();

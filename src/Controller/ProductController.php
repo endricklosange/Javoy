@@ -7,7 +7,6 @@ use App\Model\CategoryManager;
 
 class ProductController extends AbstractController
 {
-
     // Display list of products
 
     public function index()
