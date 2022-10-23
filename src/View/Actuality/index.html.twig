@@ -21,7 +21,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ actuality.name }}</h5>
               <p class="card-text">
-                {{ actuality.description }}
+                {{ actuality.description|slice(0, 100) }}
               </p>
               <p>{{ actuality.created_at }}</p>
 

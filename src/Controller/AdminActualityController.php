@@ -7,7 +7,6 @@ use App\Model\ActualityManager;
 class AdminActualityController extends AbstractController
 {
     private const NEWS_MAX_LENGTH = 80;
-    private const DESCRIPTION_MAX_LENGTH = 500;
     public const MAX_UPLOAD_FILESIZE = 1000000;
     public const ALLOWED_MIMES = ['image/jpeg', 'image/png'];
 
@@ -20,9 +19,7 @@ class AdminActualityController extends AbstractController
         if (empty($actuality['description'])) {
             $errors[] = 'La description est obligatoire';
         }
-        if (empty($actuality['article'])) {
-            $errors[] = 'L\'article est obligatoire';
-        }
+
         return $errors;
     }
     private function validate($actuality)
@@ -32,11 +29,6 @@ class AdminActualityController extends AbstractController
         if (strlen($actuality['name']) > self::NEWS_MAX_LENGTH) {
             $errors[] = 'Le nom doit contenir moins de ' . self::NEWS_MAX_LENGTH . 'caractères';
         }
-
-        if (strlen($actuality['description']) > self::DESCRIPTION_MAX_LENGTH) {
-            $errors[] = 'Le nom doit contenir moins de ' . self::DESCRIPTION_MAX_LENGTH . 'caractères';
-        }
-
         return $errors;
     }
 

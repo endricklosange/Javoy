@@ -18,7 +18,7 @@
 						<td><img class="listWine" src="/uploads/{{ actuality.image }}" alt="image de vin"/></td>
 						<td>
 							<h2>{{ actuality.name }}</h2>
-							<p>{{ actuality.description }}</p>
+							<p>{{ actuality.description|slice(0, 100) }}</p>
 							<p>{{ actuality.created_at }}</p>
 						</td>
 						<td>

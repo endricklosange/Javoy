@@ -11,24 +11,21 @@ class ActualityManager extends AbstractManager
     {
         $date = new DateTime();
         $currentDate = $date->format('Y-m-d H:i:s');
-        $query = "INSERT INTO " . self::TABLE . " (`name`, `description`, `article`,`image`,`created_at`)
-        VALUES (:name, :description, :article, :image,'" . $currentDate . "')";
+        $query = "INSERT INTO " . self::TABLE . " (`name`, `description`,`image`,`created_at`)
+        VALUES (:name, :description,:image,'" . $currentDate . "')";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('name', $actuality['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $actuality['description'], \PDO::PARAM_STR);
-        $statement->bindValue('article', $actuality['article'], \PDO::PARAM_STR);
         $statement->bindValue('image', $actuality['image'], \PDO::PARAM_STR);
         $statement->execute();
     }
     public function update(array $actuality): void
     {
-        $query = "UPDATE " . self::TABLE . " SET `name`=:name, `description`=:description, 
-        `article`=:article,`image`=:image
+        $query = "UPDATE " . self::TABLE . " SET `name`=:name, `description`=:description, `image`=:image
                   WHERE id=:id ";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('name', $actuality['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $actuality['description'], \PDO::PARAM_STR);
-        $statement->bindValue('article', $actuality['article'], \PDO::PARAM_STR);
         $statement->bindValue('image', $actuality['image'], \PDO::PARAM_STR);
         $statement->bindValue('id', $actuality['id'], \PDO::PARAM_INT);
         $statement->execute();
