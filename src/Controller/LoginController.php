@@ -24,6 +24,7 @@ class LoginController extends AbstractController
 
     public function index()
     {
+        var_dump(password_hash("Losange+971", PASSWORD_DEFAULT));
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $email = $data['email'];
@@ -32,8 +33,10 @@ class LoginController extends AbstractController
             $users = $userManager->selectUserEmail($email);
             foreach ($users as $user) {
                 if (password_verify($password, $user['password'])) {
-                    $_SESSION['role'] = "admin" ;
+                    $_SESSION['role'] = "admin";
                     header('Location:/AdminActuality/index');
+                } else {
+                    echo "mauvais mot de passe ou email";
                 }
             }
         }
