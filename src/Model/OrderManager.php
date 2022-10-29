@@ -10,20 +10,14 @@ class OrderManager extends AbstractManager
      * Insert order in database
      */
 
-    public function insert(array $order)
+    public function insert(array $order, $orderReference)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        " (title, lastname, firstname, email, address, zipcode, city, country, detail, status_id) 
-        VALUES (:title, :lastname, :firstname, :email, :address, :zipcode, :city, :country, :detail, :status_id)");
-
-        $statement->bindValue('title', $order['title'], \PDO::PARAM_STR);
+            " (lastname, firstname, email,detail, status_id,`reference`) 
+        VALUES ( :lastname, :firstname, :email, :detail, :status_id,'" . $orderReference . "')");
         $statement->bindValue('lastname', $order['lastname'], \PDO::PARAM_STR);
         $statement->bindValue('firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('email', $order['email'], \PDO::PARAM_STR);
-        $statement->bindValue('address', $order['address'], \PDO::PARAM_STR);
-        $statement->bindValue('zipcode', $order['zipcode'], \PDO::PARAM_INT);
-        $statement->bindValue('city', $order['city'], \PDO::PARAM_STR);
-        $statement->bindValue('country', $order['country'], \PDO::PARAM_STR);
         $statement->bindValue('detail', $order['detail'], \PDO::PARAM_STR);
         $statement->bindValue('status_id', '1', \PDO::PARAM_STR);
         return $statement->execute();
@@ -32,7 +26,7 @@ class OrderManager extends AbstractManager
     public function selectAllOrderStatus()
     {
         $query = 'SELECT o.*, s.name FROM' . static::TABLE . ' o JOIN '
-        . StatusManager::TABLE  . ' s ON s.id = o.status_id';
+            . StatusManager::TABLE  . ' s ON s.id = o.status_id';
 
         return $this->pdo->query($query)->fetchAll();
     }
@@ -42,7 +36,7 @@ class OrderManager extends AbstractManager
         // prepared request
 
         $statement = $this->pdo->prepare('SELECT o.*, s.name FROM' . static::TABLE . ' o JOIN '
-        . StatusManager::TABLE  . ' s ON s.id = o.status_id WHERE o.id=:id');
+            . StatusManager::TABLE  . ' s ON s.id = o.status_id WHERE o.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
