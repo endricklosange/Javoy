@@ -24,7 +24,6 @@ class LoginController extends AbstractController
 
     public function index()
     {
-        var_dump(password_hash("Losange+971", PASSWORD_DEFAULT));
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $email = $data['email'];
