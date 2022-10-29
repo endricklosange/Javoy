@@ -2,14 +2,35 @@
 
 namespace App\Controller;
 
+use App\Service\SendEmail;
 use App\Model\OrderManager;
 
 class OrderController extends AbstractController
 {
     private const DATA_MAX_LENGTH = 255;
     private const ORDER_MAX_LENGTH = 2000;
-    private const ZIPCODE_MIN_INT = 0;
 
+    public function randomString()
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $stringMax = strlen($caracteres);
+        $randomString = '';
+        for ($i = 0; $i < 10; $i++) {
+            $randomString .= $caracteres[rand(0, $stringMax - 1)];
+        }
+        return $randomString;
+    }
+    public function reference()
+    {
+
+        $allRef = [];
+        $randCar = $this->randomString();
+
+        if (!in_array($randCar, $allRef)) {
+            $allRef[] = $randCar;
+            return $randCar;
+        }
+    }
     private function isEmpty($order): array
     {
         $errors = [];
@@ -22,15 +43,6 @@ class OrderController extends AbstractController
         if (empty($order['email'])) {
             $errors[] = 'L\'email est obligatoire';
         }
-        if (empty($order['address'])) {
-            $errors[] = 'L\'adresse est obligatoire';
-        }
-        if (empty($order['zipcode'])) {
-            $errors[] = 'Le code postal est obligatoire';
-        }
-        if (empty($order['city'])) {
-            $errors[] = 'La ville est obligatoire';
-        }
         if (empty($order['detail'])) {
             $errors[] = 'Votre commande ne peut être vide';
         }
@@ -38,12 +50,8 @@ class OrderController extends AbstractController
     }
     private function validate($order)
     {
-        $titleValue = ["Mr", "Mme", "Mlle"];
         $errors = $this->isEmpty($order);
 
-        if (!in_array($order['title'], $titleValue)) {
-            $errors[] = 'Veuillez choisir un titre valide';
-        }
         if (strlen($order['firstname']) > self::DATA_MAX_LENGTH) {
             $errors[] = 'Le prénom doit contenir moins de ' . self::DATA_MAX_LENGTH . ' caractères';
         }
@@ -52,12 +60,6 @@ class OrderController extends AbstractController
         }
         if (!filter_var($order['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'L\'email est incorrect';
-        }
-        if (strlen($order['address']) > self::DATA_MAX_LENGTH) {
-            $errors[] = 'L\adresse doit faire moins de ' . self::DATA_MAX_LENGTH . ' caractères';
-        }
-        if (strlen($order['zipcode'])  <= self::ZIPCODE_MIN_INT) {
-            $errors[] = 'Le code postal doit être supérieur à ' . self::ZIPCODE_MIN_INT;
         }
         if (strlen($order['detail']) > self::ORDER_MAX_LENGTH) {
             $errors[] = 'Le détail de la commande doit contenir moins de ' . self::ORDER_MAX_LENGTH . ' caractères';
@@ -69,7 +71,6 @@ class OrderController extends AbstractController
     {
         $orderManager = new OrderManager();
         $orders = $orderManager->selectAll('lastname');
-
         return $this->twig->render('Order/index.html.twig', ['orders' => $orders]);
     }
 
@@ -83,28 +84,37 @@ class OrderController extends AbstractController
 
     public function add()
     {
+        $orderReference = $this->reference();
         $errors = [];
-        $order = array_map('trim', $_POST);
-
+        $order['reference'] = $orderReference;
+        $email = new SendEmail();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $order = array_map('trim', $_POST);
             // Verification
             $errors = $this->validate($order);
             // no error, send to db
-            if (empty($errors)) {
-                $orderManager = new OrderManager();
-                $orderManager->insert($order);
-                header('Location:/Order/thanks');
+            if (empty($order['objet'])) {
+                if (empty($errors)) {
+                    $orderManager = new OrderManager();
+                    $orderManager->insert($order, $orderReference);
+                    $email->sendEmail('javoytest@gmail.com', $order['email'], 'JAVOY Père et Fils votre 
+                commande est confirmée', $order, 'completeOrderForm', $orderReference);
+                    header('Location:/Order/thanks');
+                }
             }
         }
         $products = $_SESSION['cart'] ?? [];
-        return $this->twig->render('Order/add.html.twig', [
-            'errors' => $errors,
-            'order' => $order,
-            'products' => $products,
+        if (isset($_SESSION['cart'])) {
+            return $this->twig->render('Order/add.html.twig', [
+                'errors' => $errors,
+                'order' => $order,
+                'products' => $products,
 
-        ]);
+            ]);
+        } else {
+            header('Location:/');
+        }
     }
 
     public function thanks(): string
