@@ -108,7 +108,6 @@ class SecurityTest extends TestCase
         $email = $data['email'];
         $userManager = new UserManager();
         $users = $userManager->selectUserEmail($email);
-        var_dump($users[0]['password']);
         $usersNumber =  count($userManager->selectAll()) - 1;
         $lastUser = $userManager->selectAll()[$usersNumber];
         $this->assertTrue(password_verify($password, $users[0]['password']));
