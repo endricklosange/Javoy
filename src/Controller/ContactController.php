@@ -10,7 +10,7 @@ class ContactController extends AbstractController
     private const NAME_MAX_LENGTH = 80;
     private const MESSAGE_MAX_LENGTH = 2000;
 
-    private function isEmpty($data)
+    public function isEmpty($data)
     {
         $errors = [];
         if (empty($data['lastname'])) {
@@ -59,14 +59,15 @@ class ContactController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $datas = array_map('trim', $_POST);
             $errors = $this->validate($datas);
-
-            if (empty($errors)) {
-                $email = new SendEmail();
-                $email->sendEmail($datas['email'], 'javoytest@gmail.com', 'Formulaire de conta
-                ct JAVOY Père et Fils', $datas, 'contactAdminForm');
-                $email->sendEmail('javoytest@gmail.com', $datas['email'], 'Merci beaucoup de nous avoi
-                r contacté JAVOY Père et Fils', $datas, 'contactVisitorForm');
-                header('location: /Contact/thanks');
+            if (empty($datas['objet'])) {
+                if (empty($errors)) {
+                    $email = new SendEmail();
+                    $email->sendEmail($datas['email'], 'javoytest@gmail.com', 'Formulaire de contact
+                     JAVOY Père et Fils', $datas, 'contactAdminForm');
+                    $email->sendEmail('javoytest@gmail.com', $datas['email'], 'Merci beaucoup de nous avoir
+                     contacté JAVOY Père et Fils', $datas, 'contactVisitorForm');
+                    // header('location: /Contact/thanks');
+                }
             }
         }
         return $errors;

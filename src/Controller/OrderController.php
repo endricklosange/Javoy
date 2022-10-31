@@ -86,7 +86,6 @@ class OrderController extends AbstractController
     {
         $orderReference = $this->reference();
         $errors = [];
-        $order = array_map('trim', $_POST);
         $order['reference'] = $orderReference;
         $email = new SendEmail();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -95,12 +94,14 @@ class OrderController extends AbstractController
             // Verification
             $errors = $this->validate($order);
             // no error, send to db
-            if (empty($errors)) {
-                $orderManager = new OrderManager();
-                $orderManager->insert($order, $orderReference);
-                $email->sendEmail('javoytest@gmail.com', $order['email'], 'JAVOY Père et Fils votre 
+            if (empty($order['objet'])) {
+                if (empty($errors)) {
+                    $orderManager = new OrderManager();
+                    $orderManager->insert($order, $orderReference);
+                    $email->sendEmail('javoytest@gmail.com', $order['email'], 'JAVOY Père et Fils votre 
                 commande est confirmée', $order, 'completeOrderForm', $orderReference);
-                header('Location:/Order/thanks');
+                    header('Location:/Order/thanks');
+                }
             }
         }
         $products = $_SESSION['cart'] ?? [];
