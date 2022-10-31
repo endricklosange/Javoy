@@ -87,26 +87,31 @@ class SecurityTest extends TestCase
     public function testIfUserEmailIsEqualToFormEmail(): void
     {
         $data = [
-            'email' => 'esfdfdsfde@gmail.com',
+            'email' => 'myEmail@gmail.com',
+            'password' => 'Lsdfdsfd',
         ];
         $email = $data['email'];
+        $password = password_hash($data['password'], PASSWORD_DEFAULT);
         $userManager = new UserManager();
-        $users = $userManager->selectUserEmail($email);
-
-        $this->assertEquals($users[0]['email'], $email);
+        $userManager->insert($email, $password);
+        $userEmail = $userManager->selectUserEmail($email);
+        $this->assertEquals($userEmail[0]['email'], $email);
     }
 
     public function testIfUserPasswordIsEqualToFormpassword(): void
     {
         $data = [
             'password' => 'Lsdfdsfd',
-            'email' => 'esfdfdsfde@gmail.com',
+            'email' => 'myEmail@gmail.com',
         ];
         $password = $data['password'];
         $email = $data['email'];
         $userManager = new UserManager();
         $users = $userManager->selectUserEmail($email);
-
+        var_dump($users[0]['password']);
+        $usersNumber =  count($userManager->selectAll()) - 1;
+        $lastUser = $userManager->selectAll()[$usersNumber];
         $this->assertTrue(password_verify($password, $users[0]['password']));
+        $userManager->delete($lastUser['id']);
     }
 }
