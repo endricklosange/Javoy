@@ -12,4 +12,11 @@ class UserManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
+    public function insert($email, $password)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO `" . self::TABLE .
+            "` ( `email`, `password`) VALUES (:email,'" . $password . "')");
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
+        return $statement->execute();
+    }
 }
