@@ -12,6 +12,12 @@ Partie admin => Ajouter/ modifier/ supprimer produit
  Ajouter/ modifier/ supprimer actualité
  gérer les commandes
  
+## Prerequisites
+To install this project, you will need to have some packages installed on your machine. Here is the recommended setup :
+PHP 8.1.*
+Mysql 8.0.*
+Composer 2.4.*
+Git 2.*
 ## Steps
 
 1. Clone the repo from Github.
@@ -22,6 +28,8 @@ define('APP_DB_HOST', 'your_db_host');
 define('APP_DB_NAME', 'your_db_name');
 define('APP_DB_USER', 'your_db_user_wich_is_not_root');
 define('APP_DB_PWD', 'your_db_password');
+define('MAILER_DNS', 'smtp://user:pass@default');
+
 ```
 4. Import `JavoyDb.sql` in your SQL server,
 5. Create folder " uploads " at "orleans-php-202103-project-javoy/public/uploads"
