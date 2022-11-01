@@ -15,7 +15,7 @@
   font-weight: bolder;
 }
 
-.wine_bottles p {
+/*.wine_bottles p {
   font-family: var(--main-font);
   letter-spacing: 1px;
 }
@@ -25,17 +25,11 @@
   margin-top: 50px;
   margin-right: 20px;
 }
-
+*/
 .card-text {
   text-align: justify;
 }
-.productPage img {
-  max-width: 460px;
-}
-.breadcrumb a {
-  margin: 0 5px;
-  font-size: 16px;
-}
+
 .wine_bottles h2 {
   height: 77px;
 }

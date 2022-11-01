@@ -9,6 +9,12 @@ use Symfony\Component\Mailer\Transport;
 
 class SendEmail extends AbstractController
 {
+    /**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
     public function sendEmail($from, $to, $subject, $datas, $twigFile, $data1 = null)
     {
 

@@ -14,15 +14,15 @@
   overflow: hidden;
 }
 
-.actuality_title{
+.actuality_title {
   color: var(--primary);
   font-family: var(--title-font);
   padding: var(--double-space);
   margin-left: var(--double-space);
-  font-weight:bold;
+  font-weight: bold;
 }
 
-h1{
+h1 {
   margin-top: 90px;
 }
 
@@ -31,7 +31,7 @@ h2 {
   font-family: var(--title-font);
   padding: var(--double-space);
   margin-left: var(--double-space);
-  font-weight:bold;
+  font-weight: bold;
   font-style: oblique;
 }
 
@@ -70,6 +70,10 @@ h2 {
 .return-button {
   background-color: var(--primary);
   color: var(--light);
-  width: 25%;
   margin-bottom: var(--actuality-padding);
+}
+@media (max-width: 772px) {
+  img.card-img {
+    display: none;
+  }
 }

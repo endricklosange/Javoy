@@ -33,7 +33,7 @@ class LoginController extends AbstractController
             foreach ($users as $user) {
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['role'] = "admin";
-                    header('Location:/AdminActuality/index');
+                    header('Location:/AdminListProduct/index');
                 } else {
                     echo "mauvais mot de passe ou email";
                 }
