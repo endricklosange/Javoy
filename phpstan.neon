@@ -1,3 +1,9 @@
 parameters:
 	ignoreErrors:
 		- '#Constant [A-Z_]+ not found.#'
+
+	 paths:
+        - src
+    excludePaths:
+        analyse:
+            - src/Service

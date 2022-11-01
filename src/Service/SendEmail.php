@@ -9,6 +9,7 @@ use Symfony\Component\Mailer\Transport;
 
 class SendEmail extends AbstractController
 {
+    /** @phpstan-ignore-next-line */
     public function sendEmail($from, $to, $subject, $datas, $twigFile, $data1 = null)
     {
 
