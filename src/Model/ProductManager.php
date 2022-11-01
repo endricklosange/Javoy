@@ -15,7 +15,7 @@ class ProductManager extends AbstractManager
     }
     public function selectByIdWithCategory(int $id)
     {
-        $statement = $this->pdo->prepare('SELECT product.*,category.name  AS category_name FROM `' .
+        $statement = $this->pdo->prepare('SELECT product.*,category.description,category.name AS category_name FROM `' .
         self::TABLE . '`JOIN ' . CategoryManager::TABLE .
         ' category ON category.id = product.category_id WHERE product.id= :id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);

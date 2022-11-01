@@ -66,3 +66,11 @@ nav{
     border:var(--primary) 2px solid;
     border-radius: 8px;
 }
+.card-wine img{
+    max-width: 400px;
+    max-height: 500px;
+}
+#wave {
+    position: relative;
+    bottom: 2px;
+}

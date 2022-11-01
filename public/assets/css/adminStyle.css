@@ -20,9 +20,6 @@
     color: var(--light);
     text-align: center;
 }
-body{ 
-    padding-top: 70px;
-}
 
 h1{
     color: var(--primary);
@@ -90,4 +87,8 @@ nav{
     font-weight: bolder;
     font-size: 20px;
     text-decoration: none;
+}
+#wave {
+    position: relative;
+    bottom: 2px;
 }

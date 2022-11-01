@@ -4,7 +4,6 @@
     font-family: var(--title-font);
     font-weight: bold;
     margin-left: var(--double-space);
-    margin-top: 80px;
 }
 
 .card-opening{
@@ -12,9 +11,7 @@
   height: 500px;
 }
 
-.container{
-  margin-top: 20px;
-}
+
 
 .card-header{
   text-align: center;
@@ -26,9 +23,7 @@
   padding-top: 30px;
 }
 
-.contact{
-  margin-top: 70px;
-}
+
 
 .OSM{
   border:var(--primary) 2px solid; 

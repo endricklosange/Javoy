@@ -1,6 +1,4 @@
-.wine_bottles h1 {
-  margin-top: 70px;
-}
+
 * {
   text-decoration: none !important;
 }
@@ -31,9 +29,6 @@
 .card-text {
   text-align: justify;
 }
-section.productPage {
-  margin-top: 180px;
-}
 .productPage img {
   max-width: 460px;
 }
@@ -43,4 +38,11 @@ section.productPage {
 }
 .wine_bottles h2 {
   height: 77px;
+}
+img.topWave {
+  transform: rotate(180deg);
+}
+img.topWave {
+  position: relative;
+  top: 58px;
 }
