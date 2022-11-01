@@ -42,11 +42,11 @@ class AdminOrderController extends AbstractController
             $orderStatus['status_id'] = $statusList['status'];
             $statusOrder->update($orderStatus);
             if ($orderStatus['status_id'] == 2) {
-                $email->sendEmail('javoytest@gmail.com', $orderStatus['email'], 'Votre commande est disponible 
+                $email->sendEmail('javoytest@gmail.com', $orderStatus['email'], 'Votre commande est disponible
                 JAVOY Père et Fils', $orderStatus, 'orderDoneForm');
             }
             if ($orderStatus['status_id'] == 3) {
-                $email->sendEmail('javoytest@gmail.com', $orderStatus['email'], 'Votre commande est annulée 
+                $email->sendEmail('javoytest@gmail.com', $orderStatus['email'], 'Votre commande est annulée
                 JAVOY Père et Fils', $orderStatus, 'cancelOrderForm');
             }
             header('Location: /AdminOrder/index');
