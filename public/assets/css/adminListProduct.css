@@ -1,6 +1,9 @@
 body{
     background-color: var(--light);
 }
+* {
+    text-decoration:none !important
+}
 .listProduct{
     margin: var(--simple-space);
     padding:var(--simple-space);
@@ -26,9 +29,9 @@ body{
 .listProduct p{
     font-family: var(--main-font);
     font-weight: bold;
-    max-height: 400px;
+    /*max-height: 400px;
     max-width: 600px;
-    min-width: 200px;
+    min-width: 200px;*/
 }
 
 .listWine{

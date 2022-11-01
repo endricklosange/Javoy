@@ -1,37 +1,45 @@
 {% extends 'adminLayout.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/adminListProduct.css">
+  <link rel="stylesheet" href="/assets/css/adminListProduct.css">
 {% endblock %}
 {% block content %}
-	<section class="listProduct">
-		<div class="container">
-			<div class="containerAddProduct d-flex justify-content-between">
-				<h1>LISTE PRODUITS</h1>
-				<a class="btn btn-secondary border-0 mb-3" href="/AdminProduct/add">Ajouter un produit</a>
-			</div>
+  <section class="listProduct">
+    <div class="container">
+      <div class="containerAddProduct d-flex justify-content-between">
+        <h1>LISTE PRODUITS</h1>
+        <a class="btn btn-secondary border-0 mb-3" href="/AdminProduct/add">Ajouter un produit</a>
+      </div>
 
-			<table class="listTable table table-hover">
-				{% for product in products %}
-					<tr>
-						<td><img class="listWine" src="/uploads/{{ product.image }}" alt="image de vin"/></td>
-						<td>
-							<h2>{{ product.name }}</h2>
-							<p>{{ product.description }}</p>
-							<p>{{ product.price }} € </p>
-						</td>
-						<td>
-							<div class="changeButton d-flex flex-column">
-								<a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
-								<form method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer ?');" action="/AdminProduct/delete/{{product.id}}">
-									<button class="deleteBtn btn btn-secondary border-0 mb-5">Supprimer</button>
-								</form>
-							</div>
-						</td>
-					</tr>
-				{% endfor %}
-			</table>
+      <table class="listTable table table-hover">
+        {% for product in products %}
+          <tr>
+            <td><img class="listWine" src="/uploads/{{ product.image }}" alt="image de vin"/></td>
+            <td>
+              <h2>{{ product.name }}</h2>
+              <p>{{ product.description }}</p>
+              <p>{{ product.price }}
+                €
+              </p>
+            </td>
+            <td>
+              <div class="changeButton d-flex flex-column">
+                <a class="btn btn-secondary mb-3 border-0" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
+                <form method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer ?');" action="/AdminProduct/delete/{{product.id}}">
+                  <button class="deleteBtn btn btn-secondary border-0 mb-5">Supprimer</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% else %}
+          <div class="alert alert-warning">
+            <p>Il n'y a aucun produit pour le moment.</p>
+          </div>
+        </div>
 
-		</div>
-	</section>
+      {% endfor %}
+    </table>
+
+  </div>
+</section>
 {% endblock %}

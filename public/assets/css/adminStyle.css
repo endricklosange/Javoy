@@ -15,8 +15,10 @@
     --simple-space: 8px;
     --double-space: 16px;
 }
-body{ 
-    padding-top: 70px;
+.alert-warning{
+    background-color: var(--primary);
+    color: var(--light);
+    text-align: center;
 }
 
 h1{
@@ -85,4 +87,8 @@ nav{
     font-weight: bolder;
     font-size: 20px;
     text-decoration: none;
+}
+#wave {
+    position: relative;
+    bottom: 2px;
 }

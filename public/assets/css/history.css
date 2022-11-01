@@ -1,4 +1,6 @@
-
+p{
+    text-align: justify;
+}
 .history{
     margin-top: 70px;
 }
@@ -35,4 +37,13 @@
 .history .card-body p{
     font-family: var(--main-font);
     font-weight: bolder;
+}
+.row.historyRow {
+    border-top: 2px #62011d solid;
+    padding-top: 70px;
+}
+@media (max-width: 620px) { 
+    .history .card-body {
+        width: 100%;
+ }
 }
