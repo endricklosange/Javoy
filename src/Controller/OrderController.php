@@ -8,7 +8,6 @@ use App\Model\OrderManager;
 class OrderController extends AbstractController
 {
     private const DATA_MAX_LENGTH = 255;
-    private const ORDER_MAX_LENGTH = 2000;
 
     public function randomString()
     {

@@ -14,7 +14,6 @@ use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 
-/** @phpstan-ignore-next-line */
 abstract class AbstractController
 {
     /**
