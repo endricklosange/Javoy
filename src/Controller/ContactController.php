@@ -66,7 +66,7 @@ class ContactController extends AbstractController
                      JAVOY Père et Fils', $datas, 'contactAdminForm');
                     $email->sendEmail('javoytest@gmail.com', $datas['email'], 'Merci beaucoup de nous avoir
                      contacté JAVOY Père et Fils', $datas, 'contactVisitorForm');
-                    // header('location: /Contact/thanks');
+                    header('location: /Contact/thanks');
                 }
             }
         }
