@@ -5,5 +5,4 @@
 db.php
 .idea
 config/db.php
-public/uploads/*
 composer

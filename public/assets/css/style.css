@@ -1,76 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27');
+@import url("https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Viaoda+Libre&display=swap%27");
 @import "header.css";
 @import "footer.css";
 @import "category.css";
 @import "cart.css";
 
-:root
-{
-    --primary:#62011D;
-    --secondary:#F2E8DF;
-    --light:#ffffff;
-    --dark:#080100;
-    --error-color:#af0101;
+:root {
+  --primary: #62011d;
+  --secondary: #f2e8df;
+  --light: #ffffff;
+  --dark: #080100;
+  --error-color: #af0101;
 
-    --main-font:'Raleway',sans-serif;
-    --title-font:'Roboto Slab',serif;
+  --main-font: "Raleway", sans-serif;
+  --title-font: "Roboto Slab", serif;
 
-    --simple-space: 8px;
-    --double-space: 16px;
+  --simple-space: 8px;
+  --double-space: 16px;
 }
-a{
-    color: var(--dark);
+.btn {
+  background-color: #6d0f2a;
+  border: none;
+  padding: 7px 34px;
+
 }
-.alert-warning{
-    background-color: var(--primary);
-    color: var(--light);
-    text-align: center;
+a {
+  color: var(--dark);
 }
-h1{
-    color: var(--primary);
-    font-family: var(--title-font);
-    font-weight: bold;
+.alert-warning {
+  background-color: var(--primary);
+  color: var(--light);
+  text-align: center;
+}
+h1 {
+  color: var(--primary);
+  font-family: var(--title-font);
+  font-weight: bold;
 }
 
-.error{
-    font-weight: bold;
-    color: var(--error-color);
+.error {
+  font-weight: bold;
+  color: var(--error-color);
 }
-.navbar-brand{
-    font-family: var(--title-font);
-    font-weight: bolder;
-    font-size: 1.5em;
-    margin-left: 40px;
+.navbar-brand {
+  font-family: var(--title-font);
+  font-weight: bolder;
+  font-size: 1.5em;
+  margin-left: 40px;
 }
-nav{
-    background-color:var(--primary);
+nav {
+  background-color: var(--primary);
 }
-.nav-item{
-    font-family: var(--title-font);
-    font-weight: bolder;
-    font-size: 24px;
-    margin-right: 40px;
-    transition: filter  0.3s, transform 0.2s;
+.nav-item {
+  font-family: var(--title-font);
+  font-weight: bolder;
+  font-size: 24px;
+  margin-right: 40px;
+  transition: filter 0.3s, transform 0.2s;
 }
-.navbar-nav a:hover{
-    filter: drop-shadow(0px 0px 0px grey) invert(50%);
-    transform: scale(1.1);
-  }
-#navbarNavAltMarkup{
-    text-align: center;
+.navbar-nav a:hover {
+  filter: drop-shadow(0px 0px 0px grey) invert(50%);
+  transform: scale(1.1);
+}
+#navbarNavAltMarkup {
+  text-align: center;
 }
 .order-form {
-    margin-top: 15%;
-    margin-bottom : 15%;
-    color: var(--primary);
-    border:var(--primary) 2px solid;
-    border-radius: 8px;
+  padding: 20px;
+  color: var(--primary);
+  border: var(--primary) 2px solid;
+  border-radius: 8px;
 }
-.card-wine img{
-    max-width: 400px;
-    max-height: 500px;
+
+.breadcrumb a {
+  margin: 0 5px;
+  font-size: 16px;
 }
 #wave {
-    position: relative;
-    bottom: 2px;
+  position: relative;
+  bottom: 2px;
+}
+@media (max-width: 993px) {
+  .cardProductDescription {
+    display: none;
+  }
 }
