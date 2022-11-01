@@ -1,29 +1,46 @@
 .wine_bottles h1 {
-    margin-top: 70px;
+  margin-top: 70px;
+}
+* {
+  text-decoration: none !important;
+}
+.btn-primary {
+  background-color: var(--primary);
 }
 
-.wine_bottles .btn-primary {
-    background-color: var(--primary);
-}
-
-.wine_bottles h3, h1, h2 {
-    color: var(--primary);
-    text-align: center;
-    font-family: var(--title-font);
-    font-weight: bolder;
+.wine_bottles h3,
+.wine_bottles h1,
+.wine_bottles h2 {
+  color: var(--primary);
+  text-align: center;
+  font-family: var(--title-font);
+  font-weight: bolder;
 }
 
 .wine_bottles p {
-    font-family: var(--main-font);
-    letter-spacing: 1px;
+  font-family: var(--main-font);
+  letter-spacing: 1px;
 }
 
 .wine_bottles .card {
-    margin-left: 20px;
-    margin-top: 50px;
-    margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-right: 20px;
 }
 
 .card-text {
-    text-align: justify;
+  text-align: justify;
+}
+section.productPage {
+  margin-top: 180px;
+}
+.productPage img {
+  max-width: 460px;
+}
+.breadcrumb a {
+  margin: 0 5px;
+  font-size: 16px;
+}
+.wine_bottles h2 {
+  height: 77px;
 }

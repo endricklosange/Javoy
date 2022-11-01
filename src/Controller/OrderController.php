@@ -43,9 +43,7 @@ class OrderController extends AbstractController
         if (empty($order['email'])) {
             $errors[] = 'L\'email est obligatoire';
         }
-        if (empty($order['detail'])) {
-            $errors[] = 'Votre commande ne peut être vide';
-        }
+
         return $errors;
     }
     private function validate($order)
@@ -60,9 +58,6 @@ class OrderController extends AbstractController
         }
         if (!filter_var($order['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'L\'email est incorrect';
-        }
-        if (strlen($order['detail']) > self::ORDER_MAX_LENGTH) {
-            $errors[] = 'Le détail de la commande doit contenir moins de ' . self::ORDER_MAX_LENGTH . ' caractères';
         }
         return $errors;
     }
@@ -88,6 +83,12 @@ class OrderController extends AbstractController
         $errors = [];
         $order['reference'] = $orderReference;
         $email = new SendEmail();
+        $products = $_SESSION['cart'] ?? [];
+        $detail = '';
+        foreach ($products as $product) {
+            $detail .= $product['name'] . '|';
+            $detail .=  $product['quantity'] . '/';
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $order = array_map('trim', $_POST);
@@ -97,14 +98,13 @@ class OrderController extends AbstractController
             if (empty($order['objet'])) {
                 if (empty($errors)) {
                     $orderManager = new OrderManager();
-                    $orderManager->insert($order, $orderReference);
+                    $orderManager->insert($order, $orderReference, $detail);
                     $email->sendEmail('javoytest@gmail.com', $order['email'], 'JAVOY Père et Fils votre 
                 commande est confirmée', $order, 'completeOrderForm', $orderReference);
                     header('Location:/Order/thanks');
                 }
             }
         }
-        $products = $_SESSION['cart'] ?? [];
         if (isset($_SESSION['cart'])) {
             return $this->twig->render('Order/add.html.twig', [
                 'errors' => $errors,

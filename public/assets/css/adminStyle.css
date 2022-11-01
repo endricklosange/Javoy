@@ -15,6 +15,11 @@
     --simple-space: 8px;
     --double-space: 16px;
 }
+.alert-warning{
+    background-color: var(--primary);
+    color: var(--light);
+    text-align: center;
+}
 body{ 
     padding-top: 70px;
 }

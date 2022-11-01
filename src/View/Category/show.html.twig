@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/assets/css/product.css">
+{% endblock %}
+{% block content %}
+
+  <section class="wine_bottles">
+    <h1>CARTE DES VINS</h1>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-separator">
+          /
+        </span>
+        <a class="text-decoration" href="/category/index">Carte des produits</a>
+        <span class="breadcrumb-separator">
+          /
+        </span>
+        <a>{{ products.0.category_name }}</a>
+      </div>
+      <div class="row">
+
+        {% for product in products %}
+          <div class="col-md-4">
+            <div class="card">
+              <a href="/Product/show/{{product.id}}">
+                <img class="card-img-top" src="/uploads/{{ product.image }}" alt="image">
+                <div class="card-body">
+
+                  <h2 class="card-title">{{ product.name }}
+                    :
+                    {{ product.year }}</h2>
+
+                  <p class="card-text">{{ product.description|slice(0, 150)}}</p>
+                  <h3>{{ product.price }}€</h3>
+                  <div class="text-center">
+                    <a class="btn btn-primary border-0" href="/Cart/add/{{product.id}}">Ajouter au Panier</a>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% else %}
+          <div class="alert alert-warning">
+            <p>il n'y a aucun produit pour le moment.</p>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+{% endblock %}

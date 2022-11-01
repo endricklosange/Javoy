@@ -27,10 +27,6 @@ class AdminProductController extends AbstractController
             $errors[] = 'L\'année est obligatoire';
         }
 
-        if (empty($product['created_at'])) {
-            $errors[] = 'La date de création est obligatoire';
-        }
-
         if (empty($product['name'])) {
             $errors[] = 'Le nom est obligatoire';
         }

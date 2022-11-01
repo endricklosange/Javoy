@@ -27,8 +27,8 @@ class ProductController extends AbstractController
     public function show(int $id)
     {
         $productManager = new ProductManager();
-        $products =  $productManager->selectByIdCategory($id);
+        $product =  $productManager->selectByIdWithCategory($id);
 
-        return $this->twig->render('Product/show.html.twig', ['products' => $products]);
+        return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }
 }

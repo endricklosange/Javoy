@@ -2,11 +2,10 @@
 
 <div class="container">
 
-	<form action="" method="POST" enctype="multipart/form-data">
+  <form action="" method="POST" enctype="multipart/form-data">
 
-
-   <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
-    <select class="form-select mb-3" aria-label="Default select example" value= "{{ product.category }}" name="category" required>
+    <label for="exampleFormControlInput1" class="form-label">Catégorie de produit :</label>
+    <select class="form-select mb-3" aria-label="Default select example" value="{{ product.category }}" name="category" required="required">
       <option value="1">Vin rouge</option>
       <option value="2">Vin blanc</option>
       <option value="3">Vin rosé</option>
@@ -16,50 +15,54 @@
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Nom du produit :</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Orléans rouge" value="{{ product.name }}" name="name" required>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Orléans rouge" value="{{ product.name }}" name="name" required="required">
     </div>
 
-     <div class="mb-3">
+    <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Prix du produit :</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="18" value="{{ product.price }}" name="price" required>
+      <input type="number"step="0.01" class="form-control" id="exampleFormControlInput1" placeholder="18" value="{{ product.price }}" name="price" required="required">
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Description du produit</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="" name="description" required> {{- product.description -}} </textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description du produit" rows="3" value="" name="description" required="required">
+        {{- product.description -}}
+      </textarea>
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Année du produit :</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2008" value="{{ product.year }}" name="year" required>
+      <select class="form-select" aria-label="Default select example" value="{{ product.year }}" name="year" required="required">
+        <option selected="2022">2022</option>
+
+        {% for i in 2021..1970 %}
+          <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+
+      </select>
     </div>
 
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Image</label>
-      <input type="file" class="form-control" id="exampleFormControlInput1" name="image" required>
+      <input type="file" class="form-control" id="exampleFormControlInput1" name="image" required="required">
     </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Date d'ajout :</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="15/04/2021" value="{{ product.created_at }}" name="created_at" required>
-    </div>
+    <!-- Display errors -->
 
-<!-- Display errors -->
-
-{% if errors is empty  %}
-  {% else %}
-    <ul class="error">
-      {% for error in errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-    </ul>
-{% endif %}
-<!-- End display errors -->
+    {% if errors is empty %}
+    {% else %}
+      <ul class="error">
+        {% for error in errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <!-- End display errors -->
 
     <div class="col-12 d-flex justify-content-end mb-2">
       <button class="btn btn-primary" type="submit">{{ buttonName|default('Envoyé') }}</button>
     </div>
 
   </form>
-  
+
 </div>

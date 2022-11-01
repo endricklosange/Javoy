@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    Actualité
-  </h1>
-  {% for actuality in actuality %}
-    <div class="container">
+  <div class="container">
+
+    <h1>
+      Actualité
+    </h1>
+    {% for actuality in actuality %}
       <div class="card actuality">
         <div class="row ">
 
@@ -34,10 +35,13 @@
           </div>
         </div>
       </div>
+
+    {% else %}
+      <div class="alert alert-warning">
+        <p>Il n'y a aucune actualité pour le moment.</p>
+      </div>
     </div>
 
-  {% else %}
-    <li class="mt-5">Il n'y a aucune actualité pour le moment.</li>
   {% endfor %}
 
 {% endblock %}

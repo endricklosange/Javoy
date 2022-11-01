@@ -10,15 +10,14 @@ class OrderManager extends AbstractManager
      * Insert order in database
      */
 
-    public function insert(array $order, $orderReference)
+    public function insert(array $order, $orderReference, $detail)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (lastname, firstname, email,detail, status_id,`reference`) 
-        VALUES ( :lastname, :firstname, :email, :detail, :status_id,'" . $orderReference . "')");
+        VALUES ( :lastname, :firstname, :email,'" . $detail . "', :status_id,'" . $orderReference . "')");
         $statement->bindValue('lastname', $order['lastname'], \PDO::PARAM_STR);
         $statement->bindValue('firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('email', $order['email'], \PDO::PARAM_STR);
-        $statement->bindValue('detail', $order['detail'], \PDO::PARAM_STR);
         $statement->bindValue('status_id', '1', \PDO::PARAM_STR);
         return $statement->execute();
     }

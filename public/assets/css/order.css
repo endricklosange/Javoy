@@ -1,0 +1,5 @@
+tbody, td, tfoot, th, thead, tr {
+    border: 2px #62011d solid;
+    padding: 10px 36px;
+    text-align: center;
+}
