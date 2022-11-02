@@ -13,15 +13,6 @@ use App\Model\UserManager;
 
 class LoginController extends AbstractController
 {
-    /**
-     * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-
     public function index()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,7 +24,7 @@ class LoginController extends AbstractController
             foreach ($users as $user) {
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['role'] = "admin";
-                    header('Location:/AdminListProduct/index');
+                    header('Location:/AdminActuality/index');
                 } else {
                     echo "mauvais mot de passe ou email";
                 }

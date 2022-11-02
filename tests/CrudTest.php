@@ -80,11 +80,7 @@ class CrudTest extends TestCase
     }
     public function testDelete(): void
     {
-        $actuality = [
-            'name' => 'endrick',
-            'description' => 'gffdgfdg',
-            'image' => 'ContacteUs.png',
-        ];
+    
 
         $actualityManager = new ActualityManager();
 
